@@ -1,0 +1,1490 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="医学 Thinking-with-Images 独立项目的实验可视化、简历项目经历、26道面试问答与改进路线。"><meta name="color-scheme" content="light dark"><title>Thinking with Images｜项目复盘与实习面试准备</title><style>:root{--bg:#f6f7f4;--paper:#fff;--ink:#1e3434;--muted:#657775;--line:#dce5df;--soft:#edf3ee;--accent:#17644c;--accent-soft:#dceee3;--red:#a34839;--red-soft:#faebe5;--blue:#647f9d;--nav:#173b35;--shadow:0 10px 40px #163a3510;--radius:18px;color-scheme:light}
+:root[data-theme=dark]{--bg:#111e1b;--paper:#192b26;--ink:#e3eee7;--muted:#a1b9ab;--line:#334b40;--soft:#213a30;--accent:#8bd4ac;--accent-soft:#254c39;--red:#efb09f;--red-soft:#432f29;--blue:#9ab4cc;--nav:#10241f;--shadow:0 10px 40px #0002;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:4px}button{color:inherit}h1,h2,h3,h4,p{margin:0}button:disabled{opacity:.5;cursor:default}[hidden]{display:none!important}.skip{position:fixed;top:-100px;left:16px;z-index:99;padding:10px 20px;background:var(--paper)}.skip:focus{top:12px}.mono,code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}.num{font-variant-numeric:tabular-nums}.sidebar{position:fixed;width:238px;inset:0 auto 0 0;background:var(--nav);color:#e5eee8;z-index:40;padding:30px 20px;display:flex;flex-direction:column;overflow:auto}.brand{display:flex;gap:12px;align-items:center;padding:0 8px 26px;border-bottom:1px solid #ffffff20}.brand-icon{width:37px;height:37px;display:grid;place-items:center;border:1px solid #b9d7c560;border-radius:12px;color:#abd9bc;font-size:20px}.brand strong{font-size:14px;letter-spacing:.03em;display:block;line-height:1.45}.brand small{font-size:10px;color:#a5bfb2;letter-spacing:.15em}.nav-label{font-size:10px;letter-spacing:.16em;color:#a5bfb2;padding:27px 12px 10px}.sidebar nav{display:flex;flex-direction:column;gap:4px}.nav-link{color:#bcd0c5;border-radius:9px;padding:9px 12px;display:flex;gap:13px;font-size:13px;line-height:1.6}.nav-link span{font-size:11px;color:#8da99a;min-width:18px}.nav-link:hover{text-decoration:none;background:#ffffff0c;color:#fff}.nav-link.active{background:#d4e9d91c;color:#fff}.nav-link.active span{color:#b6dfc6}.sidebar-foot{margin-top:auto;padding:25px 12px 0;font-size:11px;color:#a5bfb2}.status-dot{display:inline-block;background:#b4d8bb;border-radius:50%;width:6px;height:6px;margin-right:7px}.shell{margin-left:238px}.topbar{position:sticky;top:0;height:66px;background:var(--bg);border-bottom:1px solid var(--line);z-index:25;display:flex;align-items:center;justify-content:space-between;padding:0 36px;gap:12px}.breadcrumb{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px}.breadcrumb strong{color:var(--ink);font-weight:500}.top-actions{display:flex;align-items:center;gap:10px}.btn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 13px;line-height:1.6;display:inline-flex;justify-content:center;align-items:center;gap:6px;font-size:12px;white-space:nowrap}.btn:hover{background:var(--soft);text-decoration:none}.btn.primary{background:var(--accent);color:var(--paper);border-color:var(--accent)}:root[data-theme=dark] .btn.primary{color:#10241f}.btn.small{padding:5px 10px}.mobile-menu{display:none}.page{max-width:1320px;margin:auto;padding:30px 38px 70px}.hero{position:relative;background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:35px 38px;overflow:hidden;display:grid;grid-template-columns:1fr 215px;gap:24px}.eyebrow{color:var(--accent);letter-spacing:.17em;font-size:10px;font-weight:650;text-transform:uppercase;display:flex;align-items:center;gap:9px}.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent)}.hero h1{font-size:clamp(29px,3vw,43px);font-weight:650;line-height:1.23;letter-spacing:-.05em;margin:17px 0 10px}.hero h1 span{display:block;font-size:21px;letter-spacing:.03em;font-weight:450;line-height:1.5;margin-top:11px}.hero p{font-size:13px;line-height:1.9;max-width:630px;color:var(--muted);margin:14px 0 19px}.hero-tags{display:flex;flex-wrap:wrap;gap:7px}.tag{display:inline-flex;padding:3px 9px;border:1px solid var(--line);background:var(--paper);border-radius:6px;font-size:10px;color:var(--muted);line-height:1.5}.hero-art{display:flex;align-items:center;justify-content:center}.hero-art svg{width:205px;height:185px;color:var(--accent)}.hero-note{font-size:10px;color:var(--muted);position:absolute;right:24px;bottom:17px;letter-spacing:.06em}.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0 28px}.stat{padding:20px;background:var(--paper);border:1px solid var(--line);border-radius:13px}.stat small{display:block;color:var(--muted);font-size:11px}.stat-value{font-size:32px;line-height:1.3;letter-spacing:-.045em;margin:8px 0 3px;font-weight:550}.stat-value span{font-size:15px;letter-spacing:0}.stat p{font-size:10px;color:var(--muted)}.overview-note{border-left:3px solid var(--accent);padding:4px 0 4px 16px;font-size:13px;line-height:1.9;margin:0 0 25px}.overview-note strong{font-weight:600}.section{margin-top:38px;scroll-margin-top:90px}.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:0 0 16px}.section-title{display:flex;gap:11px;align-items:center}.section-kicker{display:inline-flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent);border-radius:7px;width:28px;height:28px;font-size:11px;flex-shrink:0}.section h2{font-size:21px;line-height:1.45;letter-spacing:-.02em;font-weight:600}.section-description{font-size:12px;color:var(--muted);margin-top:5px}.section-meta{font-size:10px;color:var(--muted);white-space:nowrap}.surface{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-width:0}.prose{font-size:13px;line-height:1.95;overflow-wrap:anywhere}.prose p{margin:0 0 14px}.prose p:last-child{margin-bottom:0}.prose h3{font-size:16px;font-weight:600;margin:26px 0 13px;line-height:1.6}.prose h3:first-child{margin-top:0}.prose h4{font-size:14px;margin:20px 0 10px}.prose strong{font-weight:600}.prose ul,.prose ol{padding-left:22px;margin:12px 0 20px}.prose li{padding-left:2px;margin:8px 0}.prose code{font-size:11px;background:var(--soft);padding:2px 5px;border-radius:4px;color:var(--accent);overflow-wrap:anywhere}.prose pre{background:var(--soft);padding:22px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;line-height:1.7;white-space:pre}.prose pre code{padding:0;white-space:pre;background:none}.prose a{border-bottom:1px solid var(--line)}.prose a:hover{text-decoration:none;border-color:var(--accent)}.table-scroll{width:100%;max-width:100%;overflow:auto;margin:16px 0 22px}.prose table{border-collapse:collapse;width:100%;font-size:12px;min-width:540px}.prose th{text-align:left;background:var(--soft);font-weight:550;color:var(--muted)}.prose th,.prose td{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}.prose tbody tr:hover{background:var(--bg)}.disclosure{border:1px solid var(--line);border-radius:12px;background:var(--paper);margin:12px 0;overflow:hidden}.disclosure>summary{padding:17px 20px;cursor:pointer;font-size:13px;font-weight:550;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}.disclosure>summary::-webkit-details-marker{display:none}.disclosure>summary::after{content:"+";font-weight:400;color:var(--muted);font-size:20px;line-height:1;flex-shrink:0}.disclosure[open]>summary::after{content:"−"}.disclosure[open]>summary{border-bottom:1px solid var(--line);background:var(--bg)}.disclosure>.prose{padding:22px}.work-summary{font-size:12px;color:var(--muted);margin-bottom:13px}.work-list .disclosure>summary{font-size:14px}.dashboard{display:grid;grid-template-columns:1fr 1fr;gap:18px}.chart-panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;min-width:0;display:flex;flex-direction:column}.chart-title{font-size:15px;font-weight:600;line-height:1.5}.chart-subtitle{font-size:10px;color:var(--muted);margin:4px 0 15px}.segmented{display:flex;flex-wrap:wrap;background:var(--soft);padding:3px;border-radius:8px;gap:3px;align-self:flex-start;margin-bottom:16px}.segmented button{border:0;background:transparent;color:var(--muted);padding:6px 9px;font-size:10px;border-radius:5px;line-height:1.6}.segmented button[aria-pressed=true]{background:var(--paper);color:var(--ink);box-shadow:0 1px 5px #10251a0e}.axis{margin:0 49px 8px 81px;display:flex;justify-content:space-between;color:var(--muted);font-size:9px;line-height:1.2}.chart-bars{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}.bar-row{display:grid;grid-template-columns:72px 1fr 43px;gap:9px;align-items:center}.bar-label{font-size:10px;line-height:1.5}.bar-label small{display:block;font-size:9px;color:var(--muted)}.bar-track{height:13px;background:var(--soft);border-radius:3px;overflow:hidden}.bar-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .32s ease}.bar-fill.base{background:var(--blue)}.bar-value{text-align:right;font-size:11px}.chart-note{font-size:10px;color:var(--muted);line-height:1.8;margin-top:auto;padding-top:13px;border-top:1px solid var(--line)}.chart-legend{display:flex;gap:16px;font-size:10px;color:var(--muted);margin:8px 0 18px;flex-wrap:wrap}.chart-legend span{display:flex;align-items:center;gap:6px}.swatch{width:8px;height:8px;background:var(--accent);display:inline-block;border-radius:2px}.swatch.direct{background:var(--blue)}.compare-group{margin-bottom:18px}.compare-label{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin-bottom:7px}.delta{font-variant-numeric:tabular-nums;color:var(--accent);font-size:10px}.delta.negative{color:var(--red)}.compare-group .bar-row{grid-template-columns:48px 1fr 44px;margin:4px 0;gap:8px}.compare-group .bar-track{height:9px}.compare-group .bar-label{font-size:9px;color:var(--muted)}.compare-group .bar-value{font-size:10px}.matrix-grid{display:grid;grid-template-columns:26px 1fr 1fr;gap:7px;margin:2px 0 15px}.matrix-label{font-size:10px;color:var(--muted);text-align:center;align-self:center;line-height:1.5}.matrix-side{writing-mode:vertical-rl;justify-self:center}.matrix-cell{border-radius:9px;background:var(--soft);padding:15px 13px}.matrix-cell.improved{background:var(--accent-soft)}.matrix-cell.worse{background:var(--red-soft)}.matrix-cell small{display:block;font-size:10px;color:var(--muted)}.matrix-cell strong{font-size:24px;font-weight:500;display:block;line-height:1.4;margin:3px 0}.matrix-cell span{font-size:10px;color:var(--muted)}.net-note{display:flex;align-items:center;gap:9px;font-size:11px;margin-bottom:13px}.net-note b{color:var(--red);font-weight:550}.crop-bars{margin-top:15px}.crop-bars .bar-row{grid-template-columns:78px 1fr 43px;margin:8px 0}.crop-bars .bar-track{height:18px}.crop-bars .bar-label{font-size:11px}.resume-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px;flex-wrap:wrap}.resume-tabs{display:flex;gap:6px;flex-wrap:wrap}.resume-tabs button{border:1px solid var(--line);background:var(--paper);border-radius:8px;font-size:12px;padding:8px 14px}.resume-tabs button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--paper)}:root[data-theme=dark] .resume-tabs button[aria-pressed=true]{color:#10241f}.resume-sheet{border-left:3px solid var(--accent);padding-left:24px}.resume-sheet h3{font-size:17px;margin-bottom:8px}.resume-sheet .prose{font-size:13px}.resume-status{font-size:11px;color:var(--muted);margin:15px 0 0}.question-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.search-wrap{position:relative;flex:1;min-width:200px}.search-wrap input{width:100%;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:10px 14px 10px 38px;font-size:12px;color:var(--ink);line-height:1.6}.search-icon{position:absolute;left:14px;top:12px;color:var(--muted);font-size:15px}.question-filters{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.filter{font-size:11px;border:1px solid var(--line);background:var(--paper);color:var(--muted);border-radius:20px;padding:5px 12px}.filter[aria-pressed=true]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}.question-count{color:var(--muted);font-size:11px;margin-left:auto;align-self:center}.qa{margin:8px 0}.qa>summary{justify-content:flex-start;padding:15px 18px;font-size:13px;font-weight:500}.qa>summary::after{margin-left:auto}.question-number{font-size:11px;font-weight:500;min-width:29px;color:var(--accent);font-variant-numeric:tabular-nums}.question-title{flex:1}.question-category{font-size:9px;color:var(--muted);font-weight:400;white-space:nowrap}.qa .prose{padding-left:58px}.qa .prose p:last-child{background:var(--soft);padding:12px 15px;border-radius:7px;font-size:12px}.empty-state{text-align:center;padding:45px;font-size:13px;color:var(--muted)}.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.phase{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 17px;position:relative}.phase small{font-size:10px;color:var(--accent);letter-spacing:.12em}.phase h3{font-size:14px;margin:9px 0 5px}.phase p{font-size:11px;color:var(--muted);line-height:1.8}.phase:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;z-index:1;background:var(--bg);color:var(--muted);font-size:14px}.evidence-note{font-size:12px;color:var(--muted);margin-bottom:16px}.footer{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.back-top{position:fixed;bottom:22px;right:24px;border:1px solid var(--line);background:var(--paper);padding:8px 13px;border-radius:9px;box-shadow:var(--shadow);font-size:12px;z-index:20}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:var(--ink);color:var(--paper);border-radius:10px;padding:11px 20px;font-size:12px;opacity:0;transition:.2s;max-width:calc(100vw - 32px);text-align:center}.toast.show{opacity:1;transform:translateX(-50%)}dialog{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:27px;max-width:640px;width:calc(100% - 32px);box-shadow:var(--shadow)}dialog::backdrop{background:#14231fa6}dialog h3{font-size:17px;margin-bottom:10px}dialog p{font-size:12px;color:var(--muted);margin-bottom:15px}dialog textarea{width:100%;padding:13px;background:var(--soft);border:1px solid var(--line);color:var(--ink);border-radius:8px;font-family:monospace;font-size:12px;line-height:1.7;resize:vertical;min-height:85px}.dialog-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:15px}.nav-overlay{display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1550px){.page{padding-top:40px}.hero{padding:42px}.hero h1{font-size:44px}.dashboard{gap:22px}.chart-panel{padding:28px}}
+@media(max-width:1160px){.sidebar{width:205px;padding:25px 14px}.shell{margin-left:205px}.page{padding:25px}.topbar{padding:0 25px}.hero{padding:28px;grid-template-columns:1fr 155px}.hero-art svg{width:150px}.hero h1{font-size:31px}.hero h1 span{font-size:18px}.stats{gap:10px}.stat{padding:15px}.stat-value{font-size:28px}.chart-panel{padding:20px}.phase-grid{grid-template-columns:repeat(2,1fr)}.phase:nth-child(2)::after{display:none}}
+@media(max-width:900px){.sidebar{transform:translateX(-100%);transition:transform .2s;width:240px}.sidebar.open{transform:translateX(0)}.shell{margin-left:0}.mobile-menu{display:inline-flex}.nav-overlay.open{display:block;position:fixed;inset:0;background:#13251b80;z-index:35}.breadcrumb{display:none}.topbar{padding:0 20px}.page{padding:22px}.hero{grid-template-columns:1fr 170px}.hero-art svg{width:165px}.hero h1{font-size:34px}.stats{grid-template-columns:repeat(4,1fr)}.section-meta{display:none}}
+@media(max-width:650px){body{font-size:14px}.topbar{height:58px;padding:0 15px}.top-actions{gap:6px}.top-actions .btn{padding:7px 10px;font-size:11px}.page{padding:17px 14px 55px}.hero{display:block;padding:26px 23px}.hero-art{display:none}.hero h1{font-size:31px;overflow-wrap:anywhere}.hero h1 span{font-size:18px}.hero p{font-size:12px}.hero-note{position:static;margin-top:17px;font-size:9px}.stats{grid-template-columns:repeat(2,1fr);gap:9px;margin:15px 0 23px}.stat{padding:15px}.stat-value{font-size:29px}.dashboard{grid-template-columns:1fr;gap:14px}.section{margin-top:29px}.section h2{font-size:19px}.surface{padding:19px 17px}.chart-panel{padding:23px 19px}.section-heading{margin-bottom:13px}.section-kicker{width:25px;height:25px}.section-description{font-size:11px}.prose{font-size:13px}.prose h3{font-size:15px}.prose pre{padding:15px;font-size:11px}.phase-grid{gap:9px}.phase{padding:16px 13px}.phase h3{font-size:13px}.resume-toolbar{gap:12px}.resume-tabs{gap:5px}.resume-tabs button{padding:7px 11px;font-size:11px}.resume-sheet{padding-left:15px}.qa>summary{padding:15px 13px;gap:7px;font-size:12px}.qa .question-category{display:none}.qa .prose{padding:18px}.question-number{min-width:26px}.question-toolbar .btn{padding:9px 10px}.search-wrap{flex-basis:100%}.question-count{font-size:10px}.disclosure>summary{padding:15px;font-size:12px}.disclosure>.prose{padding:18px}.back-top{right:14px;bottom:15px}.footer{padding-bottom:30px}.quick-actions .btn{padding:8px 11px}.hero-tags .tag{font-size:9px}.chart-note{font-size:11px}.chart-subtitle{font-size:11px}.axis{font-size:10px}.question-filters .filter{padding:7px 12px}.nav-link{padding:12px}.overview-note{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{#empty-state{display:none!important}html{scroll-behavior:auto}body{background:white;color:#111;font-size:11pt}.sidebar,.topbar,.quick-actions,.back-top,.toast,.no-print,.nav-overlay,.hero-art{display:none!important}.shell{margin:0}.page{max-width:none;padding:0}.hero{background:white;border:0;padding:0 0 20px;display:block}.hero-note{display:none}.hero h1{font-size:28pt}.hero h1 span{font-size:16pt}.stats{grid-template-columns:repeat(4,1fr)}.stat{padding:10px;border:1px solid #ddd}.stat-value{font-size:22pt}.section{margin-top:28px;break-inside:auto}.section-heading{break-after:avoid}.surface,.chart-panel,.disclosure{box-shadow:none;background:white;border-color:#ddd}.chart-panel{break-inside:avoid}.dashboard{grid-template-columns:1fr 1fr}.chart-note{font-size:8pt}.prose{font-size:10pt;line-height:1.7}.prose table{font-size:8pt;min-width:0}.prose th,.prose td{padding:6px;overflow-wrap:anywhere}.table-scroll{overflow:visible}.prose pre{white-space:pre-wrap;overflow:visible;font-size:8pt}.qa{break-inside:avoid}.qa .prose{padding:15px}.disclosure>summary::after{display:none}.disclosure>summary{font-size:11pt}.phase-grid{grid-template-columns:repeat(4,1fr)}.phase{break-inside:avoid}.phase::after{display:none}.footer{font-size:8pt}.bar-fill,.matrix-cell,.section-kicker{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{color:#1d5748}button{display:none!important}}
+
+/* Research extension */
+.paper-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0 12px}.paper-toolbar .search-wrap{flex:1 1 310px}.paper-toolbar select{max-width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);padding:8px 10px;font-size:12px;min-height:38px}.paper-toolbar label{min-width:0}.paper-results-head{display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:11px;color:var(--muted);margin:13px 0}.paper-results-head span:first-child{color:var(--accent);font-weight:600}.paper-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start;margin-bottom:18px}.paper-card{min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden}.paper-card summary{cursor:pointer;position:relative;padding:14px 34px 14px 16px;list-style:none;display:flex;flex-direction:column;gap:2px;overflow-wrap:anywhere}.paper-card summary::-webkit-details-marker{display:none}.paper-card summary:after{content:'+';position:absolute;right:15px;top:18px;color:var(--muted);font-size:16px}.paper-card[open] summary:after{content:'−'}.paper-name{font-size:13px;font-weight:600;line-height:1.6}.paper-route{font-size:10px;color:var(--muted)}.paper-card[open] summary{background:var(--soft);border-bottom:1px solid var(--line)}.paper-body{padding:18px;font-size:12px;line-height:1.9;overflow-wrap:anywhere}.paper-body h3{font-size:13px;line-height:1.65;margin:12px 0}.paper-body p{margin:11px 0}.paper-tags{display:flex;flex-wrap:wrap;gap:6px}.paper-date,.paper-history,.paper-evidence{color:var(--muted);font-size:10px}.paper-links{display:flex;gap:12px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line);font-size:11px}.research-priorities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:22px}.research-priority{padding:24px;background:var(--soft);border:1px solid var(--line);border-radius:14px}.research-priority small{color:var(--accent);font-size:10px;letter-spacing:.06em}.research-priority h3{font-size:20px;margin:10px 0}.research-priority p{font-size:12px;line-height:1.9;margin:10px 0;color:var(--muted)}.research-priority a{font-size:11px}.evidence-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px;background:var(--paper)}.evidence-step{display:flex;flex-direction:column;gap:7px;padding:19px 16px;position:relative}.evidence-step:not(:last-child){border-right:1px solid var(--line)}.evidence-step small{color:var(--accent);font-size:10px}.evidence-step strong{font-size:13px;font-weight:600}.evidence-step span{font-size:10px;color:var(--muted);line-height:1.7}select:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media(max-width:700px){.paper-grid,.research-priorities{grid-template-columns:1fr}.paper-results-head{align-items:flex-start;font-size:10px}.paper-toolbar{gap:8px}.paper-toolbar label:not(.search-wrap){flex:1 1 120px}.paper-toolbar select{width:100%}.paper-toolbar .btn{flex-shrink:0}.evidence-flow{grid-template-columns:1fr}.evidence-step{padding:12px 17px;display:grid;grid-template-columns:24px 92px 1fr;gap:10px;align-items:center}.evidence-step:not(:last-child){border-right:0;border-bottom:1px solid var(--line)}.research-priority{padding:20px}}
+@media print{#paper-empty{display:none!important}.paper-grid{display:block}.paper-card{break-inside:avoid;margin-bottom:9px}.paper-card summary{padding:8px 12px}.paper-body{padding:10px 12px}.paper-results-head{display:none}.research-priorities{break-inside:avoid}.evidence-flow{break-inside:avoid}}
+.retained-source{color:var(--muted)}
+</style></head>
+<body><a href="#overview" class="skip">跳转到正文</a><aside id="sidebar" class="sidebar" aria-label="文档目录"><div class="brand"><div class="brand-icon" aria-hidden="true">◈</div><div><strong>THINKING<br>WITH IMAGES</strong><small>RESEARCH DOSSIER</small></div></div><div class="nav-label">EXPLORE THE PROJECT</div><nav><a class="nav-link active" href="#overview"><span>00</span>项目总览</a><a class="nav-link " href="#results"><span>01</span>实验看板</a><a class="nav-link " href="#assets"><span>02</span>项目资产</a><a class="nav-link " href="#work"><span>03</span>完成的工作</a><a class="nav-link " href="#risks"><span>04</span>评测边界</a><a class="nav-link " href="#resume"><span>05</span>简历项目经历</a><a class="nav-link " href="#interview"><span>06</span>面试问答</a><a class="nav-link " href="#roadmap"><span>07</span>改进路线</a><a class="nav-link " href="#prep"><span>08</span>面试准备</a><a class="nav-link " href="#evidence"><span>09</span>证据与附件</a><a class="nav-link " href="#literature"><span>10</span>论文调研地图</a><a class="nav-link " href="#recent"><span>11</span>近期相关工作</a><a class="nav-link " href="#task"><span>12</span>任务与技术路线</a><a class="nav-link " href="#experiments"><span>13</span>延伸研究假设</a></nav><div class="sidebar-foot"><span class="status-dot"></span>依据本地实验资料整理<br>独立项目 · 2026.11.14</div></aside><div id="nav-overlay" class="nav-overlay" aria-hidden="true"></div>
+<div class="shell"><header class="topbar"><button class="btn mobile-menu" id="menu-toggle" type="button" aria-label="打开目录" aria-expanded="false" aria-controls="sidebar">☰ 目录</button><div class="breadcrumb"><span>项目复盘</span><span>／</span><strong>Thinking with Images</strong></div><div class="top-actions"><a class="btn" href="project_review.md">技术复盘 ↗</a><button class="btn" id="theme-toggle" type="button">深色</button><button class="btn" id="print-page" type="button">打印 / PDF</button></div></header>
+<main class="page"><noscript><p class="overview-note">当前浏览器未启用 JavaScript。正文、图表默认视图和全部问答仍可阅读；切换、搜索与复制功能需要启用 JavaScript。</p></noscript><section id="overview"><div class="hero"><div><div class="eyebrow">Independent research project</div><h1>Thinking with Images<span>医学多模态推理与后训练</span></h1><p>从数据与视觉工具，到 SFT、GRPO 与评测。<br>把真实做过的工作，整理成清晰可讲的项目经历。</p><div class="hero-tags"><span class="tag">独立完成</span><span class="tag">多模态</span><span class="tag">后训练</span><span class="tag">Agentic RL</span></div><div class="quick-actions"><a class="btn primary" href="#resume">查看简历版本 ↗</a><a class="btn" href="#interview">开始面试准备 →</a><a class="btn" href="#literature">论文与延伸思考 →</a></div></div><div class="hero-art"><svg viewBox="0 0 220 200" aria-hidden="true" fill="none"><rect x="16" y="25" width="122" height="100" rx="14" fill="currentColor" opacity=".05"/><rect x="16" y="25" width="122" height="100" rx="14" stroke="currentColor" opacity=".3"/><path d="M34 98 62 64 84 86 103 64 122 98" stroke="currentColor" stroke-width="1.7" opacity=".6"/><circle cx="112" cy="48" r="6" fill="currentColor" opacity=".3"/><rect x="79" y="69" width="58" height="54" rx="5" stroke="currentColor" stroke-dasharray="4 4"/><path d="M139 96h31v39" stroke="currentColor" stroke-width="1.5"/><path d="m164 129 6 6 6-6" stroke="currentColor" stroke-width="1.5"/><rect x="99" y="140" width="101" height="39" rx="10" fill="currentColor" opacity=".1"/><rect x="99" y="140" width="101" height="39" rx="10" stroke="currentColor" opacity=".3"/><path d="M116 154h35m-35 10h64" stroke="currentColor" stroke-width="2" opacity=".5"/><path d="M96 162H50v-27" stroke="currentColor" stroke-width="1.5" opacity=".5"/><path d="m44 141 6-6 6 6" stroke="currentColor" stroke-width="1.5" opacity=".5"/></svg></div><div class="hero-note">PROJECT DOSSIER · 2026.11.14</div></div>
+<div class="stats"><div class="stat"><small>项目内医学 VQA 池</small><div class="stat-value num">9,997</div><p>内部池，不等同官方独立测试</p></div><div class="stat"><small>SLAKE 英文测试集</small><div class="stat-value num">1,061</div><p>645 OPEN · 416 CLOSE</p></div><div class="stat"><small>R1 非 judge 总正确率</small><div class="stat-value num">67.30<span>%</span></div><p>OPEN EM ＋ CLOSE 规则评分</p></div><div class="stat"><small>面试问题与参考回答</small><div class="stat-value num">26</div><p>技术原理 · 真实案例 · 追问</p></div></div>
+<p class="overview-note"><strong>CoT 的正式测试成绩，与工具 Agent 的收益，分开看。</strong><br>前者已有测试结果；后者已跑通并开展训练，但在统一、干净的测试上仍需证明稳定收益。</p>
+<details class="disclosure"><summary>项目定位与阅读说明</summary><div class="prose"><p>整理日期：2026 年 11 月 14 日。面向多模态算法、模型后训练与 Agentic RL 实习岗位。个人分工：独立完成项目开发与实验；底座模型、训练框架和分割模型沿用各自开源实现。</p>
+<p>这个项目最适合定位为：<strong>医学视觉语言模型的工具增强推理与后训练研究</strong>。已有工作覆盖医学数据构建、视觉工具服务、多轮图像回注、教师轨迹筛选、LoRA SFT、GRPO、评测与推理基础设施排障。最值得展示的是把这些环节独立接通，并能从真实实验中识别工具过用、奖励偏差、评测污染和后端差异。</p>
+<p>两条结果需要分开讲：<strong>无工具的 CoT GRPO 已留下正式 SLAKE 英文测试结果；多工具 Agent 已跑通并开展训练，但尚不能宣称工具策略已经在干净的统一测试中稳定超过 direct baseline。</strong> 本文提供可直接使用的简历措辞、26 个面试问题与回答，以及按优先级组织的改进方案。</p>
+<p>第十至十三节追加了已有论文调研、近期相关工作、任务理解与可执行研究假设。文献资产、论文方法、已有实验结果和本次提出的计划分别标注；相关链接与检索日期可回查。</p>
+</div></details></section><section class="section" id="results"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">01</span><h2>实验看板</h2></div><p class="section-description">每张图保留数据范围与评分口径。</p></div><span class="section-meta">AUDITED RESULTS</span></div><div class="dashboard"><article class="chart-panel"><h3 class="chart-title">CoT 后训练的正式测试</h3>
+<p class="chart-subtitle">SLAKE English · 1,061 题 · 无工具 CoT</p>
+<div class="segmented no-print" role="group" aria-label="SLAKE 评分方式"><button type="button" data-metric="nonjudge" aria-pressed="true">非 judge 总正确率</button><button type="button" data-metric="judge" aria-pressed="false">judge 总正确率</button></div>
+<div class="axis" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div id="slake-bars" class="chart-bars"><div class="bar-row"><div class="bar-label">Base<small>基础模型</small></div><div class="bar-track"><div class="bar-fill base" style="width:46.65409990574929%"></div></div><span class="bar-value num">46.65%</span></div><div class="bar-row"><div class="bar-label">R1<small>114 step</small></div><div class="bar-track"><div class="bar-fill " style="width:67.29500471253534%"></div></div><span class="bar-value num">67.30%</span></div><div class="bar-row"><div class="bar-label">R2<small>114 step</small></div><div class="bar-track"><div class="bar-fill " style="width:65.31573986804901%"></div></div><span class="bar-value num">65.32%</span></div><div class="bar-row"><div class="bar-label">R2.1<small>114 step</small></div><div class="bar-track"><div class="bar-fill " style="width:52.874646559849204%"></div></div><span class="bar-value num">52.87%</span></div><div class="bar-row"><div class="bar-label">R3<small>80 step</small></div><div class="bar-track"><div class="bar-fill " style="width:52.21489161168709%"></div></div><span class="bar-value num">52.21%</span></div><div class="bar-row"><div class="bar-label">R4<small>125 step</small></div><div class="bar-track"><div class="bar-fill " style="width:66.54099905749294%"></div></div><span class="bar-value num">66.54%</span></div></div>
+<p id="slake-current" class="chart-subtitle" aria-live="polite">当前：非 judge 总正确率 · 最优 R1，67.30%</p>
+<p class="chart-note">非 judge＝OPEN EM＋CLOSE 规则；judge 仅替换 OPEN 评分。不同口径分别展示。历史后端记录不一致，所有运行的实际解码尚未完全对齐；各方案训练预算也不同。</p></article><article class="chart-panel"><h3 class="chart-title">工具流程的收益依赖模型</h3><p class="chart-subtitle">项目内部问答池 · 每组 9,997 题 · 横轴 0–100%</p>
+<div class="chart-legend"><span><i class="swatch direct"></i>Direct</span><span><i class="swatch"></i>强制先工具流程</span></div>
+<div class="compare-group"><div class="compare-label"><span>Qwen3-VL-4B</span><span class="delta ">+1.88 个百分点</span></div><div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill base" style="width:86.76602980894268%"></div></div><span class="bar-value num">86.77%</span></div><div class="bar-row"><span class="bar-label">工具流程</span><div class="bar-track"><div class="bar-fill " style="width:88.64659397819345%"></div></div><span class="bar-value num">88.65%</span></div></div><div class="compare-group"><div class="compare-label"><span>Qwen3-VL-8B</span><span class="delta ">+2.05 个百分点</span></div><div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill base" style="width:87.72631789536861%"></div></div><span class="bar-value num">87.73%</span></div><div class="bar-row"><span class="bar-label">工具流程</span><div class="bar-track"><div class="bar-fill " style="width:89.77693307992398%"></div></div><span class="bar-value num">89.78%</span></div></div><div class="compare-group"><div class="compare-label"><span>Qwen3.5-9B</span><span class="delta negative">-2.51 个百分点</span></div><div class="bar-row"><span class="bar-label">Direct</span><div class="bar-track"><div class="bar-fill base" style="width:93.96819045713714%"></div></div><span class="bar-value num">93.97%</span></div><div class="bar-row"><span class="bar-label">工具流程</span><div class="bar-track"><div class="bar-fill " style="width:91.45743723116935%"></div></div><span class="bar-value num">91.46%</span></div></div><p class="chart-note">Agent 要求先调用外部工具。这里比较推理流程，包含 prompt 和预算等差异；不是 SFT／GRPO 训练前后，也不是独立泛化成绩。</p></article><article class="chart-panel"><h3 class="chart-title">9,997 条轨迹，逐题看变化</h3><p class="chart-subtitle">Qwen3.5-9B · 配对结果</p>
+<div class="matrix-grid"><div></div><div class="matrix-label">Agent 对</div><div class="matrix-label">Agent 错</div><div class="matrix-label matrix-side">Direct 对</div><div class="matrix-cell "><small>两条流程均正确</small><strong class="num">8,944</strong><span>89.47%</span></div><div class="matrix-cell worse"><small>流程退化</small><strong class="num">450</strong><span>4.50%</span></div><div class="matrix-label matrix-side">Direct 错</div><div class="matrix-cell improved"><small>流程改善</small><strong class="num">199</strong><span>1.99%</span></div><div class="matrix-cell "><small>两条流程均错误</small><strong class="num">404</strong><span>4.04%</span></div></div>
+<p class="net-note">199 改善 − 450 退化 <b>＝ 净少 251 道正确题</b></p><p class="chart-note">配对流程差异尚非工具因果效应。215 条无答案已计入：196 条在退化组、19 条在双错组，不能重复相加。</p></article><article class="chart-panel"><h3 class="chart-title">局部放大不保证答得更好</h3><p class="chart-subtitle">全量 validation · 1,053 题 · LLM judge</p><div class="crop-bars"><div class="axis" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></div><div class="bar-row"><span class="bar-label">原图</span><div class="bar-track"><div class="bar-fill base" style="width:68.7559354226021%"></div></div><span class="bar-value num">68.76%</span></div><div class="bar-row"><span class="bar-label">原图＋crop</span><div class="bar-track"><div class="bar-fill " style="width:67.99620132953467%"></div></div><span class="bar-value num">68.00%</span></div><div class="bar-row"><span class="bar-label">仅 crop</span><div class="bar-track"><div class="bar-fill " style="width:62.10826210826211%"></div></div><span class="bar-value num">62.11%</span></div></div>
+<p class="overview-note" style="margin-top:20px;font-size:12px">仅看 crop 可能丢失全局上下文。<br>完整验证集未复现小样本上的正向收益。</p>
+<p class="chart-note">这不是最终 test 或 Agent 自主定位实验。194 条使用问题／答案关联标注框，776 条为检测框 union，83 条回退全图；均保留原有实验条件。</p></article></div><details class="disclosure"><summary>查看完整结果表、比较条件与不宜使用的成绩</summary><div class="prose"><h3>1 可保留的主要指标</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>实验和范围</th>
+  <th>已保存结果</th>
+  <th>可以说明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>CoT 基础模型，SLAKE English test，1,061 题</td>
+  <td>非 judge 总正确率 46.65%</td>
+  <td>本地指定 prompt 与评分条件的基线</td>
+</tr>
+<tr>
+  <td>CoT R1，SLAKE English test，1,061 题</td>
+  <td>非 judge 总正确率 67.30%</td>
+  <td>OPEN EM 加 CLOSE 规则评分的正式测试结果；与上项差值约 20.64 个百分点，具体比较条件见后文</td>
+</tr>
+<tr>
+  <td>R2.1 / R3，同一英文 test</td>
+  <td>judge 总体 76.44%，基线 66.16%</td>
+  <td>开放题语义评分加闭合题原评分；不是非 judge 指标，也不是全部题目均由 judge 打分</td>
+</tr>
+<tr>
+  <td>Qwen3-VL-4B direct → agentic，项目内 9,997 题</td>
+  <td>86.7660% → 88.6466%，+1.8806 个百分点</td>
+  <td>内部池工具流程对照，不是后训练增益</td>
+</tr>
+<tr>
+  <td>Qwen3-VL-8B direct → agentic，同一内部池</td>
+  <td>87.7263% → 89.7769%，+2.0506 个百分点</td>
+  <td>改善依赖模型与协议，不能直接外推</td>
+</tr>
+<tr>
+  <td>Qwen3.5-9B direct，项目内 9,997 题</td>
+  <td>9,394 正确，93.9682%</td>
+  <td>项目内部问答池的 direct 表现</td>
+</tr>
+<tr>
+  <td>Qwen3.5-9B agentic，同一问答池</td>
+  <td>9,143 正确，91.4574%</td>
+  <td>当前工具策略比 direct 低 2.5108 个百分点；不是 GRPO 学生最终分数</td>
+</tr>
+<tr>
+  <td>580 条 detection 后端对照</td>
+  <td>SGLang/vLLM 平均 IoU 0.2523/0.2882</td>
+  <td>存在后端相关输出差异，不是 VQA 准确率</td>
+</tr>
+<tr>
+  <td>1,053 条 validation 裁剪消融</td>
+  <td>原图 68.76%，原图加 crop 68.00%，crop-only 62.11%</td>
+  <td>当前裁剪策略未带来整体 judge 收益；不是正式 test，也不是模型自预测框实验</td>
+</tr>
+</tbody>
+</table></div>
+<p>非 judge 指标对比中，原始日志可以支持 base、R1、R2 的 vLLM 0.11.0 评测；历史总表却把后端概括为统一 SGLang，记录并不完全一致。六组已保存测试输出的题目、参考答案、语言及 prompt 字段逐条一致，但完整运行参数仍应以当次请求和日志为准。简历保守版优先写 R1 的绝对成绩；如写相对提升，应补充“本地同英文测试集、同非 judge 评分口径对比”，并准备说明后端记录问题。不要用此结果宣称所有增益均来自更强的视觉推理或工具使用。</p>
+<p>便于面试追问的完整正式测试表如下。OPEN 共 645 题，CLOSE 共 416 题；所有“非 judge 总正确率”均指 OPEN EM 与 CLOSE 原规则得分的加权汇总，只有 OPEN 被 LLM judge 替换评分。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>模型与实际测试 checkpoint</th>
+  <th style="text-align:right">非 judge 总正确率</th>
+  <th style="text-align:right">OPEN EM</th>
+  <th style="text-align:right">CLOSE</th>
+  <th style="text-align:right">judge 总正确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Base</td>
+  <td style="text-align:right">495/1061 = 46.65%</td>
+  <td style="text-align:right">26.67%</td>
+  <td style="text-align:right">77.64%</td>
+  <td style="text-align:right">66.16%</td>
+</tr>
+<tr>
+  <td>R1 step 114</td>
+  <td style="text-align:right">714/1061 = 67.30%</td>
+  <td style="text-align:right">56.12%</td>
+  <td style="text-align:right">84.62%</td>
+  <td style="text-align:right">74.46%</td>
+</tr>
+<tr>
+  <td>R2 step 114</td>
+  <td style="text-align:right">693/1061 = 65.32%</td>
+  <td style="text-align:right">52.87%</td>
+  <td style="text-align:right">84.62%</td>
+  <td style="text-align:right">73.04%</td>
+</tr>
+<tr>
+  <td>R2.1 step 114</td>
+  <td style="text-align:right">561/1061 = 52.87%</td>
+  <td style="text-align:right">33.18%</td>
+  <td style="text-align:right">83.41%</td>
+  <td style="text-align:right">76.44%</td>
+</tr>
+<tr>
+  <td>R3 step 80</td>
+  <td style="text-align:right">554/1061 = 52.21%</td>
+  <td style="text-align:right">32.09%</td>
+  <td style="text-align:right">83.41%</td>
+  <td style="text-align:right">76.44%</td>
+</tr>
+<tr>
+  <td>R4 step 125</td>
+  <td style="text-align:right">706/1061 = 66.54%</td>
+  <td style="text-align:right">56.90%</td>
+  <td style="text-align:right">81.49%</td>
+  <td style="text-align:right">74.46%</td>
+</tr>
+</tbody>
+</table></div>
+<p>R1 使用 0.7×EM+0.3×format，未开 actor KL；R2 增加格式硬门控和 KL；R2.1 加语义 judge。R3 选取 8 次采样中答对 1–7 次的 1,150 条训练样本；R4 取答对 0–7 次的 3,203 条，包含全错难题。各组训练步数和预算不同，因此这张表是方案比较，不是严格单变量消融。训练日志中的 R1 后续 step 190 也不能替代这里 step 114 的测试结果。</p>
+<h3>2 工具收益四类分析</h3>
+<p>该次 Qwen3.5-9B Agent 设置了 <code>require_server_tool_before_answer=true</code>，要求先调用外部工具，不能解释为已经学会自由选择是否调用。对 9,997 条 direct 与 agentic 结果逐条配对后得到：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>direct</th>
+  <th>agentic</th>
+  <th style="text-align:right">数量</th>
+  <th style="text-align:right">占比</th>
+  <th>实际解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>对</td>
+  <td>对</td>
+  <td style="text-align:right">8,944</td>
+  <td style="text-align:right">89.47%</td>
+  <td>这次 direct 已可答对；无法据此证明工具绝对无用</td>
+</tr>
+<tr>
+  <td>错</td>
+  <td>对</td>
+  <td style="text-align:right">199</td>
+  <td style="text-align:right">1.99%</td>
+  <td>工具流程相对 direct 出现改善，值得检查是哪一步提供帮助</td>
+</tr>
+<tr>
+  <td>对</td>
+  <td>错</td>
+  <td style="text-align:right">450</td>
+  <td style="text-align:right">4.50%</td>
+  <td>工具流程相对 direct 出现退化，值得检查误调用、误读和答案丢失</td>
+</tr>
+<tr>
+  <td>错</td>
+  <td>错</td>
+  <td style="text-align:right">404</td>
+  <td style="text-align:right">4.04%</td>
+  <td>当前两条流程均未解决</td>
+</tr>
+</tbody>
+</table></div>
+<p>净变化为 <code>199 − 450 = −251</code> 题，与两条流程正确数之差吻合。Agentic 有 215 条 <code>no_answer</code>，其中 196 条位于“direct 对、agentic 错”组；summary 的 <code>failed=0</code> 并不表示每题都产生了有效答案。这是比笼统归因于视觉工具错误更具体的排障入口。原分析中的旧目录名不能作为模型归属依据；本次逐条比对确认这些结果对应当前标注为 Qwen3.5-9B 的两份预测。部分无答案字段仅有 <code>null</code> 与空字符串的规范化差异。</p>
+<p>这些是<strong>配对流程比较</strong>，还不是严格的工具因果效应：prompt、生成长度、采样和中间步骤也可能影响答案。后续应固定模型和预算，加入无效观察、打乱观察等对照，才能更有把握地把改善归因于工具提供的信息。</p>
+<h3>3 不适合直接作为简历成绩的数字</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>数字或现象</th>
+  <th>限制</th>
+  <th>合适用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>100 题正确 39→46、格式错误事件 15→1</td>
+  <td>100/100 与 SFT 输入池重合</td>
+  <td>解释协议学习与回归检查，不能称独立测试提升</td>
+</tr>
+<tr>
+  <td>3,000 题 direct 与 SFT agent 对比</td>
+  <td>与 SFT 输入池存在题目及图像重合</td>
+  <td>历史行为诊断；重建干净测试后再给泛化结论</td>
+</tr>
+<tr>
+  <td>教师 <code>with_answer</code> 的 49/50 或 canvas 10/10</td>
+  <td>生成过程可用参考答案或参考框</td>
+  <td>数据生成与接口 smoke，不是模型测试准确率</td>
+</tr>
+<tr>
+  <td>Med_Vision 早期部分日志名含 <code>acc/mean@1</code></td>
+  <td>对应 med-reason／deepeyes_retrieve 评分返回复合 reward</td>
+  <td>先追评分代码，必要时改称 validation reward</td>
+</tr>
+<tr>
+  <td>训练日志中的 validation 上升</td>
+  <td>不同子集、judge、工具组合可能不同</td>
+  <td>监控优化行为，不替代统一 final test</td>
+</tr>
+<tr>
+  <td>20 条裁剪实验从 30% 到 45%</td>
+  <td>定向小样本；完整 1,053 题结果不支持普遍提升</td>
+  <td>说明为何需要扩样验证，不能只挑小样本正结果</td>
+</tr>
+<tr>
+  <td>上游仓库存在许多 git modified</td>
+  <td>部分只是文件权限变化</td>
+  <td>只统计确实修改的代码和产生的实验</td>
+</tr>
+</tbody>
+</table></div>
+</div></details></section><section class="section" id="assets"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">02</span><h2>项目资产</h2></div><p class="section-description">从散落目录回到一条技术主线。</p></div><span class="section-meta">SOURCE MAP</span></div><div class="surface"><div class="prose"><p>本次整理保留原目录，不移动代码、数据或 checkpoint。下表将散落目录按工作内容归并；目录名含论文名称，不代表其中的上游代码都是个人原创。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>位置</th>
+  <th>在项目中的作用</th>
+  <th>应如何归属</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">早期模型探索</span></td>
+  <td>Qwen、DeepEyes、Lingshu 等模型的推理与工具探索 notebook</td>
+  <td>模型接入、推理实验</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">早期 VERL 实验</span></td>
+  <td>DeepEyes、检索增强、医学 CoT、ZoomIn、grounding 等 recipe、训练日志及部分 checkpoint 指针</td>
+  <td>医学场景适配与早期 RL 探索</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">主 Agent 工程</span></td>
+  <td>数据构建、教师与学生 Agent、SFT、多工具 GRPO、反事实轨迹分析</td>
+  <td>项目的核心工程资产</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">数据筛选</span></td>
+  <td>多次采样筛选、轨迹过滤、SFT 转换及评测样本</td>
+  <td>数据与后训练流水线</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">运行时工具</span></td>
+  <td>Python、BioMedParse、MedSAM3、检索的接口与 HTTP 服务</td>
+  <td>工具集成、多轮环境</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">教师坐标与轨迹</span></td>
+  <td>working canvas、坐标转换、真实工具执行、trace verifier</td>
+  <td>教师数据和协议工程</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">Qwen3.5 Agent</span></td>
+  <td>9,997 条 Agent 轨迹；与 direct 结果逐条配对</td>
+  <td>工具收益与损害分析</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">后续独立实验区</span></td>
+  <td>Qwen3-VL-4B CoT GRPO、SLAKE 英文评测、基础设施补丁、后续 Agent recipe</td>
+  <td>当前最适合呈现定量结果的主线</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">分割工具模型</span> 与 <span class="retained-source" title="服务器上的历史证据，仓库内未分发">BioMedParse</span></td>
+  <td>服务封装、推理适配及上游训练代码</td>
+  <td>复用专业模型，不宣称从零研发分割基础模型</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">多模态代码沙箱</span></td>
+  <td>工具执行环境、本地改动和服务压测记录</td>
+  <td>沙箱接入与稳定性工作</td>
+</tr>
+<tr>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">相关工作探索</span> 与 <span class="retained-source" title="服务器上的历史证据，仓库内未分发">论文学习</span></td>
+  <td>DeepEyes、Mini-o3 等上游工程与阅读材料</td>
+  <td>研究背景，不能用克隆数量衡量完成度</td>
+</tr>
+</tbody>
+</table></div>
+<p>项目演进可以概括为：模型与视觉工具探索 → 数据和可执行轨迹 → 冷启动 SFT → 多轮 GRPO → 独立 CoT 基线与基础设施修复 → 工具价值和评测可靠性分析。日期不必写入简历；按这条技术主线讲述更清楚。</p>
+</div></div></section><section class="section" id="work"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">03</span><h2>已经完成的工作</h2></div><p class="section-description">数据、工具、轨迹、后训练与基础设施，共七个工作模块。</p></div><span class="section-meta">PROJECT SCOPE</span></div><div class="work-list"><details class="disclosure" open><summary>1 医学数据构建与难度筛选</summary><div class="prose"><p>从医学分割数据的图像、mask、ROI 和结构描述出发，构建统一预处理及采样流程。已有日志记录扫描去重后 269,096 条、平衡采样后 59,978 条；主 VQA 池实际保留 <strong>9,997 条</strong>。前两个数字是不同处理阶段的条目数，不代表 26.9 万张独立影像，也不能说它们全部用于训练。</p>
+<p>另一条数据线对公开医学 VQA 进行多次采样筛选。以 8 次回答的一致性或正确数为依据，将易题、具有学习信号的中等题和难题分流。已有 OmniMedVQA 与 SLAKE/VQA-RAD 的筛选产物。后续 CoT 实验进一步保留了 medium、medium+hard 等数据方案，用来检验训练难度分布与 reward 的关系。</p>
+<p>对外可表述为“搭建医学 VQA 数据构建与多次采样筛选流水线，形成约 1 万条项目内问答池”。合成数据质量、图像级独立性和真正的 OOD 能力仍需独立测量。</p>
+</div></details><details class="disclosure"><summary>2 可执行的多模态工具环境</summary><div class="prose"><p>核心能力是模型可以在推理中调用 Python 图像处理、BioMedParse、MedSAM3 和知识检索；工具返回 mask、overlay、bbox、状态或文本证据后，Agent 将新图像真正送入下一轮模型输入。不同实验的启用工具集合不同，不能说每个 checkpoint 都训练过全部工具。</p>
+<p>重型分割模型通过服务与策略模型解耦，工具调用、执行结果和后续回答保留在 trace 中。后续实验区还实现了更轻的 <code>zoom_in</code> 与 <code>retrieve</code> 两工具 recipe；其中检索使用 SLAKE 英文知识图谱事实表，不直接索引问答答案。</p>
+<pre><code class="language-text">原始图像与问题
+    ↓
+视觉语言模型生成理由和动作
+    ↓
+动作解析与工具调度 → 执行分割／裁剪／代码／检索
+    ↑                              ↓
+下一轮模型输入 ← 新图像＋结构化观察＋历史状态
+    ↓
+最终答案 → 答案评分、格式评分、工具行为统计 → SFT／GRPO
+</code></pre>
+</div></details><details class="disclosure"><summary>3 坐标协议与教师轨迹</summary><div class="prose"><p>在 Gemini 教师线引入等比缩放并 padding 到 <strong>1000×1000 working canvas</strong>，统一模型看见的图、工具操作的图与返回坐标。Gemini 的 <code>[ymin,xmin,ymax,xmax]</code> 与 Qwen 的 <code>[x1,y1,x2,y2]</code> 通过适配层转换，而不是直接混用。</p>
+<p>轨迹生成包含真实工具执行和结果回注，并增加格式、工具必要性、观察整合等检查。较完整的一次冷启动数据链为 <strong>1,995 条来源轨迹 → 1,805 条 verifier pass → 1,791 条最终 SFT 输入样本</strong>。该批最终 precheck 使用 <code>skip_llm=true</code>，属于规则检查；另有小批量 LLM verifier 探索。不同阶段不能混为一谈，规则得分也不能视为独立 LLM 评审、医生审核或真实推理正确率。</p>
+<p>部分教师运行采用 <code>with_answer</code>，可读取参考答案或参考框。这适合产生候选监督，但其正确率只能说明受答案辅助的轨迹生成情况；不能作为无答案提示的学生模型成绩。将其转成学生数据时还需要检查是否复制了不可由图像和实际工具观察支持的解释。</p>
+</div></details><details class="disclosure"><summary>4 LoRA SFT 与多轮 GRPO</summary><div class="prose"><p>已使用 LlamaFactory 完成 Qwen3-VL 冷启动 LoRA SFT，并留下训练配置、adapter 与训练指标。除 8B 的 1,791 条 Gemini 轨迹输入外，还有 4B full-trace 分支：10,019 个来源轨迹文件中 9,154 个可用，剔除 1 例图像 token 不匹配后形成 9,153 条最终数据，并保存完成 1 epoch 的训练指标；它和 1,791 条分支是不同实验，不能相加当成去重总量。SFT 的直接目标是让模型学会动作协议、工具结果消费和结束回答。</p>
+<p>在 VERL 中接入医学数据适配、工具 schema、SGLang 多轮 rollout、自定义 reward、验证与 checkpoint，保留 4B/8B、不同工具组合及 judge 方案的实验。部分旧 Agent 运行曾使用 SLAKE test 的 500 题子集作为训练期 validation，这进一步限制了将旧结果作为未触碰 test 的主张。后续独立实验区的 Agent 日志实际到 step 51，checkpoint 保存至 step 50；该步验证 correctness 66.67%、格式率 100%，但没有最终 test 表，运行也有多次恢复和工具服务异常。不能沿用某次启动失败就认定该分支始终没有训练成功，也不能把验证分数当成最终测试。</p>
+<p><strong>早期 SFT 评测存在输入池重合。</strong> 100 条 prompt-only 与 cold-start 对比样本全部出现在 1,791 条 SFT 输入池；该池还内部划出约 5% 验证样本，因此准确说法是“与 SFT 输入池完全重合”，不能断定这 100 条全部参加过梯度更新。原先“正确 39→46、格式错误事件 15→1”只能作为输入池上的协议回归观察；该脚本的 <code>correct_exact</code> 字段还包含语义 judge 校正，不能再称纯 EM。3,000 条混合评测也有重合，详见第四节。</p>
+</div></details><details class="disclosure"><summary>5 CoT GRPO 与正式测试</summary><div class="prose"><p>后续在 <code>Med-Thinking-with-images</code> 中直接以官方 Qwen3-VL-4B-Instruct 为初始化开展显式 <code>&lt;reason&gt;/&lt;answer&gt;</code> CoT 训练，探索 EM reward、格式权重、KL、LLM judge 和数据筛选。原始展开配置支持它没有从上述受污染的 SFT 输入池所训练的 adapter 初始化。这里的“CoT”是有图像输入的文本推理，不等于已经使用工具。</p>
+<p>SLAKE 英文数据实际规模是 <strong>train 4,919、validation 1,053、test 1,061</strong>；对应图像路径数为 450、96、96。按题目 ID、图像路径、图像与问题组合检查，三个原始划分的两两交集均为零。该检查不等于完成像素近重复或患者级排重。另外，已有 test 多次 rollout 的难度分析文件，不能宣称 test 从未被分析；本次未发现其题目进入上述训练 parquet，但仍需控制反复看 test 调参的选择偏差。</p>
+<p>正式结果中，R1 的 MedEvalKit 非 judge 总正确率为 <strong>67.30%</strong>（OPEN 采用 EM，CLOSE 采用原规则）；R2.1 和 R3 的开放题 judge 加闭合题原评分的总体分数为 <strong>76.44%</strong>。这两个最优值来自不同实验、不同评分方式，不能写成同一个 checkpoint 同时取得两项最优成绩。</p>
+</div></details><details class="disclosure"><summary>6 多模态训练基础设施排障</summary><div class="prose"><p>已保留两项 SGLang 补丁：一项根据上游修复对齐 Qwen3-VL 的视觉权重前缀 <code>model.visual.* → visual.*</code>；另一项为每次 pickle 分配独立 shared-memory segment，处理多候选图像 rollout 中共享内存被提前释放的问题。</p>
+<p>此外，建立合成红框和医学 detection 的后端对照。对 <strong>580 条 SLAKE detection</strong> 的原始 JSONL 重新汇总，SGLang 与 vLLM 的平均 bbox IoU 分别为 <strong>0.2523、0.2882</strong>，两边均成功解析 580 个框。结果说明“输出合法坐标”与“视觉 grounding 一致”是两件事；不能仅凭模型服务成功启动就相信训练环境正确。</p>
+</div></details><details class="disclosure"><summary>7 早期实验与相关前置工作</summary><div class="prose"><p><code>Med_Vision/verl</code> 保留了 Qwen2.5-VL／Qwen3-VL 的医学 GRPO、DeepEyes 适配、ZoomIn 与检索、多轮工具和 KL 对照。部分运行达到 78、25 或 240 等训练步骤，能够证明开展过实际训练；这些运行的数据、预算和 reward 不同，不能拼成同一条性能增长曲线。部分早期目录目前仅剩 checkpoint 指针，不代表仍持有完整可复现权重。</p>
+<p>多模态 Jupyter sandbox 的本地改动包括关闭 IPython history、限制持久化状态、TTL、幂等关闭和 kernel 清理。已有两组压测：48 会话配置下请求成功 2,448/2,496（98.077%），96 会话配置下为 2,347/2,496（94.030%）。分母是 init 与 follow 请求，不是会话；负载不同，也不能说成功率从 94%“优化到”98%。这些记录适合展示对工具环境稳定性和资源生命周期的理解。</p>
+<p>另找到 <span class="retained-source" title="服务器上的历史证据，仓库内未分发">Qwen2.5-VL 医学混合 LoRA SFT</span>：rank 8，医学对话、分割及 PubMedVision 等混合任务，有 adapter 和完成记录。它可作为相关前置经历，尚不能把该 adapter 与后续 TWI GRPO 画成已证实的权重继承链。</p>
+<p>最后两条分支应标为“已有部分资产”：原生 Thinking 模型当前仅确认基线与数据，相关 recipe 缺失；新 <code>zoom_in+retrieve</code> 分支确认实现、数据和 smoke，尚未找到训练完成记录。不要将所有目录都写成已完成的 RL 方法。</p>
+</div></details></div></section><section class="section" id="risks"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">04</span><h2>评测边界与真实问题</h2></div><p class="section-description">哪些结论成立，哪些数字还需要重新验证。</p></div><span class="section-meta">EVIDENCE BOUNDARIES</span></div><div class="surface"><div class="prose"><p><strong>早期 SFT 的数据隔离不足。</strong> 1,791 条 SFT 输入池含 SLAKE test 64 条、validation 55 条及 VQA-RAD test 38 条。与 3,000 条评测集按 ID 重合 102 条；按图像路径与问题联合匹配重合 127 条，说明仅查 ID 会遗漏不同前缀指向的同一题。按图像路径，582 条评测记录涉及 112 张与 SFT 输入池相同的图像。重新评测旧模型时简单删除重复题仍不足以消除图像熟悉性，最好按图像划分重建数据并重训。</p>
+<p><strong>早期 PMC-VQA 工具分支也有图像交叉。</strong> <code>Med_Vision/verl</code> 的 <code>pmc-vqa-tool</code> train/test 为 1,600/400 条，唯一图像为 1,225/379，交集 164 张，占测试唯一图像约 43.27%。另一个 <code>reason</code> 分支按图像路径检查没有交集；不能把一个分支的问题扩大到全部实验。后续 SLAKE CoT 的独立划分应单独评价。</p>
+<p><strong>指标字段需追溯到具体代码。</strong> Med_Vision 的部分旧 recipe 直接返回复合 reward，却出现在日志的 acc 字段；较后的 agentic_rl recipe 已分别返回 <code>score</code> 与二值 <code>acc</code>，不能把所有训练准确率都说成复合奖励。</p>
+<p><strong>reward 可能鼓励没有价值的工具调用。</strong> 一版工具奖励近似为 <code>0.5×答案正确 + 0.3×格式正确 + 0.2×答对且用过工具</code>，较多调用之后才有额外惩罚。只要直接就能答对，补一次无关调用仍可能得到额外分数。需要把“调用发生”与“提供帮助”分开。</p>
+<p><strong>裁剪实验含标注辅助。</strong> 1,053 条实验中，194 条 crop 根据问题或参考答案匹配 detection label，776 条使用图像所有检测框的 union，83 条回退为原图。它适合分析上下文丢失及工具潜力，不能视为线上 Agent 自动定位的结果；标注框条件也不保证一定是最优裁剪，所以不应把它当成严格性能上界。</p>
+<p><strong>后端和评测器属于实验条件。</strong> 不同后端的视觉处理可能带来差异；EM 对简短标准答案敏感，judge 则可能接受同义表达，也可能误接受不完整的病名列表。应保留两种评分、真实请求参数及逐题错误分析，避免仅优化单一数字。</p>
+</div></div></section><section class="section" id="resume"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">05</span><h2>简历项目经历</h2></div><p class="section-description">按投递岗位切换重点，每版都包含完整项目描述。</p></div><span class="section-meta">READY TO COPY</span></div><div class="surface"><div class="resume-toolbar no-print"><div class="resume-tabs" role="group" aria-label="简历岗位侧重"><button type="button" data-resume-index="0" aria-pressed="true">推荐版本</button><button type="button" data-resume-index="1" aria-pressed="false">后训练版本</button><button type="button" data-resume-index="2" aria-pressed="false">多模态版本</button></div><button id="copy-resume" class="btn primary" type="button">复制项目经历</button></div><div class="resume-sheet"><div class="resume-variant" data-variant="recommended"><div class="prose"><p><strong>医学 Thinking-with-Images 多模态推理与后训练｜独立项目</strong><br />
+技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。</p>
+<ul>
+<li>独立搭建医学视觉语言模型的工具增强推理与后训练流水线，接入 Python 图像处理、BioMedParse、MedSAM3 和知识检索，实现多轮动作解析、视觉观察回注与轨迹落盘。</li>
+<li>构建约 <strong>1 万条医学 VQA 项目内问答池</strong>，完成多次采样难度筛选与教师轨迹验证，整理 <strong>1,791 条冷启动 SFT 输入样本</strong>，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。</li>
+<li>围绕答案奖励、格式约束、KL 与数据难度开展 CoT GRPO 实验，Qwen3-VL-4B 在 <strong>SLAKE 英文测试集 1,061 题</strong>上取得本地 MedEvalKit <strong>67.30% 非 judge 总正确率</strong>（开放题 EM、闭合题规则判分），建立开放题语义评分与闭合题原评分的并行评测。</li>
+<li>对 <strong>9,997 条 direct/agentic 轨迹</strong>进行配对分析，识别 199 条改善与 450 条退化；结合后端 grounding 对照、视觉权重加载和共享内存问题排查，定位工具过用与评测可靠性瓶颈。</li>
+</ul>
+</div></div><div class="resume-variant" data-variant="post-training" hidden><div class="prose"><p><strong>医学 Thinking-with-Images 多模态推理与后训练｜独立项目</strong><br />
+技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。</p>
+<ul>
+<li>独立搭建医学图文后训练与工具推理流水线，接入 Python 图像处理、医学分割和检索，完成多轮观察回注及轨迹落盘。</li>
+<li>构建约 <strong>1 万条医学 VQA 项目内问答池</strong>，完成多次采样难度筛选与教师轨迹验证，整理 <strong>1,791 条冷启动 SFT 输入样本</strong>，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。</li>
+<li>基于 VERL 实现医学图文数据适配与 CoT／多轮工具 GRPO，比较 EM、LLM judge、格式奖励、KL 和难度筛选；在 SLAKE English test 上取得 <strong>67.30% 非 judge 总正确率</strong>（开放题 EM、闭合题规则判分），保留 recipe、checkpoint、逐题预测与指标。</li>
+<li>排查多候选图像 rollout 的共享内存生命周期问题，应用 Qwen3-VL 视觉权重前缀修复；建立 train/validation/test 与评分代码核验流程，区分真实准确率、复合 reward 和训练验证指标。</li>
+</ul>
+</div></div><div class="resume-variant" data-variant="multimodal" hidden><div class="prose"><p><strong>医学 Thinking-with-Images 多模态推理与后训练｜独立项目</strong><br />
+技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。</p>
+<ul>
+<li>构建支持分割、裁剪、代码分析和检索的医学视觉 Agent，将工具生成图像回注下一轮 VLM；在教师轨迹线使用 1000×1000 working canvas，并通过坐标适配解决模型、原图与分割工具的坐标不一致。</li>
+<li>构建约 <strong>1 万条医学 VQA 项目内问答池</strong>，完成多次采样难度筛选与教师轨迹验证，整理 <strong>1,791 条冷启动 SFT 输入样本</strong>，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。</li>
+<li>围绕答案奖励、格式约束、KL 与数据难度开展 CoT GRPO 实验，Qwen3-VL-4B 在 <strong>SLAKE 英文测试集 1,061 题</strong>上取得本地 MedEvalKit <strong>67.30% 非 judge 总正确率</strong>（开放题 EM、闭合题规则判分），建立开放题语义评分与闭合题原评分的并行评测。</li>
+<li>建立 <strong>580 条 detection</strong> 的后端 grounding 对照及 <strong>1,053 条 validation</strong> 的裁剪消融，结合近万条 direct/agentic 轨迹分析工具收益与错误传播，明确全局上下文保留和选择性调用的优化方向。</li>
+</ul>
+</div></div></div><p class="resume-status" id="resume-version-label">推荐版本 · 可直接复制到简历后按篇幅精简</p></div><details class="disclosure"><summary>一分钟项目介绍、措辞说明与不宜宣称的成绩</summary><div class="prose"><h3>推荐版本</h3>
+<p><strong>医学 Thinking-with-Images 多模态推理与后训练｜独立项目</strong><br />
+技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。</p>
+<ul>
+<li>独立搭建医学视觉语言模型的工具增强推理与后训练流水线，接入 Python 图像处理、BioMedParse、MedSAM3 和知识检索，实现多轮动作解析、视觉观察回注与轨迹落盘。</li>
+<li>构建约 <strong>1 万条医学 VQA 项目内问答池</strong>，完成多次采样难度筛选与教师轨迹验证，整理 <strong>1,791 条冷启动 SFT 输入样本</strong>，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。</li>
+<li>围绕答案奖励、格式约束、KL 与数据难度开展 CoT GRPO 实验，Qwen3-VL-4B 在 <strong>SLAKE 英文测试集 1,061 题</strong>上取得本地 MedEvalKit <strong>67.30% 非 judge 总正确率</strong>（开放题 EM、闭合题规则判分），建立开放题语义评分与闭合题原评分的并行评测。</li>
+<li>对 <strong>9,997 条 direct/agentic 轨迹</strong>进行配对分析，识别 199 条改善与 450 条退化；结合后端 grounding 对照、视觉权重加载和共享内存问题排查，定位工具过用与评测可靠性瓶颈。</li>
+</ul>
+<p>这版保留了可核验的工程与测试结果，没有把污染的 SFT 对比包装成泛化提升。若篇幅只能容纳三条，可将第二条缩为“搭建数据与教师轨迹筛选流程，完成 LoRA SFT 和多轮 GRPO 接入”。</p>
+<h3>投后训练岗位时的替换重点</h3>
+<p>将第一条缩短，优先突出以下两点：</p>
+<ul>
+<li>基于 VERL 实现医学图文数据适配与 CoT／多轮工具 GRPO，比较 EM、LLM judge、格式奖励、KL 和难度筛选；在 SLAKE English test 上取得 <strong>67.30% 非 judge 总正确率</strong>，保留 recipe、checkpoint、逐题预测与指标。</li>
+<li>排查多候选图像 rollout 的共享内存生命周期问题，应用 Qwen3-VL 视觉权重前缀修复；建立 train/validation/test 与评分代码核验流程，区分真实准确率、复合 reward 和训练验证指标。</li>
+</ul>
+<p>面试中重点讲清 group advantage、rollout 多样性、KL、response mask、reward hacking、图像输入及训练与推理一致性。</p>
+<h3>投多模态岗位时的替换重点</h3>
+<p>将第一、四条展开为：</p>
+<ul>
+<li>构建支持分割、裁剪、代码分析和检索的医学视觉 Agent，将工具生成图像回注下一轮 VLM；在教师轨迹线使用 1000×1000 working canvas，并通过坐标适配解决模型、原图与分割工具的坐标不一致。</li>
+<li>建立 <strong>580 条 detection</strong> 的后端 grounding 对照及 <strong>1,053 条 validation</strong> 的裁剪消融，结合近万条 direct/agentic 轨迹分析工具收益与错误传播，明确全局上下文保留和选择性调用的优化方向。</li>
+</ul>
+<p>面试中重点讲清图像 token、坐标映射、新图像如何进入上下文、工具观察如何影响答案，以及为何“有分割模型”不等于“视觉推理已经变强”。</p>
+<h3>一分钟项目介绍</h3>
+<p>“我独立做的是医学视觉语言模型的工具增强推理和后训练。模型除了直接回答，还可以调用分割、裁剪、Python 和检索，把新的图像或证据送回下一轮。我完成了数据构建、教师轨迹、LoRA SFT、VERL 多轮 GRPO，以及正式评测。</p>
+<p>项目中有两类结果：CoT GRPO 在 1,061 条 SLAKE 英文测试题上得到 67.30% 非 judge 总正确率；工具 Agent 则让我发现，能调用工具并不代表调用有帮助，近万条配对结果里改善 199 条、退化 450 条。我因此把后续重点放在干净的数据划分、工具效用和成本敏感策略上。工程上，我还处理过视觉权重加载、共享内存多候选 rollout，以及多后端 grounding 不一致的问题。”</p>
+<h3>不宜写入简历的措辞</h3>
+<ul>
+<li>“首次提出医学 Thinking-with-Images／达到 SOTA”：现有证据不足以支持首创与全面领先。</li>
+<li>“RL 工具调用让准确率提升 20.64 个百分点”：该差值来自 CoT 非 judge 评分结果，不能归因于工具 Agent。</li>
+<li>“在独立测试中将格式错误降低 93%”：15→1 是错误事件次数，而且对比集与 SFT 输入池重合，不能当作独立样本错误率下降。</li>
+<li>“从零训练医学多模态大模型／分割基础模型”：实际亮点是开源底座上的适配、后训练和系统实验。</li>
+<li>“生产可用临床系统”：当前资产支持研究原型与离线实验，不支持临床部署结论。</li>
+</ul>
+</div></details></section><section class="section" id="interview"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">06</span><h2>面试问答</h2></div><p class="section-description">先独立回答，再展开参考答案与追问准备。</p></div><span class="section-meta">26 QUESTIONS</span></div><div class="question-toolbar no-print"><label class="search-wrap"><span class="sr-only">搜索问题或回答</span><span class="search-icon" aria-hidden="true">⌕</span><input id="question-search" type="search" placeholder="搜索问题或回答，例如 GRPO、坐标、数据泄漏" autocomplete="off"></label><button class="btn" type="button" id="expand-questions">展开当前答案</button><button class="btn" type="button" id="collapse-questions">全部收起</button></div><div class="question-filters no-print" role="group" aria-label="按主题筛选面试题"><button type="button" class="filter" data-category="全部" aria-pressed="true">全部</button><button type="button" class="filter" data-category="多模态" aria-pressed="false">多模态</button><button type="button" class="filter" data-category="后训练" aria-pressed="false">后训练</button><button type="button" class="filter" data-category="评测与数据" aria-pressed="false">评测与数据</button><button type="button" class="filter" data-category="工程" aria-pressed="false">工程</button><button type="button" class="filter" data-category="项目表达" aria-pressed="false">项目表达</button><span class="question-count" id="question-count" aria-live="polite">26 / 26 题</span></div><div class="prose"><p>以下答案按第一人称编写。理论部分与项目事实分开表达；尚未完成的方法用“下一步会做”，避免在追问中把计划说成结果。</p>
+</div><div id="question-list"><details class="disclosure qa" data-number="1" id="question-1"><summary><span class="question-number">Q01</span><span class="question-title">你这个项目究竟解决什么问题</span><span class="question-category">项目表达</span></summary><div class="prose"><p><strong>回答：</strong> 我研究医学 VLM 在一次整图回答不足时，能否主动获取局部视觉或知识证据，再更新答案。工程上，我把分割、裁剪、Python 和检索接入多轮推理；训练上，分别做 CoT GRPO 和工具 Agent 的 SFT／GRPO。已验证的 CoT 测试结果与工具策略效果是两条线，目前不能把前者的提升直接解释为工具收益。</p>
+<p><strong>追问准备：</strong> 能调用工具是接口能力；选择何时调用、如何使用结果、何时停止才是策略能力。</p>
+</div></details><details class="disclosure qa" data-number="2" id="question-2"><summary><span class="question-number">Q02</span><span class="question-title">哪些是你做的 哪些来自开源</span><span class="question-category">项目表达</span></summary><div class="prose"><p><strong>回答：</strong> Qwen 是底座模型，VERL 和 LlamaFactory 是训练框架，BioMedParse 与 MedSAM3 是专业视觉工具。我独立完成的工作主要是数据构建与筛选、工具服务及协议适配、多轮图像回注、教师轨迹验证、训练 recipe 和 reward、评测对照及基础设施排障。视觉权重前缀修复沿用上游修复思路，不能说成我原创了 Qwen 的视觉架构。</p>
+<p><strong>追问准备：</strong> 挑一个 dataset adapter、一个 tool wrapper、一个 reward 文件，逐段解释输入输出与设计取舍，比罗列框架名更有说服力。</p>
+</div></details><details class="disclosure qa" data-number="3" id="question-3"><summary><span class="question-number">Q03</span><span class="question-title">Thinking-with-Images 与普通 CoT 有何区别</span><span class="question-category">多模态</span></summary><div class="prose"><p><strong>回答：</strong> 普通图文 CoT 可以只基于最初那张图生成文本推理；Thinking-with-Images 会在过程中操作图像，产生新的视觉观察，并让后续推理依赖新观察。我的系统会把 crop、overlay 等作为真正的 image 输入送回模型。只在文本里写“我放大了图片”，或只返回一个路径，都不构成视觉反馈。项目的 CoT baseline 用来分离文本推理收益与主动观察收益。</p>
+<p><strong>追问准备：</strong> DeepEyes 是这一研究方向的相关工作，我的差异主要在医学专用工具环境和可靠性分析，不能声称概念首创。<a href="https://arxiv.org/abs/2505.14362">DeepEyes 原论文</a></p>
+</div></details><details class="disclosure qa" data-number="4" id="question-4"><summary><span class="question-number">Q04</span><span class="question-title">工具生成的新图像怎么进入下一轮</span><span class="question-category">多模态</span></summary><div class="prose"><p><strong>回答：</strong> 工具执行后保存图像并返回结构化状态，Agent 将图像载入多模态消息，更新图像索引和历史上下文。下一轮 processor／推理后端实际接收新图像内容。我需要检查序列中的 image 占位符与图像列表数量对应、索引能定位正确图像、工具响应没有被误当作模型生成文本。验证时既看 trace，也检查实际模型请求，不能只看磁盘上生成了图片。</p>
+<p><strong>追问准备：</strong> 多轮新增图像会增加视觉 token、KV cache 和上下文成本，因此需要图像数量、分辨率及轮数预算。<a href="https://verl.readthedocs.io/en/latest/sglang_multiturn/multiturn.html">VERL 多轮与多模态接口</a></p>
+</div></details><details class="disclosure qa" data-number="5" id="question-5"><summary><span class="question-number">Q05</span><span class="question-title">你怎样处理 bbox 坐标混乱</span><span class="question-category">多模态</span></summary><div class="prose"><p><strong>回答：</strong> 在 Gemini 教师线，我把工作图做等比缩放并 padding 到 1000×1000 canvas，采用 yxyx 坐标；后续 Qwen 工具线保留原图分辨率，采用 0–1000 相对 xyxy 坐标。若原图缩放系数是 s，padding 为 px、py，回原图时使用 x=(x_canvas−px)/s、y=(y_canvas−py)/s，并做边界裁剪和有效框检查。后者使用 x_px=x_rel×W/1000、y_px=y_rel×H/1000。canvas 的去 padding／逆缩放与相对原图坐标转换是不同场景，不能混用。</p>
+<p><strong>追问准备：</strong> 框必须检查 x1&lt;x2、y1&lt;y2；画回原图做目视核验，特别注意 padding 区、长宽颠倒和重复缩放。</p>
+</div></details><details class="disclosure qa" data-number="6" id="question-6"><summary><span class="question-number">Q06</span><span class="question-title">为什么需要冷启动 SFT</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 多轮工具协议的动作格式、观察消费和停止行为较复杂，SFT 能先给模型一个可执行起点，再用 RL 优化选择。我的 1,791 条输入样本来自筛选后的教师轨迹。不过，早期 100 题协议对比与这个输入池重合，所以我只把格式改善解释为协议学习的观察，不声称独立泛化。下一版会保留 direct、有效工具与失败恢复等多种轨迹，避免所有示范都强制用工具。</p>
+<p><strong>追问准备：</strong> SFT 是行为模仿，不能保证模型学会了工具调用的必要性；带答案教师轨迹还要检查事后合理化。</p>
+</div></details><details class="disclosure qa" data-number="7" id="question-7"><summary><span class="question-number">Q07</span><span class="question-title">GRPO 的核心原理是什么</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 对同一道题采样 G 条轨迹，用组内 reward 估计相对优势。典型形式是 A_i=(r_i−mean(r))/(std(r)+ε)。策略更新使用新旧策略概率比与 PPO 式裁剪，并可加相对参考策略的 KL 约束。它省去了独立 value model，但仍要承担多条 rollout 的计算成本。我的工作是应用和适配 GRPO，不是提出这个算法。<a href="https://arxiv.org/html/2402.03300v3">DeepSeekMath 原论文</a></p>
+<p><strong>追问准备：</strong> 当前策略、采样用的旧策略、参考策略承担不同角色；实际是否做标准差归一化、KL 放 loss 还是 reward，要以使用的 VERL 配置为准。</p>
+</div></details><details class="disclosure qa" data-number="8" id="question-8"><summary><span class="question-number">Q08</span><span class="question-title">为什么多次采样和中等难度题有用</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 如果同题所有候选的总奖励都相同，组内优势没有区分度，策略项很难获得有用信号。多次采样有助于发现不同路径；筛选部分答对、部分答错的题，能增加学习信号。我的数据线做过每题 8 次采样及 medium／hard 分流。全错题不一定有价值：可能模型尚无可达解，也可能标注或 judge 有问题。</p>
+<p><strong>追问准备：</strong> 不能只追求中等题训练效果，还要在独立测试中确认没有损害易题、难题或少数模态；采样预算也要计入成本。</p>
+</div></details><details class="disclosure qa" data-number="9" id="question-9"><summary><span class="question-number">Q09</span><span class="question-title">你的奖励函数有什么问题</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 一版工具 reward 用答案、格式和“答对且调用过工具”三项相加。这个设计能鼓励模型探索工具，但会让直接可答的题也通过无关调用多拿一份奖励。工具调用是动作，不等于有效证据。我会先去掉调用即奖励，以答案质量为主，加温和成本项，再用配对实验或单独验证的过程标签约束观察消费和失败恢复。</p>
+<p><strong>追问准备：</strong> 不能仅靠模型自述“工具帮助了我”来给 evidence reward；那仍然可能被 reward hacking。</p>
+</div></details><details class="disclosure qa" data-number="10" id="question-10"><summary><span class="question-number">Q10</span><span class="question-title">KL 和格式奖励应该如何调整</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> KL 用来约束策略偏离参考模型；太强可能压制探索，太弱可能导致语言能力或协议退化。格式奖励适合帮助冷启动，但长期过大可能让模型优先优化标签、短答案或空洞结构。我会同时观察答案正确率、格式率、KL、熵、输出长度和截断率，并做单变量对照，不把总 reward 上升直接当作任务能力提升。</p>
+<p><strong>追问准备：</strong> KL 的监控值、loss 权重和 reward 惩罚不是同一个概念；回答时应指明具体实验配置。</p>
+</div></details><details class="disclosure qa" data-number="11" id="question-11"><summary><span class="question-number">Q11</span><span class="question-title">多轮工具输出为什么不能计入策略 loss</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 工具输出由环境产生，不是策略采样的动作。若把工具文本、用户消息或回注内容算作策略生成 token，就会给模型错误的梯度。策略 loss 应作用于 assistant 生成部分，工具观察虽不直接作为动作优化，却会影响之后动作的条件概率。多轮 chat template 还可能改变历史文本，因此需要检查实际 token 序列与 response mask。</p>
+<p><strong>追问准备：</strong> 不要把“工具 token 不计 loss”解释为“工具观察没有训练作用”；模型依然通过观察后的生成学习如何消费它。<a href="https://verl.readthedocs.io/en/latest/sglang_multiturn/multiturn.html">VERL 多轮 tokenization 说明</a></p>
+</div></details><details class="disclosure qa" data-number="12" id="question-12"><summary><span class="question-number">Q12</span><span class="question-title">为什么 EM 和 LLM judge 差很多</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> EM 对答案表达一致性要求较高，开放式医学答案存在同义词、缩写和等价描述，judge 可以补充语义判断。但 judge 也有误判，例如对部分正确的多病名列表评分不稳定。因此我分别报告两者，并固定答案抽取和 judge prompt。在这里 67.30% 是 R1 的非 judge 总正确率（OPEN 用 EM、CLOSE 按原规则判分），76.44% 是另一组实验的开放题 judge 加闭合题原评分，不能直接相减。</p>
+<p><strong>追问准备：</strong> judge 也应有人工抽查集，报告它与人工的一致性、失败率，以及对否定、部位和多标签完整性的错误。</p>
+</div></details><details class="disclosure qa" data-number="13" id="question-13"><summary><span class="question-number">Q13</span><span class="question-title">你如何防止数据泄漏</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 我会先按图像，能拿到元数据时按患者或检查划分，再做轨迹生成、难题筛选和训练；不能先生成所有 split 的轨迹后随机拆分。审计旧 SFT 时，我发现 100 条对比全部在 SFT 输入池，3,000 题评测也存在重合，因此不把旧对比当泛化结果。后续 CoT 的 SLAKE 三个划分在 ID、图像路径和图像加问题层面没有交集，还需要补像素近重复检查。</p>
+<p><strong>追问准备：</strong> 同一图像的不同问题也可能泄漏；不同 ID 或路径也可能指向同一像素。评测集反复参与调参属于另一种选择偏差。</p>
+</div></details><details class="disclosure qa" data-number="14" id="question-14"><summary><span class="question-number">Q14</span><span class="question-title">工具 Agent 比 direct 差 为什么还值得做</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 9,997 条内部配对中 direct 正确 9,394，agentic 正确 9,143，净少 251 条。这个结果说明该 Qwen3.5-9B 强制先工具流程没有整体收益；Qwen3-VL-4B/8B 的内部池对照则为正，收益依赖模型和协议。它同时给出 199 条改善与 450 条退化，可用于定位什么时候工具有帮助、什么时候造成干扰。我不会只展示成功案例。下一步重点是减少退化、保护原有正确答案，并检验改善是否真正来自新增视觉信息。</p>
+<p><strong>追问准备：</strong> 要区分工具错误、工具返回正确但模型误读、prompt 强制调用、无答案和长轨迹截断等原因，不能一概归因于分割模型。</p>
+</div></details><details class="disclosure qa" data-number="15" id="question-15"><summary><span class="question-number">Q15</span><span class="question-title">四类结果能证明工具有因果帮助吗</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 不能直接证明。它是两条流程的配对表现，可能混有 prompt、随机采样、额外 token 和计算预算的影响。更严谨的实验会固定 checkpoint、题目、解码和预算，对比真实观察、空观察、打乱观察及直接回答，多次运行并查看样本级结果。四类标签很适合错误分析，但不能未经控制就命名为真实的工具因果效应。</p>
+<p><strong>追问准备：</strong> 如果真实 crop 与无关 crop 都改善，收益可能来自额外推理或重试，而非 crop 内容。</p>
+</div></details><details class="disclosure qa" data-number="16" id="question-16"><summary><span class="question-number">Q16</span><span class="question-title">为什么只裁剪局部反而变差</span><span class="question-category">多模态</span></summary><div class="prose"><p><strong>回答：</strong> 局部 crop 可能丢失全局解剖关系、方向、成像背景和多个区域之间的比较信息。我在完整 1,053 条验证集上看到原图 judge 为 68.76%，仅 crop 为 62.11%；原图加 crop 也没有整体改善。并且部分框来自标注辅助，不能说这是 Agent 自主定位失败的纯粹测量。下一步应按问题类型和框来源分层，而不是默认放大总有帮助。</p>
+<p><strong>追问准备：</strong> 原图加 crop 提升了 token-F1 阈值分数但未提升 judge，说明还要检查答案表达和评分器差异。</p>
+</div></details><details class="disclosure qa" data-number="17" id="question-17"><summary><span class="question-number">Q17</span><span class="question-title">最有代表性的工程 bug 是什么</span><span class="question-category">工程</span></summary><div class="prose"><p><strong>回答：</strong> 一个问题是 Qwen3-VL checkpoint 的视觉权重前缀与 SGLang loader 不一致。服务可以启动，文本也能生成，但视觉部分可能没有正确加载，使问题看起来像模型不会看图。我根据上游修复对齐前缀，并结合简单红框与医学 grounding 检查视觉链路。它让我意识到，先验证模型确实利用图像，再解释 RL 曲线，否则可能在错误环境上优化。</p>
+<p><strong>追问准备：</strong> 可以用同题换图、遮图、空白图和已知位置的合成目标做最小诊断，但每项都要记录实际输入与模型输出。</p>
+</div></details><details class="disclosure qa" data-number="18" id="question-18"><summary><span class="question-number">Q18</span><span class="question-title">n 等于 8 的共享内存问题怎么定位</span><span class="question-category">工程</span></summary><div class="prose"><p><strong>回答：</strong> 多候选请求会多次序列化同一个多模态数据对象。旧实现复用共享内存名称，而接收端物化张量后会释放对应 segment，后续候选可能访问失效资源。补丁把 segment 的创建移到每次 pickle，确保不同接收路径有独立生命周期。验证要覆盖单候选、多候选、并发和资源回收，不能只证明服务重启后短时不报错。</p>
+<p><strong>追问准备：</strong> 独立 segment 会增加共享内存占用，因此修复正确性后仍需监控容量、异常释放和高并发下的峰值。</p>
+</div></details><details class="disclosure qa" data-number="19" id="question-19"><summary><span class="question-number">Q19</span><span class="question-title">训练和推理不一致会带来什么影响</span><span class="question-category">工程</span></summary><div class="prose"><p><strong>回答：</strong> prompt、chat template、视觉预处理、工具观察角色、答案抽取和采样参数任何一个不一致，都可能让离线表现与训练验证脱节。我已有 580 条 grounding 后端对照，解析成功相同但 IoU 不同。历史评测总表和部分原始日志的后端描述还不一致，因此后续应以实际请求参数和版本生成 manifest，不只保存脚本默认值。</p>
+<p><strong>追问准备：</strong> 已发现 GPT adapter 保存了 <code>top_p</code> 和 <code>repetition_penalty</code>，但 HTTP <code>create</code> 未透传这两个字段；vLLM adapter 则传入 top-p。这是应修复并重新对齐的实际问题，不应只检查脚本默认配置。</p>
+</div></details><details class="disclosure qa" data-number="20" id="question-20"><summary><span class="question-number">Q20</span><span class="question-title">你会怎样定位 rollout 慢和内存问题</span><span class="question-category">工程</span></summary><div class="prose"><p><strong>回答：</strong> 我先将耗时拆成模型生成、图像预处理、工具等待和 judge，再看峰值显存、主机内存与共享内存。多轮图像会放大上下文与视觉编码成本，增加 G 还会扩大 rollout 数。应先用少量样本验证流程，再调整图像像素上限、总 token、轮数、并发和工具服务队列。已有启动脚本的 memory guard 也应保留。</p>
+<p><strong>追问准备：</strong> 不能把所有慢都归因于 actor，也不能把主机共享内存耗尽误认成 CUDA OOM；降低并发与降低单序列长度解决的问题不同。</p>
+</div></details><details class="disclosure qa" data-number="21" id="question-21"><summary><span class="question-number">Q21</span><span class="question-title">教师有参考答案 这种数据还能用于训练吗</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 可以用于候选监督构建，但要承认它不是无 oracle 的评测。教师可能写出事后合理化过程，或者依据参考框产生学生推理时无法获得的动作。我会保证学生输入不包含答案、参考 mask 和答案关联 bbox，并检查轨迹中工具真的执行成功、观察支持后续陈述。仅删除 prompt 里的答案字段，不能自动消除轨迹内容中的隐性泄漏。</p>
+<p><strong>追问准备：</strong> 最好比较有答案辅助与无答案教师生成的轨迹，过滤过程不可信的样本，并在全新图像上验证。</p>
+</div></details><details class="disclosure qa" data-number="22" id="question-22"><summary><span class="question-number">Q22</span><span class="question-title">如何让模型只在必要时调用工具</span><span class="question-category">后训练</span></summary><div class="prose"><p><strong>回答：</strong> 我会先建一个轻量 router，用推理时可得到的首轮置信度、问题类型、图像质量和历史工具状态，估计调用后的预期质量减成本。先比较 always-direct、固定一次工具、置信度阈值和学习型 router，再决定是否做端到端 GRPO。离线四类结果可作为训练标签，但真值、direct 是否答对和参考框不能作为线上 router 输入。</p>
+<p><strong>追问准备：</strong> router 必须在独立训练划分上学习和校准；由真值选择最佳路径的 oracle router 只能作参照，不能称可部署方法。</p>
+</div></details><details class="disclosure qa" data-number="23" id="question-23"><summary><span class="question-number">Q23</span><span class="question-title">如何评价工具策略 而不仅是答案准确率</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 我会同时报告 accuracy、配对改善／退化数、平均调用数、总生成 token、p50/p95 延迟、工具失败率、无答案率和格式率。不同样本使用不同成本，所以更适合比较准确率与成本的曲线。医学问题还应分模态、问题类型和开放／闭合题，避免整体分数掩盖细粒度问题退化。</p>
+<p><strong>追问准备：</strong> 如果引入拒答，要报告覆盖率与选择性错误率；只报告已回答样本的准确率会隐藏大量拒答。</p>
+</div></details><details class="disclosure qa" data-number="24" id="question-24"><summary><span class="question-number">Q24</span><span class="question-title">最少需要哪些消融 才能支持你的结论</span><span class="question-category">评测与数据</span></summary><div class="prose"><p><strong>回答：</strong> 至少固定同一底座，比较 direct、CoT、固定工具、动态工具、SFT、SFT+GRPO；对于工具效应，再加入真实观察与空／打乱观察、原图与原图加局部图的对照。训练消融分别改变奖励、KL、数据难度和调用成本，并保持数据与预算可比。无需一次跑满组合，先明确每个实验回答哪一个假设。</p>
+<p><strong>追问准备：</strong> 用按图像聚类的配对 bootstrap 估计区间，避免把同图多个问题当作完全独立样本；训练方差则通过多个 seed 单独估计。</p>
+</div></details><details class="disclosure qa" data-number="25" id="question-25"><summary><span class="question-number">Q25</span><span class="question-title">怎样让别人复现你的实验</span><span class="question-category">工程</span></summary><div class="prose"><p><strong>回答：</strong> 每次 run 固定数据清单与 hash、checkpoint 或 adapter、prompt、工具 schema、视觉工具权重、框架 commit、容器与补丁、实际解码参数、judge 和随机种子。再保存逐题预测、轨迹、调用时间和异常。当前 SGLang 修复位于容器可写层，普通重启与删除后重建的后果不同；应让补丁可检查、可重放，并先做小规模验收。</p>
+<p><strong>追问准备：</strong> GPU、工具服务、模型权重加载和 endpoint 状态都应进入运行前检查；运行文档与实际日志矛盾时，以证据修订文档。</p>
+</div></details><details class="disclosure qa" data-number="26" id="question-26"><summary><span class="question-number">Q26</span><span class="question-title">如果再给你两周 你优先做什么</span><span class="question-category">项目表达</span></summary><div class="prose"><p><strong>回答：</strong> 第一优先是把数据隔离、baseline、checkpoint 及后端协议收紧，拿到可比较的主表。第二步重建干净 SFT 数据，把 direct、有效工具和失败恢复都纳入示范。第三步先做轻量 router 和调用成本消融，确认同等准确率下减少工具调用，再投入新的 GRPO。我不会优先加更多工具，因为当前更明确的问题是已有工具的选择与结果消费。</p>
+<p><strong>追问准备：</strong> 两周的交付物应是干净 split 清单、固定协议结果表、错误案例和一组可复现 router 对照；不预先承诺新的高分。</p>
+</div></details></div><p id="empty-state" class="empty-state" hidden>没有匹配的问题，请换一个关键词或选择“全部”。</p></section><section class="section" id="roadmap"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">07</span><h2>改进路线</h2></div><p class="section-description">先确保结果可信，再验证工具选择，最后扩大训练。</p></div><span class="section-meta">NEXT ITERATION</span></div><div class="phase-grid"><div class="phase"><small>WEEK 01</small><h3>收紧评测</h3><p>隔离数据、固定协议，统一复评 checkpoint。</p></div><div class="phase"><small>WEEK 02</small><h3>理解工具收益</h3><p>分类错误，比较固定工具与轻量 router。</p></div><div class="phase"><small>WEEK 03</small><h3>重做针对性训练</h3><p>干净 SFT、成本 reward 与单变量 GRPO。</p></div><div class="phase"><small>WEEK 04</small><h3>形成可复现结论</h3><p>测试主表、成本曲线和成功／失败案例。</p></div></div><div class="surface"><div class="prose"><h3>优先级一 修复评测与证据链</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>工作</th>
+  <th>具体操作</th>
+  <th>验收标准</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>统一数据身份</td>
+  <td>保存 source、split、question ID、image hash、可得的 patient/study ID；检查跨源重复</td>
+  <td>train/dev/test 的题目与图像交集为零；可疑近重复有处理记录</td>
+</tr>
+<tr>
+  <td>重建早期 SFT</td>
+  <td>从划分后的 train 生成教师轨迹与筛选；留出完全独立 dev</td>
+  <td>清除旧官方 test/validation 混入；学生输入无答案和 GT 区域</td>
+</tr>
+<tr>
+  <td>固定评测协议</td>
+  <td>用 manifest 绑定模型、prompt、backend、视觉预处理、真实请求参数、judge</td>
+  <td>每个数字能追溯至逐题预测与实际运行日志</td>
+</tr>
+<tr>
+  <td>重新建立主表</td>
+  <td>先评测 base、CoT R1、语义 judge 方案和代表性 Agent checkpoint</td>
+  <td>同一集合与评分方式；EM、judge、成本分别报告</td>
+</tr>
+<tr>
+  <td>保护 test</td>
+  <td>用 dev 选 reward、seed、checkpoint 和 router 阈值；一次性报告 test</td>
+  <td>不再根据反复查看 test 的结果选择“最好配置”</td>
+</tr>
+</tbody>
+</table></div>
+<p>先完成这些，才能把当前已有结果升级为更可信的研究结论。对已经训练过污染数据的模型，仅换一个评分脚本不能恢复独立测试条件。</p>
+<h3>优先级二 让工具调用产生净收益</h3>
+<p>先构建按图像划分的 direct／tool 配对池，并将错误分成：定位错误、工具执行错误、工具结果不可靠、观察误读、答案被覆盖、无答案与截断。人工抽查各类代表样本，尤其是 450 条流程退化与 199 条改善；不要直接把自动标签当成因果事实。</p>
+<p>建立以下最小对照：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>策略</th>
+  <th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Direct</td>
+  <td>不调用工具的质量和成本基线</td>
+</tr>
+<tr>
+  <td>CoT without tools</td>
+  <td>分离额外文本推理收益</td>
+</tr>
+<tr>
+  <td>Fixed one-tool</td>
+  <td>测量某种工具的平均效果</td>
+</tr>
+<tr>
+  <td>Confidence threshold router</td>
+  <td>简单、可解释的选择性调用基线</td>
+</tr>
+<tr>
+  <td>Learned router</td>
+  <td>学习不同问题与工具的条件收益</td>
+</tr>
+<tr>
+  <td>Real versus shuffled observation</td>
+  <td>检验收益是否依赖真实工具信息</td>
+</tr>
+<tr>
+  <td>Failure injection</td>
+  <td>检验超时、空 mask、错误 crop、低置信结果后的恢复</td>
+</tr>
+</tbody>
+</table></div>
+<p>router 的候选目标可以写为 <code>预期答题质量 − λ×调用成本 − μ×错误风险</code>。λ 和 μ 在 dev 上选择。记录准确率与延迟／调用数的 Pareto 曲线；不预设“降低 30% 调用”等尚未验证的项目成绩。</p>
+<h3>优先级三 重做更有针对性的后训练</h3>
+<p><strong>SFT 数据配比。</strong> 同时保留直接作答、真正需要局部观察、需要知识检索、工具失败后修正或停止等轨迹。答案正确与过程可执行分别过滤；不再把“工具越多”当作更优示范。</p>
+<p><strong>从简单 reward 开始。</strong> 第一版只使用答案质量、必要的格式约束与温和调用／token 成本。先确认不导致永远不调工具，再尝试过程奖励。工具观察支持性由独立且经过校验的规则或评估器判断；不要奖励模型自述的帮助程度。</p>
+<p><strong>控制变量。</strong> 保持底座、数据、训练预算与评测协议固定，分别消融 reward、KL、组大小和中等难度筛选。监控组内 reward 方差、全对／全错组比例、熵、长度、截断和调用分布；同时保留 direct 基础能力。</p>
+<p><strong>规范多轮训练。</strong> 对工具消息角色、assistant loss mask、图像索引、chat template、状态释放和终止条件做小规模可检查验收，再放大 rollout。异常处理不应悄悄把工具错误改写成成功观察。</p>
+<h3>优先级四 强化多模态解释力</h3>
+<p>把现有 crop 消融拆成预测框、标注辅助框、随机框和全图条件；原图与局部图同时保留，按定位、计数、存在性、模态、疾病、多区域问题分层。对 GT 框结果注明实验条件，不把其作为可部署成绩。</p>
+<p>给每个工具定义失效状态：空 mask、异常面积、目标不匹配、跨轮冲突和超时。要求模型在证据不足时复查、改用工具或结束；如果增加拒答，使用覆盖率与风险共同评价。</p>
+<p>对训练与推理后端建立固定小诊断集，覆盖纯文本、单图、多图、合成 grounding、真实医学 grounding 与工具回注。后端变更后重新验证，避免把推理兼容问题误认为训练算法问题。</p>
+<h3>建议交付节奏</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>主要交付物</th>
+  <th>完成后才做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>第 1 周</td>
+  <td>数据隔离报告、统一 manifest、代表性 checkpoint 复评</td>
+  <td>决定哪条模型线值得继续训练</td>
+</tr>
+<tr>
+  <td>第 2 周</td>
+  <td>工具错误分类、固定工具与轻量 router 对照</td>
+  <td>确认选择性调用是否有可学习收益</td>
+</tr>
+<tr>
+  <td>第 3 周</td>
+  <td>干净 SFT、简单成本 reward、单变量 GRPO</td>
+  <td>扩大 seed 和任务类型验证</td>
+</tr>
+<tr>
+  <td>第 4 周</td>
+  <td>统一测试表、成本曲线、失败案例、可复现实验包</td>
+  <td>更新简历为真实的新结果</td>
+</tr>
+</tbody>
+</table></div>
+<p>这是工作顺序建议，实际时长取决于可用 GPU、工具服务速度和数据重构成本。最有价值的下一版项目主张是：<strong>在独立测试和固定预算下，让医学视觉工具的使用更有选择性，并证明质量与成本的取舍。</strong></p>
+</div></div></section><section class="section" id="prep"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">08</span><h2>面试前准备什么</h2></div><p class="section-description">用代码与案例支撑每一条项目描述。</p></div><span class="section-meta">PREPARATION</span></div><div class="surface"><div class="prose"><p>准备一页系统流程、一个完整成功 trace、一个工具误导案例、一个共享内存或视觉加载故障案例，以及一张带数据划分和指标定义的结果表。回答追问时能打开具体文件，比背诵所有训练超参数更重要。</p>
+<p>优先熟悉三段代码：数据适配如何将图像、问题和 ground truth 分离；工具返回图像如何进入下一轮；reward 如何从轨迹得到答案、格式和调用统计。再准备一段 GRPO 伪代码，解释组内优势、策略概率比、KL 与 loss mask。</p>
+<p>简历正文使用第五节的保守版本。面试主动承认当前多工具策略尚未在统一的独立测试中证明整体超过 direct，并用配对分析和可执行改进方案说明你对问题的理解。数据隔离审计是研究能力的一部分，但不能用“发现了问题”代替后续修复和干净实验。</p>
+</div></div></section><section class="section" id="evidence"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">09</span><h2>证据与附件</h2></div><p class="section-description">从结论返回原始文件与复核结果。</p></div><span class="section-meta">SOURCE OF TRUTH</span></div><p class="evidence-note">仓库附带技术复盘、文献目录和汇总指标。服务器历史证据仅保留名称。阅读本页无需联网。</p><details class="disclosure"><summary>展开历史证据索引</summary><div class="prose"><p>本节的路径指向已有项目资产；同目录另存证据清单和本次只读审计结果。项目数字以本地结果为依据，外部论文与官方文档只用于解释算法和接口，不用于证明个人实验成绩。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>证据</th>
+  <th>原始文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>数据去重与平衡规模</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">data_balance.log</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">主 VQA 池</span></td>
+</tr>
+<tr>
+  <td>8 次采样筛选</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">Omni 筛选 summary</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">SLAKE 与 VQA-RAD</span></td>
+</tr>
+<tr>
+  <td>真实图像回注</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">Qwen Agent 执行循环</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">单条完整轨迹</span></td>
+</tr>
+<tr>
+  <td>坐标适配</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">教师 canvas</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">后续 Qwen 坐标约定</span></td>
+</tr>
+<tr>
+  <td>1,791 条 SFT 与规则预检</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">数据 summary</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">verifier 配置与统计</span></td>
+</tr>
+<tr>
+  <td>8B SFT 配置与完成记录</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">训练 YAML</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">all_results</span></td>
+</tr>
+<tr>
+  <td>4B full-trace SFT</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">数据规模</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">完成记录</span></td>
+</tr>
+<tr>
+  <td>9,997 题 direct 与 agentic</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">Qwen3.5 direct</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">Qwen3.5 agentic</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">四类分析</span></td>
+</tr>
+<tr>
+  <td>Qwen3-VL 正向内部池对照</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">4B direct</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">4B agentic</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">8B direct</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">8B agentic</span></td>
+</tr>
+<tr>
+  <td>CoT 基线与 R1 正式测试</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">base 非 judge</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">R1 非 judge</span></td>
+</tr>
+<tr>
+  <td>R2.1 与 R3 的 judge 结果</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">R2.1</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">R3</span></td>
+</tr>
+<tr>
+  <td>评分口径与真实后端</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">SLAKE 评分实现</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">英文评测日志</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">HTTP 参数传递</span></td>
+</tr>
+<tr>
+  <td>CoT 独立初始化</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">R1 实际模型配置</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">训练数据构建</span></td>
+</tr>
+<tr>
+  <td>新实验区 Agent 真实训练状态</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">step 50 验证</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">checkpoint 指针</span></td>
+</tr>
+<tr>
+  <td>多候选图像与视觉加载补丁</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">视觉前缀 patch</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">共享内存 patch</span></td>
+</tr>
+<tr>
+  <td>后端 grounding 与裁剪消融</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">580 题对照</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">全 validation 裁剪结果</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">使用答案匹配框的代码</span></td>
+</tr>
+<tr>
+  <td>早期复合 reward</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">med-reason</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">deepeyes_retrieve</span></td>
+</tr>
+<tr>
+  <td>Sandbox 生命周期与状态限制</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">会话清理</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">状态过滤</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">48 会话压测</span>；<span class="retained-source" title="服务器上的历史证据，仓库内未分发">96 会话压测</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>本次整理的附件均在同目录 <code>audit/</code> 中：</p>
+<ul>
+<li><span class="retained-source" title="历史审计材料，仓库内未分发">agentic_rl 证据审计</span>、<span class="retained-source" title="历史审计材料，仓库内未分发">Med 实验区证据审计</span>、<span class="retained-source" title="历史审计材料，仓库内未分发">散落资产证据审计</span>：提供更完整的配置、行号、训练状态和结论边界。</li>
+<li><span class="retained-source" title="历史审计材料，仓库内未分发">SFT 重合统计与源文件哈希</span>、<span class="retained-source" title="历史审计材料，仓库内未分发">逐条重合索引</span>、<span class="retained-source" title="历史审计材料，仓库内未分发">只读复核脚本</span>：可复核 100 题与 3,000 题的重合情况。</li>
+<li><span class="retained-source" title="历史审计材料，仓库内未分发">四类轨迹来源审计</span>：保存逐条对齐的规模、缺失和字段差异情况。</li>
+<li><a href="metrics.json">主要指标复算结果</a> 与 <span class="retained-source" title="历史审计材料，仓库内未分发">复算脚本</span>：重新读取正式测试、模型对照、grounding 和裁剪结果，不运行训练或模型推理。</li>
+</ul>
+</div></details></section><section class="section" id="literature"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">10</span><h2>论文调研地图</h2></div><p class="section-description">把已有阅读积累、这次的新发现与版本更新放回同一条研究主线。</p></div><span class="section-meta">LITERATURE MAP</span></div><div class="stats"><div class="stat"><small>去重历史记录</small><div class="stat-value num">36</div><p>按相关性选取，非全部论文</p></div><div class="stat"><small>独立研读笔记</small><div class="stat-value num">23</div><p>另有综述与项目分析</p></div><div class="stat"><small>本次新增工作</small><div class="stat-value num">10</div><p>含 11 月 9 日首发工作</p></div><div class="stat"><small>旧论文版本更新</small><div class="stat-value num">3</div><p>最近核验至 11 月 10 日</p></div></div><p class="overview-note">从医学工具闭环，到选择性调用、错误归因，再到视觉蒸馏。<br>下面记录的是文献资产与研究线索；文件存在不等于逐篇精读或复现。</p><div class="paper-toolbar no-print"><label class="search-wrap"><span class="sr-only">搜索论文、方法或项目关联</span><span class="search-icon" aria-hidden="true">⌕</span><input id="paper-search" type="search" placeholder="搜索论文、机制或项目关联，例如 Reframe、停止、教师" autocomplete="off"></label><label><span class="sr-only">论文来源</span><select id="paper-origin"><option value="全部">全部来源</option><option>已有研读</option><option>已有线索</option><option>本次新增</option><option>版本更新</option></select></label><label><span class="sr-only">研究主题</span><select id="paper-theme"><option value="全部">全部主题</option><option value="OPD与自蒸馏">OPD与自蒸馏</option><option value="医学工具推理">医学工具推理</option><option value="医学视觉后训练">医学视觉后训练</option><option value="医学视觉表示">医学视觉表示</option><option value="后训练与数据">后训练与数据</option><option value="后训练与验证器">后训练与验证器</option><option value="失败分析">失败分析</option><option value="工具归因与后训练">工具归因与后训练</option><option value="工具策略">工具策略</option><option value="视觉检索与效率">视觉检索与效率</option><option value="视觉蒸馏">视觉蒸馏</option><option value="评测与数据">评测与数据</option></select></label><button class="btn" id="paper-reset" type="button">重置筛选</button></div><div class="paper-results-head"><span id="paper-count" aria-live="polite">46 / 46 篇</span><span>点击论文展开机制、边界与原始入口</span></div><div class="paper-grid"><details class="paper-card" id="paper-adatooler-v" data-paper-tags="已有研读" data-paper-theme="工具策略"><summary><span class="paper-name">AdaTooler-V</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>AdaTooler-V: Adaptive Tool-Use for Images and Videos</h3><p class="paper-date">历史记录 · 本次盘点</p><p>直接回答/工具模式路由、工具收益奖励，可与项目四桶数据和自适应调用相连。</p><p><strong>边界／既有思考</strong> 已有笔记质疑：72B 离线收益标签未必适合 7B 当前策略；奖励可能偏好更多调用；应区分 token 数与真实时延/成本。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2512.16918" target="_blank" rel="noopener noreferrer">arXiv 2512.16918 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-speceyes" data-paper-tags="已有研读" data-paper-theme="工具策略"><summary><span class="paper-name">SpecEyes</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>用选择性直接回答减少多轮工具开销，适合设计按难度分层的准确率—时延曲线。</p><p><strong>边界／既有思考</strong> 已有笔记指出选择性绕过有风险—覆盖率权衡，不能解释为逐样本无损；需要公平在线服务成本和阈值调参集。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2603.23483" target="_blank" rel="noopener noreferrer">arXiv 2603.23483 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-ibisagent" data-paper-tags="已有研读" data-paper-theme="医学工具推理"><summary><span class="paper-name">IBISAgent</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation</h3><p class="paper-date">历史记录 · 本次盘点</p><p>医学图像—工具执行—掩码回注—继续决策的闭环，可映射真实工具 observation。</p><p><strong>边界／既有思考</strong> 已有笔记区分 MLLM 策略与 MedSAM2 后端能力，追问训练期 GT/FN/FP 奖励和特权轨迹解释；强调病人/切片级划分。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2601.03054" target="_blank" rel="noopener noreferrer">arXiv 2601.03054 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-how-do-medical-mllms-fail" data-paper-tags="已有研读" data-paper-theme="失败分析"><summary><span class="paper-name">How-Do-Medical-MLLMs-Fail</span><span class="paper-route">失败分析</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>How Do Medical MLLMs Fail? A Study on Visual Grounding in Medical Images</h3><p class="paper-date">历史记录 · 本次盘点</p><p>把医学知识与视觉定位错误拆开，指导 direct/agentic 失败归因和视觉消融。</p><p><strong>边界／既有思考</strong> 已有笔记强调 attention 对齐只是代理信号而非因果证据；需要随机遮挡、oracle 区域与扰动对照，避免诊断集被用于调参后再当测试。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2603.14323" target="_blank" rel="noopener noreferrer">arXiv 2603.14323 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-learn-to-think" data-paper-tags="已有研读" data-paper-theme="后训练与数据"><summary><span class="paper-name">Learn-to-Think</span><span class="paper-route">后训练与数据</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Learn to Think: Improving Multimodal Reasoning through Vision-Aware Self-Improvement Training</h3><p class="paper-date">历史记录 · 本次盘点</p><p>方法名 VISTA，讨论失败前缀重采样、视觉依据过滤及 SFT/DPO/GRPO 数据质量；不是 VISTA-Gym。</p><p><strong>边界／既有思考</strong> 已有笔记指出稳定前缀不等于正确前缀，视觉 attention 不等于真实因果使用，仍依赖答案标签；医学实验范围有限。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.11931" target="_blank" rel="noopener noreferrer">arXiv 2605.11931 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-mmedagent-rl" data-paper-tags="已有研读" data-paper-theme="医学工具推理"><summary><span class="paper-name">MMedAgent-RL</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>MMedAgent-RL: Optimizing Multi-Agent Collaboration for Multimodal Medical Reasoning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>专家意见作为外部 observation，研究如何采纳、整合或拒绝工具/专家信号。</p><p><strong>边界／既有思考</strong> 已有笔记追问固定三段流程、外部专家质量和调用成本；课程与熵奖励贡献需分开，路由标签不等同临床分诊能力。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2506.00555" target="_blank" rel="noopener noreferrer">arXiv 2506.00555 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-med-scout" data-paper-tags="已有研读" data-paper-theme="医学视觉后训练"><summary><span class="paper-name">Med-Scout</span><span class="paper-route">医学视觉后训练</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Med-Scout: Curing MLLMs&#x27; Geometric Blindness in Medical Perception via Geometry-Aware RL Post-Training</h3><p class="paper-date">历史记录 · 本次盘点</p><p>用可验证几何代理任务提高定位与结构感知，为医学 crop/segmentation 前置能力提供训练思路。</p><p><strong>边界／既有思考</strong> 已有笔记把数据切分列为主要风险，并指出合成异常/拼图可能出现捷径；应控制计算量并验证跨模态泛化。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2601.23220" target="_blank" rel="noopener noreferrer">arXiv 2601.23220 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-med-tiv" data-paper-tags="已有研读" data-paper-theme="后训练与验证器"><summary><span class="paper-name">Med-TIV</span><span class="paper-route">后训练与验证器</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Scaling Medical Reasoning Verification via Tool-Integrated Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>整条医学文本推理轨迹的正确性验证与候选筛选，可借鉴训练数据筛选；并非视觉验证器或逐步过程奖励。</p><p><strong>边界／既有思考</strong> 已有笔记区分验证器与生成器，区分 RL 主增益与工具边际贡献；采样数从 32 到 4 不能直接换算为端到端 8 倍加速。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2601.20221" target="_blank" rel="noopener noreferrer">arXiv 2601.20221 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-medmultibench" data-paper-tags="已有研读" data-paper-theme="评测与数据"><summary><span class="paper-name">MedMultiBench</span><span class="paper-route">评测与数据</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Beyond Single View: A Comprehensive Benchmark for Medical Multimodal Large Language Models on Multi-Image Understanding</h3><p class="paper-date">历史记录 · 本次盘点</p><p>将单图医学 TWI 延伸到多图、跨图证据及干扰图鲁棒性评测。</p><p><strong>边界／既有思考</strong> 已有笔记指出多图输入不证明多图必要性，需移除/打乱/替换图像与病人级划分；当时公开元数据与可用图片数量存在差异。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 2 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://doi.org/10.18653/v1/2026.acl-long.1263" target="_blank" rel="noopener noreferrer">论文原站 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-medsam-agent" data-paper-tags="已有研读" data-paper-theme="医学工具推理"><summary><span class="paper-name">MedSAM-Agent</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>MedSAM-Agent: Empowering Interactive Medical Image Segmentation with Multi-turn Agentic Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>box/point/stop 动作与多轮分割 observation，是医学可执行工具轨迹的直接近邻。</p><p><strong>边界／既有思考</strong> 已有笔记追问 GT IoU 定义的过程/停止奖励如何迁移到部署，以及公平提示信息、专家轨迹偏差和跨工具泛化。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2602.03320" target="_blank" rel="noopener noreferrer">arXiv 2602.03320 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-pathscale-r1" data-paper-tags="已有研读" data-paper-theme="医学工具推理"><summary><span class="paper-name">PathScale-R1</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>PathScale-R1: Cross-scale Reasoning for Pathological Image Analysis</h3><p class="paper-date">历史记录 · 本次盘点</p><p>病理图像跨尺度观察，支持从通用 zoom 延伸到任务驱动的观察顺序。</p><p><strong>边界／既有思考</strong> 已有笔记强调提及图像不等于使用图像，需排除训练分布优势、教师噪声和仅凭语义答对的解释；本地投稿模板不等于已接收。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2607.23794" target="_blank" rel="noopener noreferrer">arXiv 2607.23794 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-reliable-twi" data-paper-tags="已有研读" data-paper-theme="工具策略"><summary><span class="paper-name">Reliable-TWI</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Reliable Thinking with Images</h3><p class="paper-date">历史记录 · 本次盘点</p><p>分别诊断视觉线索与答案推理阶段，支持多轨迹筛选、停止和成本控制。</p><p><strong>边界／既有思考</strong> 已有笔记指出百分位置信不是校准概率，可能漏掉自信错误；长度与 token 数不等于实际工具成本，阶段分割也会产生混杂。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2602.12916" target="_blank" rel="noopener noreferrer">arXiv 2602.12916 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-zooming-without-zooming" data-paper-tags="已有研读" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">Zooming-without-Zooming</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Zooming without Zooming: Region-to-Image Distillation for Fine-Grained Multimodal Perception</h3><p class="paper-date">历史记录 · 本次盘点</p><p>将 crop 带来的信息优势前移到数据合成和训练，作为工具能力内化的对照路线。</p><p><strong>边界／既有思考</strong> 已有笔记区分区域到全图的数据/任务蒸馏与 token KL；追问基准构造重叠、裁图/全图条件公平性和多模型共识不等于 GT。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2602.11858" target="_blank" rel="noopener noreferrer">arXiv 2602.11858 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-slake" data-paper-tags="已有研读" data-paper-theme="评测与数据"><summary><span class="paper-name">SLAKE</span><span class="paper-route">评测与数据</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>SLAKE: A Semantically-Labeled Knowledge-Enhanced Dataset for Medical Visual Question Answering</h3><p class="paper-date">历史记录 · 本次盘点</p><p>项目医学 VQA/ROI 蒸馏的重要数据来源，需理解图像、问答、mask/box 和知识图谱之间的关系。</p><p><strong>边界／既有思考</strong> 已有笔记提醒小规模、闭集答案、模板捷径、图像与病人划分差异以及版本漂移；数据集成绩不等于临床能力。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://doi.org/10.1109/ISBI48211.2021.9434010" target="_blank" rel="noopener noreferrer">论文原站 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-mopd" data-paper-tags="已有研读" data-paper-theme="OPD与自蒸馏"><summary><span class="paper-name">MOPD</span><span class="paper-route">OPD与自蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>MOPD: Multi-Teacher On-Policy Distillation for Capability Integration in LLM Post-Training</h3><p class="paper-date">历史记录 · 本次盘点</p><p>多教师能力整合可迁移到不同工具/医学子任务教师，但需明确教师选择与学生 rollout。</p><p><strong>边界／既有思考</strong> 已有笔记指出同源低 KL 条件、一次 prompt 路由一个教师与真正能力组合不同；应控制教师错误、归一化分数和训练计算。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2606.30406" target="_blank" rel="noopener noreferrer">arXiv 2606.30406 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-opd-v" data-paper-tags="已有研读" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">OPD-V</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>OPD-V: Visual On-Policy Self-Distillation with Modality Balance</h3><p class="paper-date">历史记录 · 本次盘点</p><p>在 Vision-OPD 上用裁图与遮挡对比给 token 加权，直接对应视觉信号筛选和模态平衡。</p><p><strong>边界／既有思考</strong> 已有笔记追问遮挡敏感性与正确性的区别、ROI 特权仍在、黑图分布偏移、公开实现固定遮挡与论文设定，以及 judge 口径。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2608.05131" target="_blank" rel="noopener noreferrer">arXiv 2608.05131 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-vision-opd" data-paper-tags="已有研读" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">Vision-OPD</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Vision-OPD: Learning to See Fine Details for Multimodal LLMs via On-Policy Self-Distillation</h3><p class="paper-date">历史记录 · 本次盘点</p><p>同模型 crop 教师/full-image 学生的 on-policy 蒸馏，是本地复现、SLAKE teacher/student 与训练工程的核心。</p><p><strong>边界／既有思考</strong> 已有笔记与 Q&amp;A 区分 teacher 参数与特权上下文，追问 ROI 从何而来、train/eval mismatch、EMA 与冻结教师稳定性以及无标签口径。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.18740" target="_blank" rel="noopener noreferrer">arXiv 2605.18740 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-visual-contrastive-self-distillation" data-paper-tags="已有研读|版本更新" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">Visual-Contrastive-Self-Distillation</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span><span class="tag">版本更新</span></div><h3>Visual Contrastive Self-Distillation</h3><p class="paper-date">v2 · 2026-10-15</p><p>用原图和控制图的教师分布差构造视觉蒸馏信号，可作为不依赖裁图的对照。</p><p><strong>边界／既有思考</strong> 本地保留 v1 笔记；本次核验 v2，不能把旧笔记视为已读新版。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2607.21556" target="_blank" rel="noopener noreferrer">arXiv 2607.21556 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-self-distilled-agentic-rl" data-paper-tags="已有研读" data-paper-theme="OPD与自蒸馏"><summary><span class="paper-name">Self-Distilled-Agentic-RL</span><span class="paper-route">OPD与自蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Self-Distilled Agentic Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>GRPO 与 skill-conditioned 自教师结合，将密集蒸馏迁移到多轮工具行动。</p><p><strong>边界／既有思考</strong> 已有笔记辨析 detach 门控下的加权采样 token 学习与全词表 KL，指出有界门控不保证全局稳定、RL 子项不变不代表整体梯度无偏。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.15155" target="_blank" rel="noopener noreferrer">arXiv 2605.15155 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-self-distilled-reasoner" data-paper-tags="已有研读" data-paper-theme="OPD与自蒸馏"><summary><span class="paper-name">Self-Distilled-Reasoner</span><span class="paper-route">OPD与自蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models</h3><p class="paper-date">历史记录 · 本次盘点</p><p>OPSD 的参考解答条件教师和学生前缀，帮助解释 on-policy、教师特权和稠密监督。</p><p><strong>边界／既有思考</strong> 已有笔记指出教师优势可来自额外条件而非更大参数，冻结初始教师不同于成长教师；参考 CoT 仍是外部监督，错误前缀恢复与模式一致性需要验证。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2601.18734" target="_blank" rel="noopener noreferrer">arXiv 2601.18734 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-rlvr-unlearnability" data-paper-tags="已有研读" data-paper-theme="失败分析"><summary><span class="paper-name">RLVR-Unlearnability</span><span class="paper-route">失败分析</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>The Unlearnability Phenomenon in RLVR for Language Models</h3><p class="paper-date">历史记录 · 本次盘点</p><p>用于解释成功 rollout、训练奖励上升为何仍不能保证泛化能力增长。</p><p><strong>边界／既有思考</strong> 已有笔记区分正确终答与可迁移过程，梯度相关性与因果解释，并提醒阈值/采样误差以及高梯度一致性可能只是重复样本。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.16787" target="_blank" rel="noopener noreferrer">arXiv 2605.16787 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-beacon" data-paper-tags="已有研读" data-paper-theme="工具策略"><summary><span class="paper-name">Beacon</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Beacon: Knowing When and How to Perform Agentic Visual Reasoning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>MA/TE 指标把何时调用与调用是否有益分开，可补强项目调用率以外的评测。</p><p><strong>边界／既有思考</strong> 已有笔记指出 easy/hard 标签依赖 group size，提示辅助恢复有额外教师成本和分布错配；自适应改善不等于推理高效。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 1 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2607.28595" target="_blank" rel="noopener noreferrer">arXiv 2607.28595 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-medvistagym" data-paper-tags="已有线索" data-paper-theme="医学工具推理"><summary><span class="paper-name">MedVistaGym</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>MedVistaGym: A Scalable Training Environment for Thinking with Medical Images via Tool-Integrated Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>医学 VQA 工具环境、SFT+GRPO 与错误类型是项目直接近邻。</p><p><strong>边界／既有思考</strong> 综述已讨论直接加工具可能下降、参数语义错误和工具后推理错误；提出证据质量评估与工具成本问题。</p><p class="paper-evidence">PDF 与多论文综述中的实质讨论 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2601.07107" target="_blank" rel="noopener noreferrer">arXiv 2601.07107 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-ophiuchus" data-paper-tags="已有线索" data-paper-theme="医学工具推理"><summary><span class="paper-name">Ophiuchus</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>Incentivizing Tool-Augmented Thinking with Images for Medical Image Analysis</h3><p class="paper-date">历史记录 · 本次盘点</p><p>zoom、SAM2、BiomedParse 与反思轨迹，接近项目多工具数据合成。</p><p><strong>边界／既有思考</strong> 综述已讨论混入无需工具样本、工具间交叉验证和拒绝不可信结果；索引指出工具 bonus 可能被装饰性调用满足。</p><p class="paper-evidence">PDF 与多论文综述中的实质讨论 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2512.14157" target="_blank" rel="noopener noreferrer">arXiv 2512.14157 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-deepeyesv2" data-paper-tags="已有线索" data-paper-theme="工具策略"><summary><span class="paper-name">DeepEyesV2</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>DeepEyesV2: Toward Agentic Multimodal Model</h3><p class="paper-date">历史记录 · 本次盘点</p><p>按基础模型失败与工具实际收益筛选数据，与四桶分层设计直接相关。</p><p><strong>边界／既有思考</strong> 综述已提出无需工具/工具有益/工具误导/多工具验证分层；医学应用需限制开放搜索证据范围。</p><p class="paper-evidence">PDF 与多论文综述中的实质讨论 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2511.05271" target="_blank" rel="noopener noreferrer">arXiv 2511.05271 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-deepeyes" data-paper-tags="已有线索" data-paper-theme="工具策略"><summary><span class="paper-name">DeepEyes</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>DeepEyes: Incentivizing &quot;Thinking with Images&quot; via Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>通用视觉工具 GRPO 基线，作为医学迁移和 direct/tool 对照起点。</p><p><strong>边界／既有思考</strong> 已有综述将其放在通用视觉工具 RL 主线；不能仅凭该条目声称完成复现或公平对比。</p><p class="paper-evidence">综述或索引提及 · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2505.14362" target="_blank" rel="noopener noreferrer">arXiv 2505.14362 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-vtool-r1" data-paper-tags="已有线索" data-paper-theme="工具策略"><summary><span class="paper-name">VTool-R1</span><span class="paper-route">工具策略</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>VTool-R1: VLMs Learn to Think with Images via Reinforcement Learning on Multimodal Tool Use</h3><p class="paper-date">历史记录 · 本次盘点</p><p>视觉工具使用 RL 的通用基线，支持比较工具行为与任务成绩。</p><p><strong>边界／既有思考</strong> 本轮定位为综述条目；未据此确认独立研读笔记、PDF 或复现实验。</p><p class="paper-evidence">综述或索引提及 · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2505.19255" target="_blank" rel="noopener noreferrer">arXiv 2505.19255 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-medvr" data-paper-tags="已有线索" data-paper-theme="医学工具推理"><summary><span class="paper-name">MedVR</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>不确定性驱动 ROI 与无标注奖励，为项目数据稀缺和视觉重定位提供近邻。</p><p><strong>边界／既有思考</strong> 历史索引已指出 rollout 共识可能共享视觉捷径，不能把一致性直接当作真实正确。</p><p class="paper-evidence">综述或索引提及 · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2604.08203" target="_blank" rel="noopener noreferrer">arXiv 2604.08203 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-mind-the-tool-failures" data-paper-tags="已有线索" data-paper-theme="失败分析"><summary><span class="paper-name">Mind the Tool Failures</span><span class="paper-route">失败分析</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>Mind the Tool Failures: Achieving Synergistic Tool Gains for Medical Agents</h3><p class="paper-date">历史记录 · 本次盘点</p><p>不完美工具、冲突信号和实例级选择与项目 failure-aware 工具策略直接相关。</p><p><strong>边界／既有思考</strong> 历史索引记录工具失败感知方向，并提醒仍需真实系统故障验证。</p><p class="paper-evidence">综述或索引提及 · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.26691" target="_blank" rel="noopener noreferrer">arXiv 2605.26691 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-effopd" data-paper-tags="已有研读" data-paper-theme="OPD与自蒸馏"><summary><span class="paper-name">EffOPD</span><span class="paper-route">OPD与自蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>Learning to Foresee: Unveiling the Unlocking Efficiency of On-Policy Distillation</h3><p class="paper-date">历史记录 · 本次盘点</p><p>OPD 早期更新结构和参数外推，为 RL+蒸馏训练效率提供待验证思路。</p><p><strong>边界／既有思考</strong> 既有研究设计列出：多轮混合 RL+OPD 未必低秩、外推可能降性能、离线功能重要性不稳定、额外验证可能抵消加速。相关内容是研究假设，不是项目已证实的机制。</p><p class="paper-evidence">项目研究分析与 PDF · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2605.11739" target="_blank" rel="noopener noreferrer">arXiv 2605.11739 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-dopd" data-paper-tags="已有研读" data-paper-theme="OPD与自蒸馏"><summary><span class="paper-name">DOPD</span><span class="paper-route">OPD与自蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span></div><h3>DOPD: Dual On-policy Distillation</h3><p class="paper-date">历史记录 · 本次盘点</p><p>特权信息与教师能力差异的分解，直接影响 crop 教师/完整图学生及 skill-conditioned 自教师的解释。</p><p><strong>边界／既有思考</strong> 既有项目文档讨论 privilege illusion、信息量消融和 pass@(k,T)；同时明确否定旧的对齐窗口叙事与虚构自蒸馏上界。pivot 集中效应和能力边界扩展仍是待验证假设，旧文档中的完全原创表述不能照搬。</p><p class="paper-evidence">项目研究分析与 PDF · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2606.30626" target="_blank" rel="noopener noreferrer">arXiv 2606.30626 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-toolsrl" data-paper-tags="已有线索" data-paper-theme="工具归因与后训练"><summary><span class="paper-name">ToolsRL</span><span class="paper-route">工具归因与后训练</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>Visual Reasoning through Tool-supervised Reinforcement Learning</h3><p class="paper-date">历史记录 · 本次盘点</p><p>工具监督 RL 与工具执行收益归因；历史报告已有近邻线索。</p><p><strong>边界／既有思考</strong> 历史报告明确标为仅 OpenAlex 元数据、待核验；当时没有充分依据声称已完成全文研读或公平方法对比。</p><p class="paper-evidence">历史元数据线索（本次补核官方 ID） · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2604.19945" target="_blank" rel="noopener noreferrer">arXiv 2604.19945 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-med" data-paper-tags="已有线索" data-paper-theme="工具归因与后训练"><summary><span class="paper-name">MED</span><span class="paper-route">工具归因与后训练</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>What Does Vision Tool-Use Reinforcement Learning Really Learn? Disentangling Tool-Induced and Intrinsic Effects for Crop-and-Zoom</h3><p class="paper-date">历史记录 · 本次盘点</p><p>显式区分工具在推理时提供的帮助和训练后内化能力，适合 tool-on/tool-off 对照。</p><p><strong>边界／既有思考</strong> 历史报告明确标为仅 OpenAlex 元数据、待核验；当时没有充分依据声称已完成全文研读或公平方法对比。</p><p class="paper-evidence">历史元数据线索（本次补核官方 ID） · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2602.01334" target="_blank" rel="noopener noreferrer">arXiv 2602.01334 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-with-tools-or-because-of-tools" data-paper-tags="已有线索|版本更新" data-paper-theme="工具归因与后训练"><summary><span class="paper-name">With Tools or Because of Tools?</span><span class="paper-route">工具归因与后训练</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span><span class="tag">版本更新</span></div><h3>With Tools or Because of Tools? Tracing Capability Gains in Multimodal Agents</h3><p class="paper-history">历史题名：Do Multimodal Agents Really Benefit from Tool Use? A Systematic Study of Capability Gains</p><p class="paper-date">v3 · 2026-11-10</p><p>追踪 agent 能力增益来源，避免把调用率和最终准确率差当作工具因果收益。</p><p><strong>边界／既有思考</strong> 旧报告中的 Do Multimodal Agents Really Benefit… 已改题；同一 arXiv ID，不是新论文。</p><p class="paper-evidence">历史元数据线索（本次补核官方 ID） · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2606.02357" target="_blank" rel="noopener noreferrer">arXiv 2606.02357 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-iapo" data-paper-tags="已有线索" data-paper-theme="工具归因与后训练"><summary><span class="paper-name">IAPO</span><span class="paper-route">工具归因与后训练</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有线索</span></div><h3>IAPO: Input Attribution-Aware Policy Optimization for Tool Use in Small Multimodal Agents</h3><p class="paper-date">历史记录 · 本次盘点</p><p>输入归因与小模型工具优化，是视觉证据使用和 reward 设计近邻。</p><p><strong>边界／既有思考</strong> 历史报告明确标为仅 OpenAlex 元数据、待核验；当时没有充分依据声称已完成全文研读或公平方法对比。</p><p class="paper-evidence">历史元数据线索（本次补核官方 ID） · PDF 0 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2606.11652" target="_blank" rel="noopener noreferrer">arXiv 2606.11652 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-retoken" data-paper-tags="已有研读|版本更新" data-paper-theme="视觉检索与效率"><summary><span class="paper-name">ReToken</span><span class="paper-route">视觉检索与效率</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">已有研读</span><span class="tag">版本更新</span></div><h3>ReToken: Improving Long-Context VLMs with Visual Retrieval Token</h3><p class="paper-history">历史题名：ReToken: One Token to Improve Vision-Language Models for Visual Retrieval</p><p class="paper-date">v2 · 2026-10-06</p><p>冻结 VLM 中学习视觉检索 token，为多图医学证据选择和长上下文观察预算提供可迁移路线；与当前单图工具闭环的关联较间接。</p><p><strong>边界／既有思考</strong> 本地 v1 标题为 One Token to Improve…；新版强调长视觉上下文检索，非直接医学 VQA 证据。</p><p class="paper-evidence">完整研读型笔记资产 · PDF 1 份 · Q&amp;A 0 份</p><div class="paper-links"><a href="https://arxiv.org/abs/2607.28627" target="_blank" rel="noopener noreferrer">arXiv 2607.28627 ↗</a><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地笔记／记录 ↗</span></div></div></details><details class="paper-card" id="paper-new-2611.12886" data-paper-tags="本次新增" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">Reframe</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning</h3><p class="paper-date">首发 2026-11-09 / v1 · 2026-11-09</p><p>GD-GRPO 训练证据依赖，OG-MOPD 在 rollout 中修复不合格动作与观察状态。</p><p><strong>边界／既有思考</strong> 需要可信定位标注和专家；注入动作单独监督，修复历史并非完全原始 on-policy。</p><p><strong>可测建议</strong> 先测模型是否使用工具观察，再消融定位奖励、原图 dropout 与观察修复；全局题保留原图。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3.1–3.3、§4.3、附录 B</p><div class="paper-links"><a href="https://arxiv.org/abs/2611.12886" target="_blank" rel="noopener noreferrer">arXiv 2611.12886 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2611.11949" data-paper-tags="本次新增" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">VIOS</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>Watching Itself Watch: Self-Auditing Visual Reliance for Video Reasoning</h3><p class="paper-date">首发 2026-11-09 / v1 · 2026-11-09</p><p>对比教师与学生有／无视频时的分布差，按视觉依赖差异加权蒸馏。</p><p><strong>边界／既有思考</strong> 视频任务，教师有答案特权且需额外前向；视觉敏感性不等于区域定位或答案正确。</p><p><strong>可测建议</strong> 先离线诊断部位、属性、否定词附近的视觉依赖，再比较均匀与选择性蒸馏。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3、§6</p><div class="paper-links"><a href="https://arxiv.org/abs/2611.11949" target="_blank" rel="noopener noreferrer">arXiv 2611.11949 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2611.10734" data-paper-tags="本次新增" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">SPN-OPSD</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>Tiny Evidence Region Localization with Selective Contrastive On-Policy Self-Distillation</h3><p class="paper-date">首发 2026-11-07 / v1 · 2026-11-07</p><p>利用证据 crop 正视图与证据模糊、背景保留的负视图，选择 token 做对比蒸馏。</p><p><strong>边界／既有思考</strong> 需要区域信息，正负条件还改变文字提示；通用小模型结果尚不能外推到医学。</p><p><strong>可测建议</strong> 小结构题比较真实区域与同面积随机区域模糊，固定文字提示，隔离视觉与提示效应。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 II-A–II-C、实验设置</p><div class="paper-links"><a href="https://arxiv.org/abs/2611.10734" target="_blank" rel="noopener noreferrer">arXiv 2611.10734 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2610.35842" data-paper-tags="本次新增" data-paper-theme="医学视觉表示"><summary><span class="paper-name">MedVTok</span><span class="paper-route">医学视觉表示</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>MedVTok: A General-Purpose Medical Visual Tokenizer</h3><p class="paper-date">首发 2026-10-26 / v1 · 2026-10-26</p><p>以统一 token 空间处理医学 2D／3D 视觉输入，并对齐结构与语义。</p><p><strong>边界／既有思考</strong> 视觉表示预训练路线，资源与接口成本高，不是工具选择或低成本后训练方案。</p><p><strong>可测建议</strong> 只有确认视觉编码瓶颈后，再考虑冻结医学编码器或轻量适配器对照。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3–4</p><div class="paper-links"><a href="https://arxiv.org/abs/2610.35842" target="_blank" rel="noopener noreferrer">arXiv 2610.35842 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2610.32258" data-paper-tags="本次新增" data-paper-theme="医学工具推理"><summary><span class="paper-name">MedCaseAgent</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>MedCaseAgent: From Multimodal Clinical Evidence to Rare Disease Case Reports</h3><p class="paper-date">首发 2026-10-23 / v1 · 2026-10-23</p><p>Planner–Writer–Editor 组织多种医学证据检索，planner 经 SFT 与 GRPO。</p><p><strong>边界／既有思考</strong> 病例报告任务与短答案 VQA 不同；来源排除需显式配置，公开代码不等于完整训练复现。</p><p><strong>可测建议</strong> 为检索和视觉 observation 记录来源、服务版本、坐标、失败状态和耗时，检查答案来源泄漏。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3、附录、官方仓库发布范围</p><div class="paper-links"><a href="https://arxiv.org/abs/2610.32258" target="_blank" rel="noopener noreferrer">arXiv 2610.32258 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2610.14265" data-paper-tags="本次新增" data-paper-theme="后训练与数据"><summary><span class="paper-name">TiCO</span><span class="paper-route">后训练与数据</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>Thinking with Images without Coordinates</h3><p class="paper-date">首发 2026-10-09 / v1 · 2026-10-09</p><p>用 probe token 与视觉 patch 的相似度选择连通证据区域，替代显式坐标生成接口。</p><p><strong>边界／既有思考</strong> 训练仍用 bbox 构造 patch 监督；coordinate-free 不等于无需标注或没有空间信息。</p><p><strong>可测建议</strong> 若坐标／尺度映射是主要错误，再比较数字框、固定网格与 token 选区。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3–4.1</p><div class="paper-links"><a href="https://arxiv.org/abs/2610.14265" target="_blank" rel="noopener noreferrer">arXiv 2610.14265 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2610.02117" data-paper-tags="本次新增" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">Where-OPD</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>Where-OPD: Spatially Guided On-Policy Self-Distillation of MLLMs with Synthetic Scenes</h3><p class="paper-date">首发 2026-10-01 / v1 · 2026-10-01</p><p>学生看原图，冻结同源教师额外获得合成场景中的空间提示。</p><p><strong>边界／既有思考</strong> 合成器提供位置与答案相关信息；无需人工标注不等于没有特权监督。</p><p><strong>可测建议</strong> 将位置帮助、答案帮助和 crop 帮助分开消融，先验证教师优势再训练学生。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3.1–3.2</p><div class="paper-links"><a href="https://arxiv.org/abs/2610.02117" target="_blank" rel="noopener noreferrer">arXiv 2610.02117 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2609.36838" data-paper-tags="本次新增" data-paper-theme="视觉蒸馏"><summary><span class="paper-name">ReVuE</span><span class="paper-route">视觉蒸馏</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>On-Policy Visual Evidence Distillation</h3><p class="paper-date">首发 2026-09-29 / v1 · 2026-09-29</p><p>按 Acquire／Read／Ground 的首次失败构造反思，以教师概率变化重加权蒸馏。</p><p><strong>边界／既有思考</strong> 完整方案依赖参考答案、冻结 expert 与独立大 critic，不是廉价纯自蒸馏。</p><p><strong>可测建议</strong> 先给已有改善与退化样本做证据链错误标注，验证分类可靠性后再做 token 权重。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §4、附录 A.1/A.7、B.3</p><div class="paper-links"><a href="https://arxiv.org/abs/2609.36838" target="_blank" rel="noopener noreferrer">arXiv 2609.36838 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2608.22217" data-paper-tags="本次新增" data-paper-theme="医学工具推理"><summary><span class="paper-name">UR²-MLLM</span><span class="paper-route">医学工具推理</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>UR²-MLLM: Uncertainty-aware Revisit Reasoning in Multimodal Large Language Models for Radiology Report Generation</h3><p class="paper-date">首发 2026-08-23 / v1 · 2026-08-23</p><p>学习不确定性与区域回看；视觉奖励以选中区域相似度减去同面积随机区域基线。</p><p><strong>边界／既有思考</strong> 主任务是放射报告生成；相似度奖励与 hedge 表达都不能当作临床正确性或校准概率。</p><p><strong>可测建议</strong> 在当前工具 API 上先做可选一次回看，和固定先工具比较，并引入随机区域校准。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3、实验设置</p><div class="paper-links"><a href="https://arxiv.org/abs/2608.22217" target="_blank" rel="noopener noreferrer">arXiv 2608.22217 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details><details class="paper-card" id="paper-new-2608.06270" data-paper-tags="本次新增" data-paper-theme="失败分析"><summary><span class="paper-name">Visual Tool-Use Causal Audit</span><span class="paper-route">失败分析</span></summary><div class="paper-body"><div class="paper-tags"><span class="tag">本次新增</span></div><h3>The Illusion of Visual Tool-Use: A Causal Audit of Thinking with Images</h3><p class="paper-date">首发 2026-08-06 / v2 · 2026-09-08</p><p>区分策略、全轨迹、单步观察干预，诊断调用但未看与看了却未合理规划。</p><p><strong>边界／既有思考</strong> 估计依赖特定干预与反事实观察定义；不能把历史 direct／agent 配对差直接命名为观察因果收益。</p><p><strong>可测建议</strong> 固定动作前缀替换一次 observation，多种控制下重采样后续，同时记录正确性与成本。</p><p class="paper-evidence">本次读取官方方法与限制 · 已读 §3.3、§4、限制</p><div class="paper-links"><a href="https://arxiv.org/abs/2608.06270" target="_blank" rel="noopener noreferrer">arXiv 2608.06270 ↗</a><a href="references.md">本次核验记录 ↗</a></div></div></details></div><p id="paper-empty" class="empty-state" hidden>没有匹配的论文，请调整关键词或重置筛选。</p><details class="disclosure"><summary>历史目录、36 篇完整清单与已经形成的研究思考</summary><div class="prose"><p><strong>盘点与联网补充日期：2026-11-14。</strong> 本次按项目相关性选取 <strong>36 篇去重历史记录</strong>：23 篇有独立详细研读笔记，3 篇有 PDF 与多论文综述，4 篇为综述／索引提及，2 篇为项目深入分析，4 篇是旧报告中的元数据线索并在本次补齐官方标识。其中 28 篇定位到 PDF，6 篇有独立 Q&amp;A。这是已找到的文献资产，不代表服务器全部论文数量，也不能仅凭文件存在推断本人逐篇精读完毕。</p>
+<p>检索同时新增 <strong>10 篇</strong>近期工作到本报告，并记录 <strong>3 篇</strong>历史论文的版本更新；“新增”指本次加入报告，不能据此断言此前从未接触。详细证据见 <a href="references.md">历史论文盘点</a> 与 <a href="references.md">机器可读清单</a>。</p>
+<h3>10.1 这些论文原来分别放在哪里</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>资料位置</th>
+  <th>找到的内容</th>
+  <th>应如何理解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>学习笔记/Paper</code></td>
+  <td>医学 Agent、视觉蒸馏、失败分析等独立 paper.md、PDF、Q&amp;A；部分还含复现计划与实验记录</td>
+  <td>是历史研读主库；复现准备、已运行结果与论文原结果需分开</td>
+</tr>
+<tr>
+  <td><code>学习笔记/论文</code></td>
+  <td>两份 2026-07-22 主题综述、早期 PDF、MedSAM-Agent／IBISAgent／Vision-OPD 等另一套笔记</td>
+  <td>存在重复论文，不按文件夹数累计篇数</td>
+</tr>
+<tr>
+  <td><code>外部相关工作增补调研_20260712.md</code></td>
+  <td>医学工具效用与选择性路由的早期路线梳理</td>
+  <td>部分当时待核验条目本次补齐，不能误称新发现</td>
+</tr>
+<tr>
+  <td><code>项目/agenticRL</code></td>
+  <td>OPD、自蒸馏、教师特权等项目研究分析与 PDF</td>
+  <td>可迁移研究思考，其他任务结果不合并为本医学项目成绩</td>
+</tr>
+<tr>
+  <td><code>学习笔记/OPD</code></td>
+  <td>KL、策略梯度、状态分布与实现讨论</td>
+  <td>支撑后训练原理理解，不另算独立论文数量</td>
+</tr>
+</tbody>
+</table></div>
+<p>去重时尤其注意：Med-TIV 与 Scaling-Medical-Reasoning-Verification 是同一篇；Vision-OPD、MedSAM-Agent、IBISAgent 存在重复目录；Learn-to-Think 的方法简称 VISTA 与 VISTA-Gym 不是同一个工作。</p>
+<h3>10.2 已有调研可以组织成五条研究线</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>研究线</th>
+  <th>代表论文</th>
+  <th>你已有积累与项目的连接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>医学工具闭环</td>
+  <td>MedVistaGym、Ophiuchus、IBISAgent、MedSAM-Agent、MMedAgent-RL</td>
+  <td>工具执行、视觉观察回注、多轮决策、停止与错误恢复</td>
+</tr>
+<tr>
+  <td>何时调用、调用多少</td>
+  <td>AdaTooler-V、SpecEyes、Beacon、Reliable-TWI</td>
+  <td>选择性路由、收益估计、可靠性与成本；不默认每题都必须用工具</td>
+</tr>
+<tr>
+  <td>哪里出了错</td>
+  <td>MED、How Do Medical MLLMs Fail、Mind the Tool Failures</td>
+  <td>拆分基座能力、定位、证据消费与工具伤害，解释四桶结果</td>
+</tr>
+<tr>
+  <td>从工具到模型内部能力</td>
+  <td>Vision-OPD、OPD-V、VCSD、Zooming without Zooming、ReToken</td>
+  <td>区域／全图条件、视觉对比与 on-policy 蒸馏；不同方法并非同一种 KL 训练</td>
+</tr>
+<tr>
+  <td>教师与训练信号的边界</td>
+  <td>MOPD、SDAR、OPSD、DOPD、EffOPD、RLVR-Unlearnability</td>
+  <td>状态分布、教师特权、信号可学习性与成本，避免把教师优势等同学生可达能力</td>
+</tr>
+</tbody>
+</table></div>
+<h3>10.3 完整历史清单与原始入口</h3>
+<p>下表按本地证据记录，未重新宣称全部完成在线全文复核。论文身份／方法的本次核验范围、阅读深度与日期见后续章节及审计附件。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>历史论文／当前题名简称</th>
+  <th>研究线</th>
+  <th>本地证据层级</th>
+  <th>入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td><a href="https://arxiv.org/abs/2512.16918">AdaTooler-V</a></td>
+  <td>工具策略</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td><a href="https://arxiv.org/abs/2603.23483">SpecEyes</a></td>
+  <td>工具策略</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td><a href="https://arxiv.org/abs/2601.03054">IBISAgent</a></td>
+  <td>医学工具推理</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><a href="https://arxiv.org/abs/2603.14323">How-Do-Medical-MLLMs-Fail</a></td>
+  <td>失败分析</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><a href="https://arxiv.org/abs/2605.11931">Learn-to-Think</a></td>
+  <td>后训练与数据</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><a href="https://arxiv.org/abs/2506.00555">MMedAgent-RL</a></td>
+  <td>医学工具推理</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><a href="https://arxiv.org/abs/2601.23220">Med-Scout</a></td>
+  <td>医学视觉后训练</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><a href="https://arxiv.org/abs/2601.20221">Med-TIV</a></td>
+  <td>后训练与验证器</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><a href="https://doi.org/10.18653/v1/2026.acl-long.1263">MedMultiBench</a></td>
+  <td>评测与数据</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><a href="https://arxiv.org/abs/2602.03320">MedSAM-Agent</a></td>
+  <td>医学工具推理</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><a href="https://arxiv.org/abs/2607.23794">PathScale-R1</a></td>
+  <td>医学工具推理</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>12</td>
+  <td><a href="https://arxiv.org/abs/2602.12916">Reliable-TWI</a></td>
+  <td>工具策略</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>13</td>
+  <td><a href="https://arxiv.org/abs/2602.11858">Zooming-without-Zooming</a></td>
+  <td>视觉蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>14</td>
+  <td><a href="https://doi.org/10.1109/ISBI48211.2021.9434010">SLAKE</a></td>
+  <td>评测与数据</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>15</td>
+  <td><a href="https://arxiv.org/abs/2606.30406">MOPD</a></td>
+  <td>OPD与自蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>16</td>
+  <td><a href="https://arxiv.org/abs/2608.05131">OPD-V</a></td>
+  <td>视觉蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>17</td>
+  <td><a href="https://arxiv.org/abs/2605.18740">Vision-OPD</a></td>
+  <td>视觉蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>18</td>
+  <td><a href="https://arxiv.org/abs/2607.21556">Visual-Contrastive-Self-Distillation</a></td>
+  <td>视觉蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>19</td>
+  <td><a href="https://arxiv.org/abs/2605.15155">Self-Distilled-Agentic-RL</a></td>
+  <td>OPD与自蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>20</td>
+  <td><a href="https://arxiv.org/abs/2601.18734">Self-Distilled-Reasoner</a></td>
+  <td>OPD与自蒸馏</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>21</td>
+  <td><a href="https://arxiv.org/abs/2605.16787">RLVR-Unlearnability</a></td>
+  <td>失败分析</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>22</td>
+  <td><a href="https://arxiv.org/abs/2607.28595">Beacon</a></td>
+  <td>工具策略</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>23</td>
+  <td><a href="https://arxiv.org/abs/2601.07107">MedVistaGym</a></td>
+  <td>医学工具推理</td>
+  <td>PDF＋综述讨论</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>24</td>
+  <td><a href="https://arxiv.org/abs/2512.14157">Ophiuchus</a></td>
+  <td>医学工具推理</td>
+  <td>PDF＋综述讨论</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>25</td>
+  <td><a href="https://arxiv.org/abs/2511.05271">DeepEyesV2</a></td>
+  <td>工具策略</td>
+  <td>PDF＋综述讨论</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>26</td>
+  <td><a href="https://arxiv.org/abs/2505.14362">DeepEyes</a></td>
+  <td>工具策略</td>
+  <td>综述／索引提及</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>27</td>
+  <td><a href="https://arxiv.org/abs/2505.19255">VTool-R1</a></td>
+  <td>工具策略</td>
+  <td>综述／索引提及</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>28</td>
+  <td><a href="https://arxiv.org/abs/2604.08203">MedVR</a></td>
+  <td>医学工具推理</td>
+  <td>综述／索引提及</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>29</td>
+  <td><a href="https://arxiv.org/abs/2605.26691">Mind the Tool Failures</a></td>
+  <td>失败分析</td>
+  <td>综述／索引提及</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>30</td>
+  <td><a href="https://arxiv.org/abs/2605.11739">EffOPD</a></td>
+  <td>OPD与自蒸馏</td>
+  <td>项目分析＋PDF</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>31</td>
+  <td><a href="https://arxiv.org/abs/2606.30626">DOPD</a></td>
+  <td>OPD与自蒸馏</td>
+  <td>项目分析＋PDF</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>32</td>
+  <td><a href="https://arxiv.org/abs/2604.19945">ToolsRL</a></td>
+  <td>工具归因与后训练</td>
+  <td>旧元数据，本次补核</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>33</td>
+  <td><a href="https://arxiv.org/abs/2602.01334">MED</a></td>
+  <td>工具归因与后训练</td>
+  <td>旧元数据，本次补核</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>34</td>
+  <td><a href="https://arxiv.org/abs/2606.02357">With Tools or Because of Tools?</a></td>
+  <td>工具归因与后训练</td>
+  <td>旧元数据，本次补核</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>35</td>
+  <td><a href="https://arxiv.org/abs/2606.11652">IAPO</a></td>
+  <td>工具归因与后训练</td>
+  <td>旧元数据，本次补核</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+<tr>
+  <td>36</td>
+  <td><a href="https://arxiv.org/abs/2607.28627">ReToken</a></td>
+  <td>视觉检索与效率</td>
+  <td>独立研读笔记</td>
+  <td><span class="retained-source" title="服务器上的历史证据，仓库内未分发">本地证据</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3>10.4 值得保留的已有思考，而不是本次才产生的观点</h3>
+<ul>
+<li><strong>教师与学生的差距可能来自输入特权。</strong> Vision-OPD 的旧 Q&amp;A 已讨论 crop、位置提示、冻结／EMA 教师与训练测试不一致；因此后续不能只展示教师更准，还要检验学生从原图能学到什么。<span class="retained-source" title="服务器上的历史证据，仓库内未分发">既有问答</span></li>
+<li><strong>注意力、遮挡敏感性与因果证据不是同一回事。</strong> 医学失败分析和 OPD-V 的旧笔记已经提出这一点；本次把它进一步转成可控的 observation 替换实验。<span class="retained-source" title="服务器上的历史证据，仓库内未分发">医学失败分析笔记</span>、<span class="retained-source" title="服务器上的历史证据，仓库内未分发">OPD-V 问答</span></li>
+<li><strong>工具收益标签会随模型变化。</strong> AdaTooler-V 的既有分析质疑大参考模型产生的标签是否适合小模型当前策略；本项目三模型收益差异正好提供了继续检验的机会。<span class="retained-source" title="服务器上的历史证据，仓库内未分发">既有分析</span></li>
+<li><strong>减少 token 不必然等于端到端加速。</strong> SpecEyes、Med-TIV 的历史笔记已经关注服务、采样、工具与验证成本；后续应实测延迟与总资源。<span class="retained-source" title="服务器上的历史证据，仓库内未分发">SpecEyes 笔记</span></li>
+<li><strong>多图输入本身不证明多图必要性。</strong> MedMultiBench 的旧笔记建议移除、打乱和替换图像；这同样适用于本项目原图、crop、overlay 的组合。<span class="retained-source" title="服务器上的历史证据，仓库内未分发">既有分析</span></li>
+</ul>
+<p>简历可增加一句研究背景：“系统梳理医学视觉工具智能体、选择性调用与视觉 on-policy 蒸馏路线，并结合本地实验分析工具增益、退化及教师特权问题。”不建议直接写“精读 36 篇”或“复现 36 篇”，因为文献资产的证据层级不同。</p>
+</div></details></section><section class="section" id="recent"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">11</span><h2>近期相关工作</h2></div><p class="section-description">检索截至 2026-11-14；首发与修订分别记录，不做跨任务分数排名。</p></div><span class="section-meta">RECENT RESEARCH</span></div><div class="research-priorities"><article class="research-priority"><small>01 / 解释现象</small><h3>MED</h3><p>同一 checkpoint 下，拆开基座能力变化与工具收益。</p><a href="https://arxiv.org/html/2602.01334v2" target="_blank" rel="noopener noreferrer">官方全文 ↗</a></article><article class="research-priority"><small>02 / 使用证据</small><h3>Reframe</h3><p>11 月新工作：修复坏观察，训练模型使用工具返回结果。</p><a href="https://arxiv.org/html/2611.12886v1" target="_blank" rel="noopener noreferrer">官方全文 ↗</a></article><article class="research-priority"><small>03 / 医学迁移</small><h3>UR²-MLLM</h3><p>选择性回看与随机区域校准；先迁移思路，再验证 VQA。</p><a href="https://arxiv.org/html/2608.22217v1" target="_blank" rel="noopener noreferrer">官方全文 ↗</a></article></div><p class="overview-note">近期研究正在把重点从“有没有调用工具”，推进到“证据是否有效、是否被使用”。<br>论文中的方法与下面的迁移建议，均不代表本项目已经完成的新成果。</p><div class="surface"><div class="prose"><h3>11.1 检索口径与时间边界</h3>
+<p>本次以官方 arXiv 版本史、论文 HTML、PMLR／ACL 正式条目及作者代码为最终依据，重点补充 2026-08-01 至 2026-11-14 的工作，并复核旧论文的新版本。以下“首发”指 arXiv v1；修订日期另列。找到的最近新论文首发于 <strong>2026-11-09</strong>，旧论文最近核验更新为 <strong>2026-11-10</strong>。这不是全网穷尽清单，也不能说明之后几天没有新研究。</p>
+<p>专用学术检索 MCP 当前未挂载，OpenAlex fallback 返回 HTTP 429；实际继续使用公开搜索发现候选，并回到一手原文核验。检索词、访问限制和逐篇证据深度保留在 <a href="references.md">核验记录</a>、<a href="references.md">通用视觉方法记录</a> 与 <a href="references.md">医学方法记录</a>。没有新增训练、复现这些论文成绩或下载整个文献库。</p>
+<h3>11.2 本次新增的十篇工作</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>论文与一手来源</th>
+  <th>首发／核验版本</th>
+  <th>核心机制</th>
+  <th>对本项目最值得测试的点</th>
+  <th>迁移边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="https://arxiv.org/abs/2611.12886">Reframe</a></td>
+  <td>2026-11-09；v1 · 2026-11-09</td>
+  <td>GD-GRPO 训练证据依赖，OG-MOPD 在 rollout 中修复不合格动作与观察状态。</td>
+  <td>先测模型是否使用工具观察，再消融定位奖励、原图 dropout 与观察修复；全局题保留原图。</td>
+  <td>需要可信定位标注和专家；注入动作单独监督，修复历史并非完全原始 on-policy。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2611.11949">VIOS</a></td>
+  <td>2026-11-09；v1 · 2026-11-09</td>
+  <td>对比教师与学生有／无视频时的分布差，按视觉依赖差异加权蒸馏。</td>
+  <td>先离线诊断部位、属性、否定词附近的视觉依赖，再比较均匀与选择性蒸馏。</td>
+  <td>视频任务，教师有答案特权且需额外前向；视觉敏感性不等于区域定位或答案正确。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2611.10734">SPN-OPSD</a></td>
+  <td>2026-11-07；v1 · 2026-11-07</td>
+  <td>利用证据 crop 正视图与证据模糊、背景保留的负视图，选择 token 做对比蒸馏。</td>
+  <td>小结构题比较真实区域与同面积随机区域模糊，固定文字提示，隔离视觉与提示效应。</td>
+  <td>需要区域信息，正负条件还改变文字提示；通用小模型结果尚不能外推到医学。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2610.35842">MedVTok</a></td>
+  <td>2026-10-26；v1 · 2026-10-26</td>
+  <td>以统一 token 空间处理医学 2D／3D 视觉输入，并对齐结构与语义。</td>
+  <td>只有确认视觉编码瓶颈后，再考虑冻结医学编码器或轻量适配器对照。</td>
+  <td>视觉表示预训练路线，资源与接口成本高，不是工具选择或低成本后训练方案。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2610.32258">MedCaseAgent</a></td>
+  <td>2026-10-23；v1 · 2026-10-23</td>
+  <td>Planner–Writer–Editor 组织多种医学证据检索，planner 经 SFT 与 GRPO。</td>
+  <td>为检索和视觉 observation 记录来源、服务版本、坐标、失败状态和耗时，检查答案来源泄漏。</td>
+  <td>病例报告任务与短答案 VQA 不同；来源排除需显式配置，公开代码不等于完整训练复现。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2610.14265">TiCO</a></td>
+  <td>2026-10-09；v1 · 2026-10-09</td>
+  <td>用 probe token 与视觉 patch 的相似度选择连通证据区域，替代显式坐标生成接口。</td>
+  <td>若坐标／尺度映射是主要错误，再比较数字框、固定网格与 token 选区。</td>
+  <td>训练仍用 bbox 构造 patch 监督；coordinate-free 不等于无需标注或没有空间信息。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2610.02117">Where-OPD</a></td>
+  <td>2026-10-01；v1 · 2026-10-01</td>
+  <td>学生看原图，冻结同源教师额外获得合成场景中的空间提示。</td>
+  <td>将位置帮助、答案帮助和 crop 帮助分开消融，先验证教师优势再训练学生。</td>
+  <td>合成器提供位置与答案相关信息；无需人工标注不等于没有特权监督。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2609.36838">ReVuE</a></td>
+  <td>2026-09-29；v1 · 2026-09-29</td>
+  <td>按 Acquire／Read／Ground 的首次失败构造反思，以教师概率变化重加权蒸馏。</td>
+  <td>先给已有改善与退化样本做证据链错误标注，验证分类可靠性后再做 token 权重。</td>
+  <td>完整方案依赖参考答案、冻结 expert 与独立大 critic，不是廉价纯自蒸馏。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2608.22217">UR²-MLLM</a></td>
+  <td>2026-08-23；v1 · 2026-08-23</td>
+  <td>学习不确定性与区域回看；视觉奖励以选中区域相似度减去同面积随机区域基线。</td>
+  <td>在当前工具 API 上先做可选一次回看，和固定先工具比较，并引入随机区域校准。</td>
+  <td>主任务是放射报告生成；相似度奖励与 hedge 表达都不能当作临床正确性或校准概率。</td>
+</tr>
+<tr>
+  <td><a href="https://arxiv.org/abs/2608.06270">Visual Tool-Use Causal Audit</a></td>
+  <td>2026-08-06；v2 · 2026-09-08</td>
+  <td>区分策略、全轨迹、单步观察干预，诊断调用但未看与看了却未合理规划。</td>
+  <td>固定动作前缀替换一次 observation，多种控制下重采样后续，同时记录正确性与成本。</td>
+  <td>估计依赖特定干预与反事实观察定义；不能把历史 direct／agent 配对差直接命名为观察因果收益。</td>
+</tr>
+</tbody>
+</table></div>
+<h3>11.3 三篇历史论文的版本更新与四个旧引用补核</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>历史记录</th>
+  <th>本次核验到的更新</th>
+  <th>应如何表述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Do Multimodal Agents Really Benefit from Tool Use?</td>
+  <td><a href="https://arxiv.org/abs/2606.02357v3">2606.02357v3，2026-11-10</a>，题名改为 <em>With Tools or Because of Tools? Tracing Capability Gains in Multimodal Agents</em></td>
+  <td>同篇新版；比较解题集合、格式和返回结果，不能把其归因分析自动升级为因果结论</td>
+</tr>
+<tr>
+  <td>Visual Contrastive Self-Distillation</td>
+  <td><a href="https://arxiv.org/abs/2607.21556v2">2607.21556v2，2026-10-15</a></td>
+  <td>本地是 v1 笔记；本次补核 v2。视觉分布对比不是 embedding 对比学习</td>
+</tr>
+<tr>
+  <td>ReToken</td>
+  <td><a href="https://arxiv.org/abs/2607.28627v2">2607.28627v2，2026-10-06</a>，题名为 <em>ReToken: Improving Long-Context VLMs with Visual Retrieval Token</em></td>
+  <td>长视觉上下文检索方向；是长期扩展，不是已有医学局部感知收益</td>
+</tr>
+</tbody>
+</table></div>
+<p>7 月增补报告中四项待核验线索，本次均找到了官方标识：<strong>ToolsRL</strong> <a href="https://arxiv.org/abs/2604.19945">2604.19945</a>、<strong>MED</strong> <a href="https://arxiv.org/abs/2602.01334v2">2602.01334v2</a>、上表的 <strong>With Tools or Because of Tools?</strong>、<strong>IAPO</strong> <a href="https://arxiv.org/abs/2606.11652">2606.11652</a>。它们属于旧引用补核，不能算成十篇新增工作。MED 已核验 ICML 2026 正式记录；IAPO 此处特指 Input Attribution-Aware Policy Optimization，避免与同名方法混淆。</p>
+<h3>11.4 把相关工作转成技术选择</h3>
+<p><strong>如果只选三篇优先读：先 MED，再 Reframe，再 UR²-MLLM。</strong> MED 帮助区分模型本身变强与工具交互变好；Reframe 直面观察没有被有效使用的问题；UR²-MLLM 提供医学场景下选择性回看和随机区域校准的思路。三者服务于不同环节，不能直接比较论文分数。<a href="https://arxiv.org/html/2602.01334v2">MED 全文</a>、<a href="https://arxiv.org/html/2611.12886v1">Reframe 全文</a>、<a href="https://arxiv.org/html/2608.22217v1">UR²-MLLM 全文</a></p>
+<p><strong>若准备投入蒸馏，先验证教师优势与学生可学性。</strong> 本地全量 crop-only 比原图弱，说明不能直接假设区域教师普遍更强。按局部识别、全局关系、计数等分层，比较原图、原图加预测 ROI、原图加标注 ROI 的教师，再选择 Vision-OPD／OPD-V／SPN-OPSD 等训练路线。原图加 crop 的效用与纯 crop 条件也应分开。这是基于本项目结果的方案选择，不是上述论文给出的医学结论。</p>
+<p><strong>若主要是坐标或细节丢失，再考虑表征与接口改变。</strong> TiCO 是对坐标生成接口的替代思路，MedVTok 是视觉表示学习路线；二者都可能需要大幅改动。先统计坐标错误、有效区域命中和正确 ROI 下的读取能力，再决定是否值得投入。不能因为方法新，就越过低成本诊断直接换编码器。</p>
+<p><strong>若想形成研究差异，观察层的诊断比再叠一个算法更重要。</strong> 新工作已经研究工具因果审计、观察依赖和视觉蒸馏。当前更值得做的是在医学 VQA 中证明哪类失败占主导、哪种干预有效、哪些收益能迁移；下一节和第十三节将这些想法写成待证伪的假设。</p>
+</div></div></section><section class="section" id="task"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">12</span><h2>任务与技术路线</h2></div><p class="section-description">把医学 VQA 看作有限预算下的证据获取、使用与决策。</p></div><span class="section-meta">TASK & METHODS</span></div><div class="evidence-flow" aria-label="证据决策的五个检查环节"><div class="evidence-step"><small>01</small><strong>找证据</strong><span>是否需要新观察？</span></div><div class="evidence-step"><small>02</small><strong>取对区域</strong><span>位置与尺度对不对？</span></div><div class="evidence-step"><small>03</small><strong>读出事实</strong><span>细节能否被辨认？</span></div><div class="evidence-step"><small>04</small><strong>支持结论</strong><span>答案真的使用它吗？</span></div><div class="evidence-step"><small>05</small><strong>决定停止</strong><span>收益还值得成本吗？</span></div></div><div class="surface"><div class="prose"><h3>12.1 任务的核心是“有成本的证据获取与使用”</h3>
+<p>把本项目理解成一个有限预算的视觉决策过程更有解释力：模型接收图像和问题，判断当前证据是否足够；不足时选择工具和参数，检查返回结果，更新判断，再决定回答、继续观察或停止。医学知识、视觉表征、工具质量与策略共同决定结果。工具调用次数只描述行为，不能直接衡量能力。</p>
+<p>这里至少有三种不同的研究任务：<strong>图像问答</strong>追求答案正确；<strong>grounding／交互分割</strong>追求区域定位或 mask 质量；<strong>证据驱动的 Agent</strong>还需要证明动作选择、观察消费和停止时机合理。SLAKE 上答对，不自动等于分割准确；mask IoU 提升，也不自动等于问答增益。MedSAM-Agent、IBISAgent 等可贡献交互机制，但其分割成绩不能直接与本项目 VQA 分数比较。</p>
+<p>场景也决定工具价值：</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>场景</th>
+  <th>真正缺少什么</th>
+  <th>优先动作</th>
+  <th>需要防范的误解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>全局模态、切面、器官识别</td>
+  <td>全局视觉与基本知识</td>
+  <td>原图直接作答，必要时无工具 CoT</td>
+  <td>全图任务强制 crop 可能损失上下文</td>
+</tr>
+<tr>
+  <td>小结构、局部边界、低分辨率细节</td>
+  <td>可辨认的局部视觉证据</td>
+  <td>定位后保留原图并加入高分辨率 crop</td>
+  <td>框得准不代表特征读得对</td>
+</tr>
+<tr>
+  <td>解剖位置、大小或空间关系</td>
+  <td>定位与可核验的结构信息</td>
+  <td>segment／标记／测量，并保持原坐标关系</td>
+  <td>overlay 可能遮挡病灶；分割模型也会失败</td>
+</tr>
+<tr>
+  <td>图像可见但医学含义不明确</td>
+  <td>概念与知识支持</td>
+  <td>来源可追溯的检索，再回到图像核对</td>
+  <td>检索不能证明某征象确实存在于这张图</td>
+</tr>
+<tr>
+  <td>工具与原图结论冲突</td>
+  <td>可靠性判断和恢复策略</td>
+  <td>验证、回退、更换观察方式或输出不确定性</td>
+  <td>“工具更专业”不等于每个样本更可靠</td>
+</tr>
+<tr>
+  <td>多视图、3D 或病例级证据</td>
+  <td>当前输入之外的观测</td>
+  <td>单独设计新的任务和数据协议</td>
+  <td>现有 2D VQA 实验没有证明这些场景的能力</td>
+</tr>
+</tbody>
+</table></div>
+<p>建议把当前研究边界固定为<strong>离线、2D 医学图像问答中的选择性工具使用</strong>，以局部细节和空间关系题作为重点分层；先证明这类任务的增益，再扩展到报告生成或 3D。上表是任务设计建议，不代表当前系统已经支持所有场景。</p>
+<h3>12.2 “再看一眼”为什么可能有用，为什么也可能无效</h3>
+<p>确定性的 crop 并没有给原始图像增加新的物理事实，但模型处理的是经过缩放、编码和 token 压缩后的表示。重新编码局部区域，可能让原先被压缩掉的细节进入模型可用的表示；这是表征层面的证据恢复。若错误来自医学知识或推理规则，单纯多裁几次图不一定有效。外部分割器还引入了另一个模型的计算与先验，同样需要质量检查。</p>
+<p>本项目在 1,053 条 SLAKE English validation 上的全量验证实验中，judge 正确率分别为：原图 68.76%、原图加 crop 68.00%、仅 crop 62.11%。它提示“局部信息与全局语境如何结合”值得研究，但由于框包含问题／答案关联标注、union 和回退策略，不能据此宣布模型不需要局部视觉证据，也不能把这个实验称作理想 ROI 上界。</p>
+<p>一个有价值的对照是：在相同总视觉 token 预算下比较原图高分辨率、原图加局部图、均匀多块切图和学习定位；再另做相同延迟或相同总推理成本的比较。这样可以分清收益来自“增加了算力”还是“把算力用到了更相关的位置”。</p>
+<h3>12.3 先诊断失败环节，再选优化方法</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>失败环节</th>
+  <th>可观察现象</th>
+  <th>最小诊断实验</th>
+  <th>对应手段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>证据获取</td>
+  <td>漏调用、框偏移、目标未进入 crop</td>
+  <td>比较预测区域与独立人工区域；保留整图对照</td>
+  <td>坐标与分辨率修复、定位监督、多尺度搜索</td>
+</tr>
+<tr>
+  <td>证据读取</td>
+  <td>区域正确，但小结构或属性读错</td>
+  <td>固定正确区域，测局部属性问答</td>
+  <td>领域视觉数据、分辨率预算、视觉编码器适配</td>
+</tr>
+<tr>
+  <td>证据整合</td>
+  <td>工具返回有用信息，答案忽略或误解它</td>
+  <td>固定动作前缀，替换／移除 observation 后续采样</td>
+  <td>观察消费训练、局部与全局融合、证据对齐蒸馏</td>
+</tr>
+<tr>
+  <td>行动选择</td>
+  <td>简单题也调用，难题却跳过</td>
+  <td>干净开发集做 direct／固定工具／可选工具配对</td>
+  <td>成本敏感 router、上下文 bandit，再考虑多轮 RL</td>
+</tr>
+<tr>
+  <td>运行与停止</td>
+  <td>空输出、超时、截断、循环调用</td>
+  <td>对照执行日志、终止原因和剩余预算</td>
+  <td>明确错误协议、有限重试、缓存、回退与停止奖励</td>
+</tr>
+</tbody>
+</table></div>
+<p>这套分类是本次为项目设计的诊断框架。与 MED 对工具增益、伤害和定位／使用错误的分析相呼应，但需要在本项目重新标注验证。<a href="https://arxiv.org/html/2602.01334v2">MED，第 3–4 节</a></p>
+<p><strong>不要把所有错误压成“模型不够聪明”。</strong> 如果主要是无答案和坐标转换问题，先做工程修复；如果框正确但读错，再投入视觉适配；如果能够读取却不使用，才重点研究 observation 的信用分配和蒸馏。</p>
+<h3>12.4 将“选择性调用”写成可学习的问题</h3>
+<p>部署时，策略只能看问题、原图、已有历史、可获得的置信特征和剩余预算，不能看正确答案、测试标注框或事后 judge。完整问题可以描述为部分可观测的序列决策：真实的工具可靠性与证据充分性不可直接观测，策略根据历史形成判断。但第一版不必做复杂多轮 RL，可以先学习一次性选择 direct、zoom 或 segment 的上下文 bandit／监督 router。</p>
+<p>一个直观的工具价值分解是：</p>
+<pre><code class="language-text">预期净价值(a | 当前信息)
+  = P(直接回答会错) × P(动作 a 能修复 | 直接会错)
+  − P(直接回答会对) × P(动作 a 会破坏 | 直接会对)
+  − λ × 动作成本
+</code></pre>
+<p>这些是需要用开发集估计的概率，不是推理时已知标签。对更强基座而言，可修复的错误可能更少，破坏既有正确答案的代价可能更大；这提供了三模型工具收益符号不同的一种解释假设，仍须排除 prompt、预算和工具执行差异。</p>
+<p>训练可先采用 <code>答案得分 − 调用成本 − token／延迟成本 − 无效动作惩罚</code>，不同量纲需要归一化并在开发集选择权重。更清楚的报告方式是在若干固定预算下画准确率—成本 Pareto 曲线。不能只奖励“少调用”，否则模型可能全跳过；也不能奖励“答对且必须调用”，否则容易学到无意义调用。</p>
+<p>首次调用前的 router 只能用当时可见的特征，如问题类型、图像尺寸，以及已经运行过的原图回答的校准置信度；若额外计算定位稳定性或先生成 Direct 答案，必须计入总成本。工具输出是否为空、mask 是否异常等信息，只能用于调用后的恢复、下一步选择或停止，不能提前作为首次调用特征。文字自报“我很有信心”不应直接当作可靠概率。需要报告校准、覆盖率与选择性错误率；加入拒答时同时报告覆盖率，避免通过大量不回答制造表面高准确率。</p>
+<h3>12.5 SFT、RL、OPD 各解决哪一层</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>手段</th>
+  <th>更适合解决的部分</th>
+  <th>当前资产如何复用</th>
+  <th>应先验证的条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>SFT／纠错示范</td>
+  <td>工具格式、合法参数、观察消费、适时停止</td>
+  <td>使用已清理轨迹，同时保留直接回答与失败恢复样本</td>
+  <td>教师轨迹确实包含有用证据；训练测试隔离</td>
+</tr>
+<tr>
+  <td>工具专项课程</td>
+  <td>坐标、定位、旋转等动作执行能力</td>
+  <td>用训练集区域标注监督动作，再切回答任务</td>
+  <td>标注用于训练；医学图像增强不破坏左右／方向语义</td>
+</tr>
+<tr>
+  <td>GRPO／RLVR</td>
+  <td>多条合法路径的结果与成本权衡</td>
+  <td>已有多轮环境、reward 与训练基础设施</td>
+  <td>reward 能区分有效动作；组内有区分度，日志覆盖退化</td>
+</tr>
+<tr>
+  <td>偏好优化</td>
+  <td>同题好坏轨迹之间的偏好</td>
+  <td>构造正确且低成本 vs 错误／高成本的配对</td>
+  <td>长度、格式与教师文风不能成为唯一偏好捷径</td>
+</tr>
+<tr>
+  <td>On-policy distillation</td>
+  <td>学生实际访问状态上的决策／证据使用</td>
+  <td>从学生 rollout 的前缀请求教师打分或指导</td>
+  <td>学生可学性、视觉信息对齐、教师信号质量</td>
+</tr>
+<tr>
+  <td>视觉表征或 token 适配</td>
+  <td>全局压缩导致的细节丢失、领域视觉差距</td>
+  <td>crop／grounding 诊断结果可确定训练目标</td>
+  <td>先证实是读取瓶颈；改模型结构的成本高于修工具链</td>
+</tr>
+</tbody>
+</table></div>
+<p>OPD 不是“教师生成答案，再做一次 SFT”的同义词。关键是监督发生在学生当前会访问的轨迹／前缀上，减少训练分布与推理分布错位。教师可以在训练时拥有标注 crop 或其他特权，但学生是否能从部署输入推断出同样证据，要独立验证；教师更强可能来自额外信息，不一定全是能内化的能力。这个担忧与你已有的 <span class="retained-source" title="服务器上的历史证据，仓库内未分发">OPD 状态分布笔记</span> 和 <span class="retained-source" title="服务器上的历史证据，仓库内未分发">相关项目的 privilege illusion 讨论</span> 相通，后者是另一个任务线的研究材料，不能合并成当前医学项目的实验结果。</p>
+<h3>12.6 三个值得保留的判断</h3>
+<ol>
+<li><strong>先问证据是否必要，再问模型是否用了证据。</strong> 如果原图已经充分，删除 crop 后答案不变不等于模型不忠实；应在细节依赖题上做干预，并把充分性、正确性、使用情况分开标注。</li>
+<li><strong>工具效用随模型和状态变化。</strong> 固定全局工具排序难以覆盖样本差异。训练后 no-tool 能力增强，可能让原来的工具策略过度调用；应在多个 checkpoint 复评，而不是只看最终工具调用率。</li>
+<li><strong>ROI 教师的价值与知识教师不同。</strong> 前者可能提供学生部署时看不到的细节，后者提供可学习的推理或知识。将两者混在一个蒸馏奖励里，会使“内化了什么”难以解释。</li>
+</ol>
+<p>这些是结合本地结果与相关研究提出的可检验推断，尚不是本项目已证明的结论。</p>
+</div></div></section><section class="section" id="experiments"><div class="section-heading"><div><div class="section-title"><span class="section-kicker">13</span><h2>延伸研究假设</h2></div><p class="section-description">每个假设都给出最小实验、评测指标与证伪条件。</p></div><span class="section-meta">TESTABLE IDEAS</span></div><div class="phase-grid"><div class="phase"><small>H1 · 待验证</small><h3>减少工具伤害</h3><p>选择性调用能否保住原本正确的题？</p></div><div class="phase"><small>H2 · 待验证</small><h3>定位还是证据使用</h3><p>正确区域仍答错，问题到底在哪一层？</p></div><div class="phase"><small>H3 · 待验证</small><h3>教师特权与迁移</h3><p>教师优势有多少能被学生从原图学会？</p></div><div class="phase"><small>H4 · 待验证</small><h3>工具故障与恢复</h3><p>遇到错误观察，能否停止、切换或回退？</p></div></div><p class="evidence-note">优先完成统一评测与失败诊断，再选择训练路线。以下是计划，尚未运行。</p><details class="disclosure" open><summary>13.1 从现有四桶结果得到什么新的问题</summary><div class="prose"><p>Qwen3.5-9B 的历史内部池里，Direct 正确 9,394 题、错误 603 题；工具流程修复后者中的 199 题，同时使前者中的 450 题退化。由已有配对计数可以复算：原本错误的 603 题中修复率约 <strong>33.00%</strong>；原本正确的 9,394 题中退化率约 <strong>4.79%</strong>。看起来不大的破坏率，因为正确题基数更大，仍足以超过修复收益。这支持研究“避免伤害”的必要性，不能证明某一种 router 已有效。</p>
+<p>如果事后知道每题哪个流程正确，两条固定历史结果的正确集合并集为 9,593／9,997，约 <strong>95.96%</strong>，比 Direct 高约 1.99 个百分点。这只是<strong>事后集合并集参考</strong>：使用了正确答案来挑选，未计双流程成本，也不是可部署成绩、泛化上界或新实验结果。它提示该池上存在互补性，同时提醒可挖掘的净空间可能有限。</p>
+<p>215 条无答案已包含在四桶中，196 条落在退化组。优先区分超时、服务错误、解析失败、max tokens 和无终止动作，而不是直接把这些样本全部用于“复杂视觉推理”训练。修复运行错误与学会视觉推理，应分别报告。</p>
+</div></details><details class="disclosure"><summary>13.2 假设 H1：选择性调用的主要收益可能先来自减少伤害</summary><div class="prose"><p><strong>假设。</strong> 在强基座和简单题占比较高的医学 VQA 中，固定工具策略的破坏成本超过修复收益；允许跳过并识别失败，可在较低成本下保住 Direct 的正确题。</p>
+<p><strong>最小实验。</strong> 固定一个 checkpoint、解码和评测器，比较 Direct、固定单工具、允许零次调用、规则 router、学习 router；另外保留等预算无工具 CoT 对照。router 用干净训练／开发集学习；测试集只用一次定稿评估。以原始图像或病例分组，不把同一图的问答随机拆到两边。</p>
+<p><strong>主指标。</strong> 总正确率、配对 gain／harm、调用数、总视觉与文本 token、p50／p95 延迟、无答案率。按问题类型、目标区域尺度和基座分层，报告图像／病例聚类 bootstrap 区间，而不将同图多题视为独立样本。</p>
+<p><strong>证伪条件。</strong> 若减少调用同时大幅损失原有修复，或在相同预算下不优于 Direct／规则 router，就不能宣称学会了有效策略。原型成功可暂定为“准确率非劣且成本下降”，非劣阈值须事前确定并说明，而非看完 test 后挑阈值。</p>
+</div></details><details class="disclosure"><summary>13.3 假设 H2：一部分失败来自“看到但不会用”，而非定位不准</summary><div class="prose"><p><strong>假设。</strong> 部分题在正确局部证据已提供时仍失败，主要瓶颈是读取、全局融合或证据整合；更精细的 bbox reward 未必解决它。</p>
+<p><strong>最小实验。</strong> 在隔离的诊断集建立原图、人工有效 ROI 加原图、模型 ROI 加原图、错误 ROI 加原图四组；使用一致视觉 token 预算再做一个不等预算版本。人工 ROI 作为特权诊断条件单列，不能加入正式部署输入。对正确 ROI 仍失败的题，标注“细节仍不可辨”“属性读错”“属性读对但结论错”，最后一类再区分医学知识／规则不足和证据整合错误。</p>
+<p>随后固定动作前缀，分别保留真实 observation、格式匹配的空 observation、同类错误 observation，重复生成后续答案。错误 observation 会引入分布变化，因此用多种控制并报告不自然输入比例；单个置空实验不能证明一般性的因果忠实。用同一 checkpoint、同一随机种子集合和相同后续预算减少无关差异。</p>
+<p><strong>优化分支。</strong> 读取瓶颈优先视觉训练或分辨率；整合瓶颈优先教师反馈、观察消费示范和 token 级蒸馏；工具本身错误则改质量检测与恢复。</p>
+<p><strong>证伪条件。</strong> 如果人工有效 ROI 已基本解决错误，主要应投入定位与证据获取；如果只有更多视觉 token 有效而 ROI 选择无额外收益，优先做预算和编码优化。</p>
+</div></details><details class="disclosure"><summary>13.4 假设 H3：可部署证据的教师，比答案特权教师更适合训练可用策略</summary><div class="prose"><p><strong>假设。</strong> 标注区域或答案提示带来的教师优势，可能部分来自不可迁移的信息；约束教师使用学生部署时可获得的图像和工具，有机会得到较小但更稳定的训练信号。</p>
+<p><strong>最小实验。</strong> 统一学生、训练样本和更新预算，采用同源教师并固定权重或 EMA 更新规则，在相同学生前缀上比较四组条件：原图；原图加预测 ROI；原图加标注 ROI；原图加同一标注 ROI 再加答案提示。各组保留原图，固定非实验 prompt 与视觉预算，另报告实际计算成本；后两类明确属于特权教师。先离线比较教师的准确率与学生可达性，再分别做小预算 SFT／OPD；教师优劣与学生最终增益分开统计。</p>
+<p><strong>必要消融。</strong> 学生 on-policy 前缀 vs 离线教师轨迹；均匀 token 权重 vs 故障环节权重；只对齐答案 vs 同时对齐工具决策；只做知识提示 vs 只做视觉特权。每次只改变一个核心因素，避免一次把所有方案都接入。</p>
+<p><strong>证伪条件。</strong> 如果特权 ROI 教师训练出的学生在干净外部测试上仍获得稳定收益，应承认特权监督有可迁移价值；是否内化了视觉证据获取或使用，仍需干预验证；如果可部署教师信号更弱且学生也更差，就不能仅凭“更真实”宣称更优。训练期标注的合法使用与测试泄漏是两回事。</p>
+</div></details><details class="disclosure"><summary>13.5 假设 H4：带故障的工具环境，能检验策略是否学会恢复</summary><div class="prose"><p><strong>假设。</strong> 训练中覆盖空 mask、偏移 crop、检索噪声、延迟和格式失败，可能帮助模型学到有限重试、换工具和回退；验证集故障只用于选择方案和测量已有能力，不能把验证过程本身解释为学习。</p>
+<p><strong>最小实验。</strong> 在可复现工具 wrapper 内预设故障类型、强度和随机种子，对同一批题逐级注入。比较无恢复、固定重试、规则回退、学习恢复。训练故障分布与测试故障类型留出一部分，避免只学会识别某个固定错误字符串。</p>
+<p><strong>主指标。</strong> 故障强度—任务性能曲线、恢复成功率、重复无效动作数、额外延迟和高置信错误率。使用专门的合法错误 observation，不能把服务异常静默伪装成“未发现病灶”。</p>
+<p><strong>证伪条件。</strong> 如果收益只在见过的错误模板上成立，或者通过大量拒答取得高准确率，就没有证明通用恢复能力。需配合覆盖率和成本报告。</p>
+</div></details><details class="disclosure"><summary>13.6 推荐执行顺序与最小对照矩阵</summary><div class="prose"><p>先做 H1 和 H2 的轻量诊断，再决定是否投入 H3 的蒸馏与 H4 的多轮强化学习。以下是计划，不是已经完成的实验。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>阶段</th>
+  <th>实验与对照</th>
+  <th>复用资产</th>
+  <th>进入下一步的判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>P0：证据清理</td>
+  <td>重建干净 split、固定模型／后端／解码／judge；聚类去重</td>
+  <td>现有审核脚本、SLAKE 数据和测试结果</td>
+  <td>输入、样本、指标均可复算；旧受污染结果不作主结论</td>
+</tr>
+<tr>
+  <td>P1：统一基线</td>
+  <td>Direct、等预算 CoT、固定 crop、可选工具、规则 router</td>
+  <td>工具服务器和配对评测脚本</td>
+  <td>确认 gain／harm 不是后端、prompt 或超时造成</td>
+</tr>
+<tr>
+  <td>P2：瓶颈定位</td>
+  <td>训练／开发集上人工 ROI 诊断、观察替换、运行错误归因</td>
+  <td>crop、mask、四桶轨迹</td>
+  <td>明确主要错误环节，决定训练目标</td>
+</tr>
+<tr>
+  <td>P3：最小学习方案</td>
+  <td>同量干净 SFT；一次性学习 router；与规则 router 对照</td>
+  <td>教师轨迹和已有训练框架</td>
+  <td>同预算下收益或非劣成本优势，含置信区间</td>
+</tr>
+<tr>
+  <td>P4：有选择地后训练</td>
+  <td>outcome-only、成本项、工具课程／证据蒸馏逐项消融</td>
+  <td>GRPO／OPD 相关工程与阅读积累</td>
+  <td>证明新增组件改善哪个环节，而非仅提升总体分数</td>
+</tr>
+<tr>
+  <td>P5：外部验证</td>
+  <td>独立来源／模态留出、故障扰动、不同模型</td>
+  <td>现有医学基准接口</td>
+  <td>评估域外与故障稳健性，保留负结果</td>
+</tr>
+</tbody>
+</table></div>
+<p>训练、开发和锁定测试承担不同角色。既有 test 已被多轮观察，后续阈值与模型选择只用开发集；重要最终结论最好增加新的外部留出集。重复使用 test 做研究诊断时，须披露其已被使用，不能再称完全未触碰。</p>
+</div></details><details class="disclosure"><summary>13.7 有哪些可能的贡献，哪些还不能写成创新</summary><div class="prose"><p>最匹配现有资产的主线是：<strong>医学视觉工具效用审计，加上由失败诊断驱动的选择性调用与证据学习</strong>。交付可以是一个明确协议、可复算的 gain／harm 与故障分析、一个小而有效的 router，以及定位／读取／整合的消融。只有获得干净实验后，才能将“成本下降”“泛化提升”或“减少伤害”写成结果。</p>
+<p>2026 年的 MED、With Tools or Because of Tools、视觉工具因果审计，以及视觉证据蒸馏工作已经覆盖了大量相近概念。因此不宜把“工具有时无效”“加一个 router”“使用 GRPO／OPD”单独宣称为首次创新。差异化需要落到医学任务的具体失效机制、可信的对照设计和有统计支持的改进。一个完整、诚实、能解释负结果的实习项目，已经比堆砌多个算法名称更有说服力。</p>
+<p>面试中可以这样表达新增思考：</p>
+<blockquote>
+<p>我后来把问题从“让模型学会调用工具”重新理解成“让模型在合适的时候获取并使用可靠视觉证据”。已有实验里，工具能修复一部分错误，也会破坏更多原本正确的回答，所以我会先拆分定位、读取、整合和运行失败，在统一预算下评估选择性调用，再决定是做视觉适配、工具课程还是 on-policy 蒸馏。这些是基于已有结果和文献提出的下一步计划，当前还没有把它们当作已完成成果。</p>
+</blockquote>
+</div></details></section><footer class="footer"><span>Thinking with Images · 独立项目复盘与研究思考</span><span>历史记录、新检索与待做实验分别标明 · 文献更新截至 2026.11.14</span></footer></main></div>
+<a class="back-top no-print" href="#overview" aria-label="返回顶部">↑ 顶部</a><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<dialog id="source-dialog" aria-labelledby="source-name"><h3 id="source-name">原始证据</h3><p>这是服务器上的原始文件。可复制路径，在服务器终端或编辑器中打开；本页未将源码上传到外部服务。</p><label class="sr-only" for="source-path">服务器文件路径</label><textarea id="source-path" readonly></textarea><div class="dialog-actions"><button id="close-source" class="btn" type="button">关闭</button><button id="copy-source" class="btn primary" type="button">复制路径</button></div></dialog>
+<script id="page-data" type="application/json">{"metrics": {"scope": "Read-only arithmetic and identity checks; no new training or inference.", "metric_note": "non_judge_accuracy = OPEN EM + CLOSE original-rule scoring, weighted by question counts; judge changes OPEN only.", "same_saved_test_question_answer_language_prompt": true, "caveat": "Saved prompt identity does not prove identical actual system prompts or decoding; see source audit.", "slake_test": {"base": {"n": 1061, "non_judge_correct": 495, "non_judge_accuracy": 0.4665409990574929, "open_em": 0.26666666666666666, "close_accuracy": 0.7764423076923077, "judge_correct": 702, "judge_accuracy": 0.6616399622997172}, "r1_step114": {"n": 1061, "non_judge_correct": 714, "non_judge_accuracy": 0.6729500471253534, "open_em": 0.5612403100775194, "close_accuracy": 0.8461538461538461, "judge_correct": 790, "judge_accuracy": 0.7445805843543827}, "r2_step114": {"n": 1061, "non_judge_correct": 693, "non_judge_accuracy": 0.65315739868049, "open_em": 0.5286821705426357, "close_accuracy": 0.8461538461538461, "judge_correct": 775, "judge_accuracy": 0.7304429783223374}, "r2_1_step114": {"n": 1061, "non_judge_correct": 561, "non_judge_accuracy": 0.528746465598492, "open_em": 0.33178294573643413, "close_accuracy": 0.8341346153846154, "judge_correct": 811, "judge_accuracy": 0.764373232799246}, "r3_step80": {"n": 1061, "non_judge_correct": 554, "non_judge_accuracy": 0.5221489161168709, "open_em": 0.3209302325581395, "close_accuracy": 0.8341346153846154, "judge_correct": 811, "judge_accuracy": 0.764373232799246}, "r4_step125": {"n": 1061, "non_judge_correct": 706, "non_judge_accuracy": 0.6654099905749293, "open_em": 0.5689922480620155, "close_accuracy": 0.8149038461538461, "judge_correct": 790, "judge_accuracy": 0.7445805843543827}}, "r1_vs_base_non_judge_difference_pp": 20.64090480678605, "r2_1_vs_base_judge_difference_pp": 10.273327049952876, "internal_pool_comparisons": {"Qwen3-VL-4B": {"n": 9997, "direct_correct": 8674, "agentic_correct": 8862, "direct_accuracy": 0.8676602980894268, "agentic_accuracy": 0.8864659397819346, "difference_pp": 1.8805641692507753, "require_server_tool_before_answer": true}, "Qwen3-VL-8B": {"n": 9997, "direct_correct": 8770, "agentic_correct": 8975, "direct_accuracy": 0.8772631789536861, "agentic_accuracy": 0.8977693307992398, "difference_pp": 2.0506151845553666, "require_server_tool_before_answer": true}, "Qwen3.5-9B": {"n": 9997, "direct_correct": 9394, "agentic_correct": 9143, "direct_accuracy": 0.9396819045713715, "agentic_accuracy": 0.9145743723116935, "difference_pp": -2.51075322596779, "require_server_tool_before_answer": true}}, "qwen35_bucket_count": {"A_simple_keep_trace0": 8944, "D_both_wrong_need_trace2": 404, "B_tool_positive_keep_trace1": 199, "C_tool_negative_need_trace2": 450}, "qwen35_status_by_bucket": {"A_simple_keep_trace0": {"ok": 8944}, "B_tool_positive_keep_trace1": {"ok": 199}, "C_tool_negative_need_trace2": {"no_answer": 196, "ok": 254}, "D_both_wrong_need_trace2": {"ok": 385, "no_answer": 19}}, "grounding": {"sglang_instruct_slake_en_full": {"n": 580, "mean_iou": 0.2523256687169494, "median_iou": 0.1553700045374903, "iou_ge_05": 127, "parsed_valid": 580}, "vllm_vision_opd_slake_en_full": {"n": 580, "mean_iou": 0.28820641399589303, "median_iou": 0.24345217072722639, "iou_ge_05": 145, "parsed_valid": 580}}, "crop_validation": {"original": {"n": 1053, "llm_judge_accuracy": 0.6875593542260209, "semantic_match_accuracy": 0.3903133903133903, "mean_token_f1": 0.4696957467160211, "inference_errors": 0, "judge_errors": 0}, "original_plus_crop_1p5": {"n": 1053, "llm_judge_accuracy": 0.6799620132953467, "semantic_match_accuracy": 0.4672364672364672, "mean_token_f1": 0.5214518494488394, "inference_errors": 0, "judge_errors": 0}, "crop_1p5_only": {"n": 1053, "llm_judge_accuracy": 0.6210826210826211, "semantic_match_accuracy": 0.3912630579297246, "mean_token_f1": 0.4522699534161274, "inference_errors": 0, "judge_errors": 0}}}, "questions": [{"number": 1, "title": "你这个项目究竟解决什么问题", "plain_text": "你这个项目究竟解决什么问题\n\n回答： 我研究医学 VLM 在一次整图回答不足时，能否主动获取局部视觉或知识证据，再更新答案。工程上，我把分割、裁剪、Python 和检索接入多轮推理；训练上，分别做 CoT GRPO 和工具 Agent 的 SFT／GRPO。已验证的 CoT 测试结果与工具策略效果是两条线，目前不能把前者的提升直接解释为工具收益。\n\n追问准备： 能调用工具是接口能力；选择何时调用、如何使用结果、何时停止才是策略能力。", "category": "项目表达"}, {"number": 2, "title": "哪些是你做的 哪些来自开源", "plain_text": "哪些是你做的 哪些来自开源\n\n回答： Qwen 是底座模型，VERL 和 LlamaFactory 是训练框架，BioMedParse 与 MedSAM3 是专业视觉工具。我独立完成的工作主要是数据构建与筛选、工具服务及协议适配、多轮图像回注、教师轨迹验证、训练 recipe 和 reward、评测对照及基础设施排障。视觉权重前缀修复沿用上游修复思路，不能说成我原创了 Qwen 的视觉架构。\n\n追问准备： 挑一个 dataset adapter、一个 tool wrapper、一个 reward 文件，逐段解释输入输出与设计取舍，比罗列框架名更有说服力。", "category": "项目表达"}, {"number": 3, "title": "Thinking-with-Images 与普通 CoT 有何区别", "plain_text": "Thinking-with-Images 与普通 CoT 有何区别\n\n回答： 普通图文 CoT 可以只基于最初那张图生成文本推理；Thinking-with-Images 会在过程中操作图像，产生新的视觉观察，并让后续推理依赖新观察。我的系统会把 crop、overlay 等作为真正的 image 输入送回模型。只在文本里写“我放大了图片”，或只返回一个路径，都不构成视觉反馈。项目的 CoT baseline 用来分离文本推理收益与主动观察收益。\n\n追问准备： DeepEyes 是这一研究方向的相关工作，我的差异主要在医学专用工具环境和可靠性分析，不能声称概念首创。DeepEyes 原论文", "category": "多模态"}, {"number": 4, "title": "工具生成的新图像怎么进入下一轮", "plain_text": "工具生成的新图像怎么进入下一轮\n\n回答： 工具执行后保存图像并返回结构化状态，Agent 将图像载入多模态消息，更新图像索引和历史上下文。下一轮 processor／推理后端实际接收新图像内容。我需要检查序列中的 image 占位符与图像列表数量对应、索引能定位正确图像、工具响应没有被误当作模型生成文本。验证时既看 trace，也检查实际模型请求，不能只看磁盘上生成了图片。\n\n追问准备： 多轮新增图像会增加视觉 token、KV cache 和上下文成本，因此需要图像数量、分辨率及轮数预算。VERL 多轮与多模态接口", "category": "多模态"}, {"number": 5, "title": "你怎样处理 bbox 坐标混乱", "plain_text": "你怎样处理 bbox 坐标混乱\n\n回答： 在 Gemini 教师线，我把工作图做等比缩放并 padding 到 1000×1000 canvas，采用 yxyx 坐标；后续 Qwen 工具线保留原图分辨率，采用 0–1000 相对 xyxy 坐标。若原图缩放系数是 s，padding 为 px、py，回原图时使用 x=(x_canvas−px)/s、y=(y_canvas−py)/s，并做边界裁剪和有效框检查。后者使用 x_px=x_rel×W/1000、y_px=y_rel×H/1000。canvas 的去 padding／逆缩放与相对原图坐标转换是不同场景，不能混用。\n\n追问准备： 框必须检查 x1\u003cx2、y1\u003cy2；画回原图做目视核验，特别注意 padding 区、长宽颠倒和重复缩放。", "category": "多模态"}, {"number": 6, "title": "为什么需要冷启动 SFT", "plain_text": "为什么需要冷启动 SFT\n\n回答： 多轮工具协议的动作格式、观察消费和停止行为较复杂，SFT 能先给模型一个可执行起点，再用 RL 优化选择。我的 1,791 条输入样本来自筛选后的教师轨迹。不过，早期 100 题协议对比与这个输入池重合，所以我只把格式改善解释为协议学习的观察，不声称独立泛化。下一版会保留 direct、有效工具与失败恢复等多种轨迹，避免所有示范都强制用工具。\n\n追问准备： SFT 是行为模仿，不能保证模型学会了工具调用的必要性；带答案教师轨迹还要检查事后合理化。", "category": "后训练"}, {"number": 7, "title": "GRPO 的核心原理是什么", "plain_text": "GRPO 的核心原理是什么\n\n回答： 对同一道题采样 G 条轨迹，用组内 reward 估计相对优势。典型形式是 A_i=(r_i−mean(r))/(std(r)+ε)。策略更新使用新旧策略概率比与 PPO 式裁剪，并可加相对参考策略的 KL 约束。它省去了独立 value model，但仍要承担多条 rollout 的计算成本。我的工作是应用和适配 GRPO，不是提出这个算法。DeepSeekMath 原论文\n\n追问准备： 当前策略、采样用的旧策略、参考策略承担不同角色；实际是否做标准差归一化、KL 放 loss 还是 reward，要以使用的 VERL 配置为准。", "category": "后训练"}, {"number": 8, "title": "为什么多次采样和中等难度题有用", "plain_text": "为什么多次采样和中等难度题有用\n\n回答： 如果同题所有候选的总奖励都相同，组内优势没有区分度，策略项很难获得有用信号。多次采样有助于发现不同路径；筛选部分答对、部分答错的题，能增加学习信号。我的数据线做过每题 8 次采样及 medium／hard 分流。全错题不一定有价值：可能模型尚无可达解，也可能标注或 judge 有问题。\n\n追问准备： 不能只追求中等题训练效果，还要在独立测试中确认没有损害易题、难题或少数模态；采样预算也要计入成本。", "category": "后训练"}, {"number": 9, "title": "你的奖励函数有什么问题", "plain_text": "你的奖励函数有什么问题\n\n回答： 一版工具 reward 用答案、格式和“答对且调用过工具”三项相加。这个设计能鼓励模型探索工具，但会让直接可答的题也通过无关调用多拿一份奖励。工具调用是动作，不等于有效证据。我会先去掉调用即奖励，以答案质量为主，加温和成本项，再用配对实验或单独验证的过程标签约束观察消费和失败恢复。\n\n追问准备： 不能仅靠模型自述“工具帮助了我”来给 evidence reward；那仍然可能被 reward hacking。", "category": "后训练"}, {"number": 10, "title": "KL 和格式奖励应该如何调整", "plain_text": "KL 和格式奖励应该如何调整\n\n回答： KL 用来约束策略偏离参考模型；太强可能压制探索，太弱可能导致语言能力或协议退化。格式奖励适合帮助冷启动，但长期过大可能让模型优先优化标签、短答案或空洞结构。我会同时观察答案正确率、格式率、KL、熵、输出长度和截断率，并做单变量对照，不把总 reward 上升直接当作任务能力提升。\n\n追问准备： KL 的监控值、loss 权重和 reward 惩罚不是同一个概念；回答时应指明具体实验配置。", "category": "后训练"}, {"number": 11, "title": "多轮工具输出为什么不能计入策略 loss", "plain_text": "多轮工具输出为什么不能计入策略 loss\n\n回答： 工具输出由环境产生，不是策略采样的动作。若把工具文本、用户消息或回注内容算作策略生成 token，就会给模型错误的梯度。策略 loss 应作用于 assistant 生成部分，工具观察虽不直接作为动作优化，却会影响之后动作的条件概率。多轮 chat template 还可能改变历史文本，因此需要检查实际 token 序列与 response mask。\n\n追问准备： 不要把“工具 token 不计 loss”解释为“工具观察没有训练作用”；模型依然通过观察后的生成学习如何消费它。VERL 多轮 tokenization 说明", "category": "后训练"}, {"number": 12, "title": "为什么 EM 和 LLM judge 差很多", "plain_text": "为什么 EM 和 LLM judge 差很多\n\n回答： EM 对答案表达一致性要求较高，开放式医学答案存在同义词、缩写和等价描述，judge 可以补充语义判断。但 judge 也有误判，例如对部分正确的多病名列表评分不稳定。因此我分别报告两者，并固定答案抽取和 judge prompt。在这里 67.30% 是 R1 的非 judge 总正确率（OPEN 用 EM、CLOSE 按原规则判分），76.44% 是另一组实验的开放题 judge 加闭合题原评分，不能直接相减。\n\n追问准备： judge 也应有人工抽查集，报告它与人工的一致性、失败率，以及对否定、部位和多标签完整性的错误。", "category": "评测与数据"}, {"number": 13, "title": "你如何防止数据泄漏", "plain_text": "你如何防止数据泄漏\n\n回答： 我会先按图像，能拿到元数据时按患者或检查划分，再做轨迹生成、难题筛选和训练；不能先生成所有 split 的轨迹后随机拆分。审计旧 SFT 时，我发现 100 条对比全部在 SFT 输入池，3,000 题评测也存在重合，因此不把旧对比当泛化结果。后续 CoT 的 SLAKE 三个划分在 ID、图像路径和图像加问题层面没有交集，还需要补像素近重复检查。\n\n追问准备： 同一图像的不同问题也可能泄漏；不同 ID 或路径也可能指向同一像素。评测集反复参与调参属于另一种选择偏差。", "category": "评测与数据"}, {"number": 14, "title": "工具 Agent 比 direct 差 为什么还值得做", "plain_text": "工具 Agent 比 direct 差 为什么还值得做\n\n回答： 9,997 条内部配对中 direct 正确 9,394，agentic 正确 9,143，净少 251 条。这个结果说明该 Qwen3.5-9B 强制先工具流程没有整体收益；Qwen3-VL-4B/8B 的内部池对照则为正，收益依赖模型和协议。它同时给出 199 条改善与 450 条退化，可用于定位什么时候工具有帮助、什么时候造成干扰。我不会只展示成功案例。下一步重点是减少退化、保护原有正确答案，并检验改善是否真正来自新增视觉信息。\n\n追问准备： 要区分工具错误、工具返回正确但模型误读、prompt 强制调用、无答案和长轨迹截断等原因，不能一概归因于分割模型。", "category": "评测与数据"}, {"number": 15, "title": "四类结果能证明工具有因果帮助吗", "plain_text": "四类结果能证明工具有因果帮助吗\n\n回答： 不能直接证明。它是两条流程的配对表现，可能混有 prompt、随机采样、额外 token 和计算预算的影响。更严谨的实验会固定 checkpoint、题目、解码和预算，对比真实观察、空观察、打乱观察及直接回答，多次运行并查看样本级结果。四类标签很适合错误分析，但不能未经控制就命名为真实的工具因果效应。\n\n追问准备： 如果真实 crop 与无关 crop 都改善，收益可能来自额外推理或重试，而非 crop 内容。", "category": "评测与数据"}, {"number": 16, "title": "为什么只裁剪局部反而变差", "plain_text": "为什么只裁剪局部反而变差\n\n回答： 局部 crop 可能丢失全局解剖关系、方向、成像背景和多个区域之间的比较信息。我在完整 1,053 条验证集上看到原图 judge 为 68.76%，仅 crop 为 62.11%；原图加 crop 也没有整体改善。并且部分框来自标注辅助，不能说这是 Agent 自主定位失败的纯粹测量。下一步应按问题类型和框来源分层，而不是默认放大总有帮助。\n\n追问准备： 原图加 crop 提升了 token-F1 阈值分数但未提升 judge，说明还要检查答案表达和评分器差异。", "category": "多模态"}, {"number": 17, "title": "最有代表性的工程 bug 是什么", "plain_text": "最有代表性的工程 bug 是什么\n\n回答： 一个问题是 Qwen3-VL checkpoint 的视觉权重前缀与 SGLang loader 不一致。服务可以启动，文本也能生成，但视觉部分可能没有正确加载，使问题看起来像模型不会看图。我根据上游修复对齐前缀，并结合简单红框与医学 grounding 检查视觉链路。它让我意识到，先验证模型确实利用图像，再解释 RL 曲线，否则可能在错误环境上优化。\n\n追问准备： 可以用同题换图、遮图、空白图和已知位置的合成目标做最小诊断，但每项都要记录实际输入与模型输出。", "category": "工程"}, {"number": 18, "title": "n 等于 8 的共享内存问题怎么定位", "plain_text": "n 等于 8 的共享内存问题怎么定位\n\n回答： 多候选请求会多次序列化同一个多模态数据对象。旧实现复用共享内存名称，而接收端物化张量后会释放对应 segment，后续候选可能访问失效资源。补丁把 segment 的创建移到每次 pickle，确保不同接收路径有独立生命周期。验证要覆盖单候选、多候选、并发和资源回收，不能只证明服务重启后短时不报错。\n\n追问准备： 独立 segment 会增加共享内存占用，因此修复正确性后仍需监控容量、异常释放和高并发下的峰值。", "category": "工程"}, {"number": 19, "title": "训练和推理不一致会带来什么影响", "plain_text": "训练和推理不一致会带来什么影响\n\n回答： prompt、chat template、视觉预处理、工具观察角色、答案抽取和采样参数任何一个不一致，都可能让离线表现与训练验证脱节。我已有 580 条 grounding 后端对照，解析成功相同但 IoU 不同。历史评测总表和部分原始日志的后端描述还不一致，因此后续应以实际请求参数和版本生成 manifest，不只保存脚本默认值。\n\n追问准备： 已发现 GPT adapter 保存了 top_p 和 repetition_penalty，但 HTTP create 未透传这两个字段；vLLM adapter 则传入 top-p。这是应修复并重新对齐的实际问题，不应只检查脚本默认配置。", "category": "工程"}, {"number": 20, "title": "你会怎样定位 rollout 慢和内存问题", "plain_text": "你会怎样定位 rollout 慢和内存问题\n\n回答： 我先将耗时拆成模型生成、图像预处理、工具等待和 judge，再看峰值显存、主机内存与共享内存。多轮图像会放大上下文与视觉编码成本，增加 G 还会扩大 rollout 数。应先用少量样本验证流程，再调整图像像素上限、总 token、轮数、并发和工具服务队列。已有启动脚本的 memory guard 也应保留。\n\n追问准备： 不能把所有慢都归因于 actor，也不能把主机共享内存耗尽误认成 CUDA OOM；降低并发与降低单序列长度解决的问题不同。", "category": "工程"}, {"number": 21, "title": "教师有参考答案 这种数据还能用于训练吗", "plain_text": "教师有参考答案 这种数据还能用于训练吗\n\n回答： 可以用于候选监督构建，但要承认它不是无 oracle 的评测。教师可能写出事后合理化过程，或者依据参考框产生学生推理时无法获得的动作。我会保证学生输入不包含答案、参考 mask 和答案关联 bbox，并检查轨迹中工具真的执行成功、观察支持后续陈述。仅删除 prompt 里的答案字段，不能自动消除轨迹内容中的隐性泄漏。\n\n追问准备： 最好比较有答案辅助与无答案教师生成的轨迹，过滤过程不可信的样本，并在全新图像上验证。", "category": "评测与数据"}, {"number": 22, "title": "如何让模型只在必要时调用工具", "plain_text": "如何让模型只在必要时调用工具\n\n回答： 我会先建一个轻量 router，用推理时可得到的首轮置信度、问题类型、图像质量和历史工具状态，估计调用后的预期质量减成本。先比较 always-direct、固定一次工具、置信度阈值和学习型 router，再决定是否做端到端 GRPO。离线四类结果可作为训练标签，但真值、direct 是否答对和参考框不能作为线上 router 输入。\n\n追问准备： router 必须在独立训练划分上学习和校准；由真值选择最佳路径的 oracle router 只能作参照，不能称可部署方法。", "category": "后训练"}, {"number": 23, "title": "如何评价工具策略 而不仅是答案准确率", "plain_text": "如何评价工具策略 而不仅是答案准确率\n\n回答： 我会同时报告 accuracy、配对改善／退化数、平均调用数、总生成 token、p50/p95 延迟、工具失败率、无答案率和格式率。不同样本使用不同成本，所以更适合比较准确率与成本的曲线。医学问题还应分模态、问题类型和开放／闭合题，避免整体分数掩盖细粒度问题退化。\n\n追问准备： 如果引入拒答，要报告覆盖率与选择性错误率；只报告已回答样本的准确率会隐藏大量拒答。", "category": "评测与数据"}, {"number": 24, "title": "最少需要哪些消融 才能支持你的结论", "plain_text": "最少需要哪些消融 才能支持你的结论\n\n回答： 至少固定同一底座，比较 direct、CoT、固定工具、动态工具、SFT、SFT+GRPO；对于工具效应，再加入真实观察与空／打乱观察、原图与原图加局部图的对照。训练消融分别改变奖励、KL、数据难度和调用成本，并保持数据与预算可比。无需一次跑满组合，先明确每个实验回答哪一个假设。\n\n追问准备： 用按图像聚类的配对 bootstrap 估计区间，避免把同图多个问题当作完全独立样本；训练方差则通过多个 seed 单独估计。", "category": "评测与数据"}, {"number": 25, "title": "怎样让别人复现你的实验", "plain_text": "怎样让别人复现你的实验\n\n回答： 每次 run 固定数据清单与 hash、checkpoint 或 adapter、prompt、工具 schema、视觉工具权重、框架 commit、容器与补丁、实际解码参数、judge 和随机种子。再保存逐题预测、轨迹、调用时间和异常。当前 SGLang 修复位于容器可写层，普通重启与删除后重建的后果不同；应让补丁可检查、可重放，并先做小规模验收。\n\n追问准备： GPU、工具服务、模型权重加载和 endpoint 状态都应进入运行前检查；运行文档与实际日志矛盾时，以证据修订文档。", "category": "工程"}, {"number": 26, "title": "如果再给你两周 你优先做什么", "plain_text": "如果再给你两周 你优先做什么\n\n回答： 第一优先是把数据隔离、baseline、checkpoint 及后端协议收紧，拿到可比较的主表。第二步重建干净 SFT 数据，把 direct、有效工具和失败恢复都纳入示范。第三步先做轻量 router 和调用成本消融，确认同等准确率下减少工具调用，再投入新的 GRPO。我不会优先加更多工具，因为当前更明确的问题是已有工具的选择与结果消费。\n\n追问准备： 两周的交付物应是干净 split 清单、固定协议结果表、错误案例和一组可复现 router 对照；不预先承诺新的高分。", "category": "项目表达"}], "resumes": [{"label": "推荐", "plain_text": "医学 Thinking-with-Images 多模态推理与后训练｜独立项目\n\n技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。\n\n- 独立搭建医学视觉语言模型的工具增强推理与后训练流水线，接入 Python 图像处理、BioMedParse、MedSAM3 和知识检索，实现多轮动作解析、视觉观察回注与轨迹落盘。\n\n- 构建约 1 万条医学 VQA 项目内问答池，完成多次采样难度筛选与教师轨迹验证，整理 1,791 条冷启动 SFT 输入样本，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。\n\n- 围绕答案奖励、格式约束、KL 与数据难度开展 CoT GRPO 实验，Qwen3-VL-4B 在 SLAKE 英文测试集 1,061 题上取得本地 MedEvalKit 67.30% 非 judge 总正确率（开放题 EM、闭合题规则判分），建立开放题语义评分与闭合题原评分的并行评测。\n\n- 对 9,997 条 direct/agentic 轨迹进行配对分析，识别 199 条改善与 450 条退化；结合后端 grounding 对照、视觉权重加载和共享内存问题排查，定位工具过用与评测可靠性瓶颈。"}, {"label": "后训练", "plain_text": "医学 Thinking-with-Images 多模态推理与后训练｜独立项目\n\n技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。\n\n- 独立搭建医学图文后训练与工具推理流水线，接入 Python 图像处理、医学分割和检索，完成多轮观察回注及轨迹落盘。\n\n- 构建约 1 万条医学 VQA 项目内问答池，完成多次采样难度筛选与教师轨迹验证，整理 1,791 条冷启动 SFT 输入样本，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。\n\n- 基于 VERL 实现医学图文数据适配与 CoT／多轮工具 GRPO，比较 EM、LLM judge、格式奖励、KL 和难度筛选；在 SLAKE English test 上取得 67.30% 非 judge 总正确率（开放题 EM、闭合题规则判分），保留 recipe、checkpoint、逐题预测与指标。\n\n- 排查多候选图像 rollout 的共享内存生命周期问题，应用 Qwen3-VL 视觉权重前缀修复；建立 train/validation/test 与评分代码核验流程，区分真实准确率、复合 reward 和训练验证指标。"}, {"label": "多模态", "plain_text": "医学 Thinking-with-Images 多模态推理与后训练｜独立项目\n\n技术栈：Qwen3-VL／Qwen3.5、PyTorch、VERL、GRPO、LlamaFactory、LoRA、SGLang／vLLM。\n\n- 构建支持分割、裁剪、代码分析和检索的医学视觉 Agent，将工具生成图像回注下一轮 VLM；在教师轨迹线使用 1000×1000 working canvas，并通过坐标适配解决模型、原图与分割工具的坐标不一致。\n\n- 构建约 1 万条医学 VQA 项目内问答池，完成多次采样难度筛选与教师轨迹验证，整理 1,791 条冷启动 SFT 输入样本，开展 Qwen3-VL LoRA SFT 和多轮工具调用 GRPO 实验。\n\n- 围绕答案奖励、格式约束、KL 与数据难度开展 CoT GRPO 实验，Qwen3-VL-4B 在 SLAKE 英文测试集 1,061 题上取得本地 MedEvalKit 67.30% 非 judge 总正确率（开放题 EM、闭合题规则判分），建立开放题语义评分与闭合题原评分的并行评测。\n\n- 建立 580 条 detection 的后端 grounding 对照及 1,053 条 validation 的裁剪消融，结合近万条 direct/agentic 轨迹分析工具收益与错误传播，明确全局上下文保留和选择性调用的优化方向。"}]}</script><script>(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const data = JSON.parse($('page-data').textContent);
+  const metrics = data.metrics;
+  let toastTimer;
+  function toast(message) { $('toast').textContent = message; $('toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2600); }
+  async function copyText(text) {
+    try { if (!navigator.clipboard) throw new Error('fallback'); await navigator.clipboard.writeText(text); }
+    catch (_) { const area = document.createElement('textarea'); area.value = text; area.style.position = 'fixed'; area.style.opacity = '0'; document.body.appendChild(area); area.select(); const ok = document.execCommand('copy'); area.remove(); if (!ok) { toast('浏览器未允许复制，请选中文字复制'); return false; } }
+    toast('已复制'); return true;
+  }
+  function setTheme(theme) { document.documentElement.dataset.theme = theme; $('theme-toggle').textContent = theme === 'dark' ? '浅色' : '深色'; $('theme-toggle').setAttribute('aria-label', theme === 'dark' ? '切换浅色模式' : '切换深色模式'); }
+  try { setTheme(localStorage.getItem('twi-theme') || 'light'); } catch (_) { setTheme('light'); }
+  $('theme-toggle').addEventListener('click', () => { const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; setTheme(theme); try { localStorage.setItem('twi-theme', theme); } catch (_) {} });
+  const labels = {base:['Base','基础模型'],r1_step114:['R1','114 step'],r2_step114:['R2','114 step'],r2_1_step114:['R2.1','114 step'],r3_step80:['R3','80 step'],r4_step125:['R4','125 step']};
+  function renderSlake(mode) {
+    const key = mode === 'judge' ? 'judge_accuracy' : 'non_judge_accuracy';
+    $('slake-bars').innerHTML = Object.entries(metrics.slake_test).map(([id, row]) => `<div class="bar-row"><div class="bar-label">${labels[id][0]}<small>${labels[id][1]}</small></div><div class="bar-track"><div class="bar-fill ${id === 'base' ? 'base' : ''}" style="width:${row[key]*100}%"></div></div><span class="bar-value num">${(row[key]*100).toFixed(2)}%</span></div>`).join('');
+    document.querySelectorAll('[data-metric]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.metric === mode)));
+    $('slake-current').textContent = mode === 'judge' ? '当前：judge 总正确率 · 最优 R2.1 / R3，76.44%' : '当前：非 judge 总正确率 · 最优 R1，67.30%';
+    $('slake-bars').setAttribute('aria-label', $('slake-current').textContent);
+  }
+  document.querySelectorAll('[data-metric]').forEach(button => button.addEventListener('click', () => renderSlake(button.dataset.metric)));
+  renderSlake('nonjudge');
+  let currentResume = 0;
+  const resumeButtons = [...document.querySelectorAll('[data-resume-index]')];
+  resumeButtons.forEach(button => button.addEventListener('click', () => {
+    currentResume = Number(button.dataset.resumeIndex);
+    resumeButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    document.querySelectorAll('.resume-variant').forEach((panel, index) => panel.hidden = index !== currentResume);
+    $('resume-version-label').textContent = `${data.resumes[currentResume].label} · 可直接复制到简历后按篇幅精简`;
+  }));
+  $('copy-resume').addEventListener('click', () => copyText(data.resumes[currentResume].plain_text));
+  let category = '全部';
+  const qas = [...document.querySelectorAll('.qa')];
+  function filterQuestions() {
+    const query = $('question-search').value.trim().toLocaleLowerCase();
+    let count = 0;
+    qas.forEach(qa => { const item = data.questions.find(q => String(q.number) === qa.dataset.number); const matches = (category === '全部' || item.category === category) && (!query || (item.title + ' ' + item.plain_text).toLocaleLowerCase().includes(query)); qa.hidden = !matches; if (matches) count++; });
+    $('question-count').textContent = `${count} / ${qas.length} 题`;
+    $('empty-state').hidden = count !== 0;
+  }
+  $('question-search').addEventListener('input', filterQuestions);
+  document.querySelectorAll('[data-category]').forEach(button => button.addEventListener('click', () => { category = button.dataset.category; document.querySelectorAll('[data-category]').forEach(b => b.setAttribute('aria-pressed', String(b === button))); filterQuestions(); }));
+  $('expand-questions').addEventListener('click', () => qas.filter(q => !q.hidden).forEach(q => q.open = true));
+  $('collapse-questions').addEventListener('click', () => qas.forEach(q => q.open = false));
+  const mobileViewport = window.matchMedia('(max-width: 900px)');
+  function syncNavAccessibility() { $('sidebar').inert = mobileViewport.matches && !$('sidebar').classList.contains('open'); }
+  function toggleNav(open) { $('sidebar').classList.toggle('open',open); $('nav-overlay').classList.toggle('open',open); $('menu-toggle').setAttribute('aria-expanded',String(open)); syncNavAccessibility(); if(open) $('sidebar').querySelector('a').focus({preventScroll:true}); }
+  syncNavAccessibility();
+  mobileViewport.addEventListener('change', () => { toggleNav(false); syncNavAccessibility(); });
+  $('menu-toggle').addEventListener('click', () => toggleNav(!$('sidebar').classList.contains('open')));
+  $('nav-overlay').addEventListener('click', () => toggleNav(false));
+  document.addEventListener('keydown', event => { if(event.key === 'Escape' && $('sidebar').classList.contains('open')) { toggleNav(false); $('menu-toggle').focus(); } });
+  document.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+  const navLinks = [...document.querySelectorAll('.nav-link')];
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) navLinks.forEach(a => { const active = a.getAttribute('href') === '#' + entry.target.id; a.classList.toggle('active',active); if(active) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current'); }); }); }, {rootMargin:'-10% 0px -68% 0px',threshold:0});
+    document.querySelectorAll('main>section[id]').forEach(section => observer.observe(section));
+  }
+  const dialog = $('source-dialog');
+  document.addEventListener('click', event => { const a = event.target.closest('a[data-local-path]'); if(!a) return; event.preventDefault(); $('source-path').value = a.dataset.localPath + (a.dataset.localLine ? ':' + a.dataset.localLine : ''); $('source-name').textContent = a.textContent; dialog.showModal(); });
+  $('close-source').addEventListener('click', () => dialog.close());
+  $('copy-source').addEventListener('click', () => copyText($('source-path').value));
+  dialog.addEventListener('click', event => { if(event.target === dialog) { const r = dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
+  const papers = [...document.querySelectorAll('.paper-card')];
+  const paperSearchText = new Map(papers.map(p => [p, p.textContent.toLocaleLowerCase()]));
+  function filterPapers() {
+    const query = $('paper-search').value.trim().toLocaleLowerCase();
+    const origin = $('paper-origin').value;
+    const theme = $('paper-theme').value;
+    let count = 0;
+    papers.forEach(p => {
+      const matches = (!query || paperSearchText.get(p).includes(query)) && (origin === '全部' || p.dataset.paperTags.split('|').includes(origin)) && (theme === '全部' || p.dataset.paperTheme === theme);
+      p.hidden = !matches;
+      if (matches) count++;
+    });
+    $('paper-count').textContent = `${count} / ${papers.length} 篇`;
+    $('paper-empty').hidden = count !== 0;
+  }
+  $('paper-search').addEventListener('input', filterPapers);
+  $('paper-origin').addEventListener('change', filterPapers);
+  $('paper-theme').addEventListener('change', filterPapers);
+  $('paper-reset').addEventListener('click', () => { $('paper-search').value = ''; $('paper-origin').value = '全部'; $('paper-theme').value = '全部'; filterPapers(); });
+  let printSnapshot = null;
+  window.addEventListener('beforeprint', () => { printSnapshot = {theme:document.documentElement.dataset.theme,details:[...document.querySelectorAll('details')].map(el => [el,el.open]),questions:qas.map(el => [el,el.hidden]),papers:papers.map(el => [el,el.hidden])}; document.documentElement.dataset.theme='light'; printSnapshot.details.forEach(([el]) => el.open=true); qas.forEach(el => el.hidden=false); papers.forEach(el => el.hidden=false); });
+  window.addEventListener('afterprint', () => { if(!printSnapshot)return; printSnapshot.details.forEach(([el,open]) => el.open=open); printSnapshot.questions.forEach(([el,hidden]) => el.hidden=hidden); printSnapshot.papers.forEach(([el,hidden]) => el.hidden=hidden); setTheme(printSnapshot.theme); printSnapshot=null; });
+  $('print-page').addEventListener('click', () => window.print());
+  filterQuestions();
+  filterPapers();
+})();
+</script></body></html>

@@ -1,0 +1,65 @@
+diff --git a/python/sglang/srt/managers/mm_utils.py b/python/sglang/srt/managers/mm_utils.py
+--- a/python/sglang/srt/managers/mm_utils.py
++++ b/python/sglang/srt/managers/mm_utils.py
+@@ -1502,41 +1502,35 @@
+         self.shape = self.cpu_tensor.shape
+         self.dtype = self.cpu_tensor.dtype
+ 
+-        nbytes = self.cpu_tensor.numel() * self.cpu_tensor.element_size()
++        self.shm = None
+ 
+-        self.shm = shared_memory.SharedMemory(create=True, size=nbytes)
++    @staticmethod
++    def _create_shm_for_tensor(tensor: torch.Tensor) -> str:
++        nbytes = tensor.numel() * tensor.element_size()
++        shm = shared_memory.SharedMemory(create=True, size=nbytes)
+ 
+         try:
+-            shm_view = np.ndarray((nbytes,), dtype=np.uint8, buffer=self.shm.buf)
++            shm_view = np.ndarray((nbytes,), dtype=np.uint8, buffer=shm.buf)
+ 
+-            shm_view[:] = self.cpu_tensor.view(torch.uint8).numpy().flatten()
++            shm_view[:] = tensor.view(torch.uint8).numpy().flatten()
+         finally:
+-            self.shm.close()
++            shm.close()
++        return shm.name
+ 
+     def __getstate__(self):
+-        if not hasattr(self, "shm") or self.shm is None:
+-            tensor = getattr(self, "cpu_tensor", None)
+-            if tensor is None:
+-                tensor = getattr(self, "tensor", None)
+-            if tensor is None:
+-                raise RuntimeError(
+-                    "ShmPointerMMData cannot recreate shared memory without tensor"
+-                )
+-
+-            cpu_tensor = tensor.cpu().contiguous()
+-            self.shape = cpu_tensor.shape
+-            self.dtype = cpu_tensor.dtype
+-
+-            nbytes = cpu_tensor.numel() * cpu_tensor.element_size()
+-            self.shm = shared_memory.SharedMemory(create=True, size=nbytes)
+-            try:
+-                shm_view = np.ndarray((nbytes,), dtype=np.uint8, buffer=self.shm.buf)
+-                shm_view[:] = cpu_tensor.view(torch.uint8).numpy().flatten()
+-            finally:
+-                self.shm.close()
++        # Each pickle needs an independent segment. A receiver unlinks its
++        # segment after materializing it, so reusing one name breaks n > 1.
++        tensor = getattr(self, "cpu_tensor", None)
++        if tensor is None:
++            tensor = getattr(self, "tensor", None)
++        if tensor is None:
++            raise RuntimeError(
++                "ShmPointerMMData cannot recreate shared memory without tensor"
++            )
++        tensor = tensor.cpu().contiguous()
+ 
+         return {
+-            "shm_name": self.shm.name,
++            "shm_name": self._create_shm_for_tensor(tensor),
+             "shape": self.shape,
+             "dtype": self.dtype,
+         }

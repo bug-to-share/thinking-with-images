@@ -1,0 +1,592 @@
+diff --git a/eval.py b/eval.py
+--- a/eval.py
++++ b/eval.py
+@@ -1,13 +1,19 @@
+ import os
++from LLMs import init_llm
+ import torch
+ import random
+ import numpy as np
+ from tqdm import tqdm  
+ import json
+ from argparse import ArgumentParser
+-from LLMs import init_llm
+ import gc
+ 
++from custom_prompt import (
++    CustomPromptModel,
++    apply_custom_prompt_to_samples,
++    load_custom_prompt_config,
++)
++
+ def set_seed(seed_value):
+     """
+     Set the seed for PyTorch (both CPU and CUDA), Python, and NumPy for reproducible results.
+@@ -43,6 +49,15 @@
+     parser.add_argument('--tensor_parallel_size', type=str, default="1")
+     parser.add_argument('--use_vllm', type=str, default="True")
+     parser.add_argument('--reasoning', type=str, default="False")
++    parser.add_argument(
++        '--custom_prompt_config',
++        type=str,
++        default=None,
++        help=(
++            "path to a JSON config that globally overrides the system and user "
++            "prompts for every selected benchmark"
++        ),
++    )
+ 
+     parser.add_argument('--num_chunks', type=str, default="1")
+     parser.add_argument('--chunk_idx', type=str, default="0")
+@@ -64,7 +79,7 @@
+ 
+     args = parser.parse_args()
+ 
+-    os.environ["VLLM_USE_V1"] = "0"
++    # os.environ["VLLM_USE_V1"] = "0"
+ 
+     # llm judge setting
+     if args.api_key == "None" and args.use_llm_judge == "True":
+@@ -76,6 +91,9 @@
+     os.environ["judge_model"] = args.judge_model
+     os.environ["api_key"] = args.api_key
+     os.environ["base_url"] = args.base_url
++    # All project SLAKE runs are English-only; the loader enforces this even
++    # when callers use the legacy dataset name ``SLAKE``.
++    os.environ["SLAKE_LANGUAGE"] = "en"
+ 
+     # eval modle setting
+     os.environ["REASONING"] = args.reasoning
+@@ -87,12 +105,13 @@
+     # vllm and torch setting
+     os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+     os.environ["NCCL_IGNORE_DISABLED_P2P"] = "1"
++    os.environ["VLLM_WORKER_MULTIPROC_METHOD"] = "spawn"
++
+     if args.cuda_visible_devices is not None:
+         os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda_visible_devices
+     if args.use_vllm == "True":
+         os.environ["tensor_parallel_size"] = args.tensor_parallel_size
+         if int(args.tensor_parallel_size) > 1:
+-            os.environ["VLLM_WORKER_MULTIPROC_METHOD"] = "spawn"
+             os.environ["TOKENIZERS_PARALLELISM"] = "false"
+     else:
+         torch.multiprocessing.set_start_method('spawn')
+@@ -104,6 +123,11 @@
+ 
+     print('initializing LLM...')
+     model = init_llm(args)
++    custom_prompt_config = None
++    if args.custom_prompt_config:
++        custom_prompt_config = load_custom_prompt_config(args.custom_prompt_config)
++        model = CustomPromptModel(model, custom_prompt_config)
++        print(f"using custom prompt config: {args.custom_prompt_config}")
+     
+     total_results_path = os.path.join(args.output_path,'total_results.json')
+ 
+@@ -118,6 +142,9 @@
+         os.makedirs(eval_output_path, exist_ok=True)
+         benchmark = prepare_benchmark(model,eval_dataset,eval_dataset_path,eval_output_path)
+         benchmark.load_data()
++        if custom_prompt_config is not None and benchmark.samples:
++            apply_custom_prompt_to_samples(benchmark.samples, custom_prompt_config)
++
+         final_results = benchmark.eval() if benchmark else {}
+         print(f'final results on {eval_dataset}: {final_results}')
+         if final_results is not None:
+@@ -133,4 +160,4 @@
+         gc.collect()
+ 
+ if __name__ == '__main__':
+-    main()
+\ No newline at end of file
++    main()
+diff --git a/LLMs.py b/LLMs.py
+--- a/LLMs.py
++++ b/LLMs.py
+@@ -17,6 +17,14 @@
+             raise ValueError(f"Model {name} not found in registry")
+         return cls._models[name]
+ 
++@LLMRegistry.register("Qwen3-VL")
++class Qwen3_VL:
++    def __new__(cls, model_path: str, args: Any) -> Any:
++        if os.environ.get("use_vllm", "True") != "True":
++            raise ValueError("The project Qwen3-VL adapter requires --use_vllm True")
++        from models.Qwen3_VL.Qwen3_VL_vllm import Qwen3_VL
++        return Qwen3_VL(model_path, args)
++
+ @LLMRegistry.register("Qwen2-VL")
+ class Qwen2VL:
+     def __new__(cls, model_path: str, args: Any) -> Any:
+diff --git a/utils/SLAKE/SLAKE.py b/utils/SLAKE/SLAKE.py
+--- a/utils/SLAKE/SLAKE.py
++++ b/utils/SLAKE/SLAKE.py
+@@ -22,6 +22,9 @@
+         self.output_path = output_path
+         self.dataset_path = dataset_path
+         self.samples = []
++        # This project is English-only for SLAKE. Keep the filter in the
++        # loader so direct eval.py invocations cannot mix languages.
++        self.language = os.environ.get("SLAKE_LANGUAGE", "en").strip().lower()
+         self.chunk_idx = int(os.environ.get("chunk_idx",0))
+         self.num_chunks = int(os.environ.get("num_chunks",1))
+ 
+@@ -49,6 +52,9 @@
+             answer_type = data["answer_type"]
+             lang = data["q_lang"]
+ 
++            if self.language and lang.lower() != self.language:
++                continue
++
+             is_reasoning = True if os.environ.get("REASONING","False") == "True" else False
+             if answer_type == "OPEN":
+                 prompt = get_open_ended_prompt(question,is_reasoning,lang)
+@@ -62,6 +68,7 @@
+             if idx % self.num_chunks == self.chunk_idx:
+                 sample = self.construct_messages(sample)
+                 self.samples.append(sample)
++        print(f"SLAKE language={self.language or 'all'} samples={len(self.samples)}")
+         return self.samples
+ 
+     def construct_messages(self,sample):
+@@ -73,12 +80,9 @@
+         del sample["image"]
+         return sample
+ 
+-
+     def cal_metrics(self,out_samples):
+         messages_list = []
+-
+-        langs = []
+-        answer_types = []
++        open_id = []
+ 
+         metrics = {
+             "total metrics" : {
+@@ -105,7 +109,8 @@
+                 "right" : 0
+             }
+         }
+-        for i,out_sample in tqdm(enumerate(out_samples)):
++        
++        for i,out_sample in tqdm(enumerate(out_samples), total=len(out_samples)):
+             response = out_sample["response"]
+             if extract_boxed_content(response)!= "None":
+                 response = extract_boxed_content(response)
+@@ -117,12 +122,6 @@
+             lang = out_sample["lang"]
+             answer_type = out_sample["answer_type"]
+ 
+-            if os.environ.get("use_llm_judge","False") == "True":
+-                messages = get_compare_messages(question,response,answer)
+-                messages_list.append(messages)
+-                langs.append(lang)
+-                answer_types.append(answer_type)
+-
+             if answer_type == "OPEN":
+                 c_metrics = judge_open_end_vqa(answer,response)
+                 out_samples[i]["correct"] = c_metrics["em"]
+@@ -133,7 +132,11 @@
+                     metrics["total metrics"]["right"] += 1
+                     metrics["open"]["right"] += 1      
+                 for metric in c_metrics:
+-                    metrics["open"][metric] += c_metrics[metric]           
++                    metrics["open"][metric] += c_metrics[metric]
++                if os.environ.get("use_llm_judge","False") == "True":
++                    messages = get_compare_messages(question,response,answer)
++                    messages_list.append(messages)
++                    open_id.append(i)
+             else:
+                 if answer in ["yes","no"]:
+                     flag = judge_judgement(answer,response)
+@@ -147,33 +150,27 @@
+                     metrics["close"]["right"] += 1
+ 
+ 
+-
+-
+         if os.environ.get("use_llm_judge","False") == "True":
+             metrics["total metrics"]["right"] = metrics["close"]["right"]
+             metrics["open"]["right"] = 0
++            
+             llm = judger
+             results = llm.generate_outputs(messages_list)
+-            i = 0
+-            for result,lang,answer_type in zip(results,langs,answer_types):
++
++            for i,result in zip(open_id,results):
+                 result = extract(result,"judge")
+                 result = True if result == "0" else False
+                 out_samples[i]["correct"] = result
+-                i += 1
+                 if result:
+-                    if answer_type == "OPEN":
+-                        metrics["open"]["right"] += 1
+-                    else:
+-                        metrics["close"]["right"] += 1
++                    metrics["open"]["right"] += 1
+                     metrics["total metrics"]["right"] += 1
+-
+-
++        
+         metrics["total metrics"]["acc"] = metrics["total metrics"]["right"]/metrics["total metrics"]["total"]
+         metrics["open"]["acc"] = metrics["open"]["right"]/metrics["open"]["total"]
+         metrics["close"]["acc"] = metrics["close"]["right"]/metrics["close"]["total"]
+ 
+         for metric in metrics["open"]:
+-            if metric not in ["right","total"]:
++            if metric not in ["right","total", "acc"]:
+                 metrics["open"][metric] = metrics["open"][metric]/metrics["open"]["total"]
+ 
+         return metrics,out_samples
+@@ -190,4 +187,4 @@
+             self._unzip_img_zip_local(local_path=self.dataset_path,zip_filename="KG.zip")
+             shutil.rmtree(os.path.join(self.dataset_path,".cache"))
+             print("Download and extraction completed successfully")
+-                
+\ No newline at end of file
++                
+diff --git a/utils/utils.py b/utils/utils.py
+--- a/utils/utils.py
++++ b/utils/utils.py
+@@ -36,10 +36,16 @@
+     tokenized_pred = tokenize(pred)
+     return sentence_bleu([tokenized_target], tokenized_pred, weights=weights)
+ 
+-def rouge(pred,target):
+-    rouge_scorer = Rouge()
+-    rouge_scores = rouge_scorer.get_scores(pred.lower(), target.lower())
+-    return rouge_scores
++from rouge_score import rouge_scorer
++
++def rouge(pred, target):
++    scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=False)
++    scores = scorer.score(target, pred)
++    return {
++        "rouge-1": {"f": scores['rouge1'].fmeasure},
++        "rouge-2": {"f": scores['rouge2'].fmeasure},
++        "rouge-l": {"f": scores['rougeL'].fmeasure},
++    }
+ 
+ 
+ 
+@@ -185,9 +191,9 @@
+ 
+     em = response == answer
+     rouge_scores = rouge(response,answer)
+-    rouge_1 = rouge_scores[0]["rouge-1"]["f"]
+-    rouge_2 = rouge_scores[0]["rouge-2"]["f"]
+-    rouge_l = rouge_scores[0]["rouge-l"]["f"]
++    rouge_1 = rouge_scores["rouge-1"]["f"]
++    rouge_2 = rouge_scores["rouge-2"]["f"]
++    rouge_l = rouge_scores["rouge-l"]["f"]
+ 
+     precision,recall,f1 = calculate_f1(response,answer)
+ 
+@@ -213,17 +219,19 @@
+     
+     common = prediction_tokens & ground_truth_tokens
+     
++    # 如果任一为空，返回 (precision, recall, f1) 三元组，避免返回单个值导致解包错误
+     if len(prediction_tokens) == 0 or len(ground_truth_tokens) == 0:
+-        return 0
++        return 0, 0, 0
+     
+     precision = len(common) / len(prediction_tokens)
+     recall = len(common) / len(ground_truth_tokens)
+     
+     if precision + recall == 0:
+-        return 0,0,0
++        return 0, 0, 0
+     f1 = 2 * (precision * recall) / (precision + recall)
+     
+-    return f1,precision,recall
++    # 保持返回顺序为 (precision, recall, f1)，与调用方期待一致
++    return precision, recall, f1
+ 
+ 
+ 
+diff --git a/custom_prompt.py b/custom_prompt.py
+new file mode 100644
+--- /dev/null
++++ b/custom_prompt.py
+@@ -0,0 +1,185 @@
++"""Global custom-prompt support for MedEvalKit evaluation runs."""
++
++from __future__ import annotations
++
++import json
++from pathlib import Path
++from typing import Any, Mapping
++
++
++_APPLIED_MARKER = "_medevalkit_custom_prompt_applied"
++
++
++def load_custom_prompt_config(path: str | Path) -> dict[str, Any]:
++    config_path = Path(path).expanduser().resolve()
++    with config_path.open("r", encoding="utf-8") as handle:
++        config = json.load(handle)
++
++    if not isinstance(config, dict):
++        raise ValueError("Custom prompt config must be a JSON object")
++    if not isinstance(config.get("user_prompt_template"), str):
++        raise ValueError(
++            "Custom prompt config requires a string 'user_prompt_template'"
++        )
++    if "system_prompt" in config and not isinstance(config["system_prompt"], str):
++        raise ValueError("'system_prompt' must be a string when provided")
++    return config
++
++
++def _original_prompt(messages: Mapping[str, Any]) -> str:
++    if isinstance(messages.get("prompt"), str):
++        return messages["prompt"]
++
++    conversation = messages.get("messages")
++    if isinstance(conversation, list):
++        for message in reversed(conversation):
++            if not isinstance(message, Mapping) or message.get("role") != "user":
++                continue
++            content = message.get("content", "")
++            if isinstance(content, str):
++                return content
++            if isinstance(content, list):
++                texts = [
++                    item.get("text", "")
++                    for item in content
++                    if isinstance(item, Mapping) and item.get("type") == "text"
++                ]
++                return "\n".join(text for text in texts if text)
++    return ""
++
++
++def _template_context(
++    messages: Mapping[str, Any], sample: Mapping[str, Any] | None
++) -> dict[str, Any]:
++    original_prompt = _original_prompt(messages)
++    context = {
++        key: value
++        for key, value in (sample or {}).items()
++        if key != "messages" and isinstance(value, (str, int, float, bool))
++    }
++    context["original_prompt"] = original_prompt
++    context.setdefault("prompt", original_prompt)
++    context.setdefault("question", original_prompt)
++    return context
++
++
++def _render_user_prompt(
++    config: Mapping[str, Any],
++    messages: Mapping[str, Any],
++    sample: Mapping[str, Any] | None,
++) -> str:
++    context = _template_context(messages, sample)
++    try:
++        return config["user_prompt_template"].format_map(context)
++    except KeyError as exc:
++        available = ", ".join(sorted(context))
++        raise ValueError(
++            f"Unknown custom prompt field {exc.args[0]!r}; available fields: {available}"
++        ) from exc
++
++
++def _replace_conversation_user_content(
++    conversation: list[Any], user_prompt: str, system_prompt: str | None
++) -> list[Any]:
++    updated = [dict(message) if isinstance(message, Mapping) else message for message in conversation]
++
++    if system_prompt is not None:
++        updated = [
++            message
++            for message in updated
++            if not (isinstance(message, Mapping) and message.get("role") == "system")
++        ]
++        if system_prompt:
++            updated.insert(0, {"role": "system", "content": system_prompt})
++
++    user_index = next(
++        (
++            index
++            for index in range(len(updated) - 1, -1, -1)
++            if isinstance(updated[index], Mapping)
++            and updated[index].get("role") == "user"
++        ),
++        None,
++    )
++    if user_index is None:
++        updated.append({"role": "user", "content": user_prompt})
++        return updated
++
++    user_message = dict(updated[user_index])
++    content = user_message.get("content")
++    if isinstance(content, list):
++        non_text_content = [
++            item
++            for item in content
++            if not (isinstance(item, Mapping) and item.get("type") == "text")
++        ]
++        user_message["content"] = non_text_content + [
++            {"type": "text", "text": user_prompt}
++        ]
++    else:
++        user_message["content"] = user_prompt
++    updated[user_index] = user_message
++    return updated
++
++
++def apply_custom_prompt(
++    messages: Mapping[str, Any],
++    config: Mapping[str, Any],
++    sample: Mapping[str, Any] | None = None,
++) -> dict[str, Any]:
++    """Return messages with only their system/user text overridden."""
++
++    if messages.get(_APPLIED_MARKER):
++        return dict(messages)
++
++    # Keep PIL images and other media objects by reference; only prompt containers change.
++    updated = dict(messages)
++    user_prompt = _render_user_prompt(config, messages, sample)
++    system_prompt = config.get("system_prompt") if "system_prompt" in config else None
++
++    if isinstance(updated.get("messages"), list):
++        updated["messages"] = _replace_conversation_user_content(
++            updated["messages"], user_prompt, system_prompt
++        )
++    else:
++        updated["prompt"] = user_prompt
++        if system_prompt is not None:
++            if system_prompt:
++                updated["system"] = system_prompt
++            else:
++                updated.pop("system", None)
++
++    updated[_APPLIED_MARKER] = True
++    return updated
++
++
++def apply_custom_prompt_to_samples(
++    samples: list[dict[str, Any]], config: Mapping[str, Any]
++) -> None:
++    for index, sample in enumerate(samples):
++        messages = sample.get("messages")
++        if not isinstance(messages, Mapping):
++            raise ValueError(
++                f"Sample {index} does not expose a supported 'messages' mapping"
++            )
++        sample["messages"] = apply_custom_prompt(messages, config, sample)
++
++
++class CustomPromptModel:
++    """Model proxy that also covers benchmarks constructing messages at eval time."""
++
++    def __init__(self, model: Any, config: Mapping[str, Any]):
++        self._model = model
++        self._config = config
++
++    def __getattr__(self, name: str) -> Any:
++        return getattr(self._model, name)
++
++    def generate_output(self, messages: Mapping[str, Any]) -> Any:
++        return self._model.generate_output(apply_custom_prompt(messages, self._config))
++
++    def generate_outputs(self, messages_list: list[Mapping[str, Any]]) -> Any:
++        custom_messages = [
++            apply_custom_prompt(messages, self._config) for messages in messages_list
++        ]
++        return self._model.generate_outputs(custom_messages)
+diff --git a/models/Qwen3_VL/Qwen3_VL_vllm.py b/models/Qwen3_VL/Qwen3_VL_vllm.py
+new file mode 100644
+--- /dev/null
++++ b/models/Qwen3_VL/Qwen3_VL_vllm.py
+@@ -0,0 +1,88 @@
++from transformers import AutoProcessor
++from vllm import LLM, SamplingParams
++from qwen_vl_utils import process_vision_info
++import os
++
++
++class Qwen3_VL:
++    def __init__(self,model_path,args):
++        super().__init__()
++        self.llm = LLM(
++            model=model_path,
++            tensor_parallel_size=int(os.environ.get("tensor_parallel_size", 1)),
++            # enforce_eager=True,
++            trust_remote_code=True,
++            limit_mm_per_prompt = {"image": args.max_image_num},
++        )
++        self.processor = AutoProcessor.from_pretrained(model_path)
++
++        self.sampling_params = SamplingParams(
++            temperature=args.temperature,
++            top_p=args.top_p,
++            repetition_penalty=args.repetition_penalty,
++            max_tokens= args.max_new_tokens,
++            stop_token_ids=[],
++        )
++
++    def process_messages(self,messages):
++        current_messages = []
++
++        if "messages" in messages:
++            messages = messages["messages"]
++            for message in messages:
++                role = message["role"]
++                content = message["content"]
++                current_messages.append({"role":role,"content":[{"type":"text","text":content}]}) 
++
++        else:
++            prompt = messages["prompt"]
++            if "system" in messages:
++                system_prompt = messages["system"]
++                current_messages.append({"role":"system","content":system_prompt})
++            if "image" in messages:
++                image = messages["image"]
++                current_messages.append({"role":"user","content":[{"type":"image","image":image},{"type":"text","text":prompt}]})
++            elif "images" in messages:
++                content = []
++                for i,image in enumerate(messages["images"]):
++                    content.append({"type":"text","text":f"<image_{i+1}>: "})
++                    content.append({"type":"image","image":image})
++                content.append({"type":"text","text":messages["prompt"]})
++                current_messages.append({"role":"user","content":content})
++            else:
++                current_messages.append({"role":"user","content":[{"type":"text","text":prompt}]}) 
++
++        messages = current_messages
++        prompt = self.processor.apply_chat_template(
++            messages,
++            tokenize=False,
++            add_generation_prompt=True,
++        )
++        # import pdb;pdb.set_trace()
++        image_inputs, video_inputs = process_vision_info(messages)
++        mm_data = {}
++        if image_inputs is not None:
++            mm_data["image"] = image_inputs
++
++        llm_inputs = {
++            "prompt": prompt
++        }
++        if mm_data:
++            llm_inputs["multi_modal_data"] = mm_data
++        return llm_inputs
++
++
++    def generate_output(self,messages):
++        llm_inputs = self.process_messages(messages)
++        outputs = self.llm.generate([llm_inputs], sampling_params=self.sampling_params)
++        return outputs[0].outputs[0].text
++    
++    def generate_outputs(self,messages_list):
++        llm_inputs_list = [self.process_messages(messages) for messages in messages_list]
++        # from pdb import set_trace;set_trace()
++        outputs = self.llm.generate(llm_inputs_list, sampling_params=self.sampling_params)
++        res = []
++        for output in outputs:
++            generated_text = output.outputs[0].text
++            res.append(generated_text)
++        return res

@@ -1,0 +1,96 @@
+diff --git a/verl/models/transformers/qwen3_vl.py b/verl/models/transformers/qwen3_vl.py
+--- a/verl/models/transformers/qwen3_vl.py
++++ b/verl/models/transformers/qwen3_vl.py
+@@ -28,6 +28,58 @@
+ logger.setLevel(os.getenv("VERL_LOGGING_LEVEL", "WARN"))
+ 
+ 
++def _deduplicate_vision_inputs(pixel_values, grid_thw, spatial_merge_size):
++    """Deduplicate identical images within one HF forward pass.
++
++    GRPO ``rollout.n > 1`` commonly creates several identical copies of the
++    same image.  The vision encoder is deterministic for Qwen3-VL, so running
++    it once and expanding the result is mathematically equivalent, including
++    gradient accumulation through the expansion.  This is opt-in because it
++    adds device-side equality checks and should be benchmarked per workload.
++    """
++    enabled = os.getenv("VERL_QWEN3_VL_DEDUP_VISION_INPUTS", "0").lower() in {"1", "true", "yes"}
++    if not enabled or pixel_values is None or grid_thw is None or grid_thw.shape[0] < 2:
++        return pixel_values, grid_thw, None
++
++    raw_spans = (grid_thw[:, 0] * grid_thw[:, 1] * grid_thw[:, 2]).tolist()
++    pixel_chunks = list(pixel_values.split(raw_spans))
++    unique_chunks = []
++    unique_grids = []
++    inverse = []
++    for grid, chunk in zip(grid_thw, pixel_chunks, strict=True):
++        found = None
++        for unique_idx, (unique_grid, unique_chunk) in enumerate(zip(unique_grids, unique_chunks, strict=True)):
++            if torch.equal(grid, unique_grid) and torch.equal(chunk, unique_chunk):
++                found = unique_idx
++                break
++        if found is None:
++            found = len(unique_chunks)
++            unique_grids.append(grid)
++            unique_chunks.append(chunk)
++        inverse.append(found)
++
++    if len(unique_chunks) == len(pixel_chunks):
++        return pixel_values, grid_thw, None
++    return torch.cat(unique_chunks, dim=0), torch.stack(unique_grids, dim=0), (inverse, spatial_merge_size)
++
++
++def _restore_deduplicated_features(features, restore_info, grid_thw):
++    if restore_info is None:
++        return features
++    inverse, spatial_merge_size = restore_info
++    feature_spans = (
++        grid_thw[:, 0] * grid_thw[:, 1] * grid_thw[:, 2] // (spatial_merge_size**2)
++    ).tolist()
++    unique_features = list(features.split(feature_spans))
++    return torch.cat([unique_features[idx] for idx in inverse], dim=0)
++
++
++def _restore_deduplicated_feature_list(features, restore_info, grid_thw):
++    if restore_info is None:
++        return features
++    return [_restore_deduplicated_features(feature, restore_info, grid_thw) for feature in features]
++
++
+ def get_rope_index(
+     processor,
+     input_ids: torch.Tensor,
+@@ -147,7 +199,16 @@
+     image_mask, video_mask = None, None
+     if pixel_values is not None:
+         pixel_values = pixel_values.type(model.visual.dtype)
++        original_image_grid_thw = image_grid_thw
++        pixel_values, image_grid_thw, image_restore_info = _deduplicate_vision_inputs(
++            pixel_values, image_grid_thw, model.visual.spatial_merge_size
++        )
+         image_embeds, deepstack_image_embeds = model.visual(pixel_values, grid_thw=image_grid_thw)
++        image_embeds = _restore_deduplicated_features(image_embeds, image_restore_info, image_grid_thw)
++        deepstack_image_embeds = _restore_deduplicated_feature_list(
++            deepstack_image_embeds, image_restore_info, image_grid_thw
++        )
++        image_grid_thw = original_image_grid_thw
+         n_image_tokens = (input_ids == model.config.image_token_id).sum().item()
+         n_image_features = image_embeds.shape[0]
+         if n_image_tokens != n_image_features:
+@@ -165,7 +226,16 @@
+ 
+     if pixel_values_videos is not None:
+         pixel_values_videos = pixel_values_videos.type(model.visual.dtype)
++        original_video_grid_thw = video_grid_thw
++        pixel_values_videos, video_grid_thw, video_restore_info = _deduplicate_vision_inputs(
++            pixel_values_videos, video_grid_thw, model.visual.spatial_merge_size
++        )
+         video_embeds, deepstack_video_embeds = model.visual(pixel_values_videos, grid_thw=video_grid_thw)
++        video_embeds = _restore_deduplicated_features(video_embeds, video_restore_info, video_grid_thw)
++        deepstack_video_embeds = _restore_deduplicated_feature_list(
++            deepstack_video_embeds, video_restore_info, video_grid_thw
++        )
++        video_grid_thw = original_video_grid_thw
+         n_video_tokens = (input_ids == model.config.video_token_id).sum().item()
+         n_video_features = video_embeds.shape[0]
+         if n_video_tokens != n_video_features:

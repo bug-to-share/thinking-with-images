@@ -1,0 +1,51 @@
+tools:
+  - class_name: "tools.medical_tools.MedicalZoomInTool"
+    config:
+      type: native
+      min_zoom_factor: 1.0
+      max_zoom_factor: 4.0
+      max_output_side: 2048
+    tool_schema:
+      type: function
+      function:
+        name: zoom_in
+        description: >-
+          Crop and enlarge a visual region selected from an already attached image.
+          Coordinates are Qwen relative [x1, y1, x2, y2] values from 0 to 1000.
+          The resulting crop is returned as a new image for visual inspection.
+        parameters:
+          type: object
+          properties:
+            image_index:
+              type: integer
+              description: Index of an already attached image. Use 0 for the original image.
+            bbox:
+              type: array
+              description: Bounding box [x1, y1, x2, y2] in Qwen relative 0-1000 coordinates.
+            zoom_factor:
+              type: number
+              description: Optional enlargement factor from 1 to 4. Default is 2.
+          required: [image_index, bbox]
+
+  - class_name: "tools.medical_tools.SlakeKnowledgeRetrieveTool"
+    config:
+      type: native
+      knowledge_dir: ${oc.env:SLAKE_KG_DIR,./eval/benchmarks/SLAKE/KG}
+      max_top_k: 5
+    tool_schema:
+      type: function
+      function:
+        name: retrieve
+        description: >-
+          Retrieve relevant English medical facts from the SLAKE knowledge graph.
+          It has no access to the image, answers, or sample metadata. Use a focused English medical query.
+        parameters:
+          type: object
+          properties:
+            query:
+              type: string
+              description: A focused English medical concept, condition, anatomy, function, or relation to look up.
+            top_k:
+              type: integer
+              description: Optional number of facts to return, from 1 to 5. Default is 3.
+          required: [query]

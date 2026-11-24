@@ -1,0 +1,10 @@
+diff --git a/python/sglang/srt/models/qwen3_vl.py b/python/sglang/srt/models/qwen3_vl.py
+--- a/python/sglang/srt/models/qwen3_vl.py
++++ b/python/sglang/srt/models/qwen3_vl.py
+@@ -1110,6 +1110,7 @@
+                 if "visual" in name:
+                     # adapt to VisionAttention
+                     name = name.replace(r"attn.qkv.", r"attn.qkv_proj.")
++                    name = name.replace(r"model.visual.", r"visual.")
+ 
+                 try:

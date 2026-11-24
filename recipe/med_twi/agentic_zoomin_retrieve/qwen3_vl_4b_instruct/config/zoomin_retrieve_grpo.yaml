@@ -1,0 +1,44 @@
+hydra:
+  searchpath:
+    - file://verl/verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+data:
+  prompt_key: prompt
+  image_key: images
+  max_prompt_length: 16384
+  max_response_length: 8192
+  train_batch_size: 96
+  return_raw_chat: True
+  return_multi_modal_inputs: False
+  filter_overlong_prompts: False
+  tool_config_path: "recipe/med_twi/agentic_zoomin_retrieve/qwen3_vl_4b_instruct/config/tools.yaml"
+  custom_cls:
+    path: "recipe/med_twi/agentic_zoomin_retrieve/qwen3_vl_4b_instruct/dataset.py"
+    name: CustomRLHFDataset
+
+actor_rollout_ref:
+  hybrid_engine: True
+  model:
+    custom_chat_template: null
+  rollout:
+    name: sglang
+    mode: async
+    multi_turn:
+      enable: True
+      max_assistant_turns: 6
+      max_user_turns: 6
+      # Keep calls serial so each zoomed image is observed before another call.
+      max_parallel_calls: 1
+      max_tool_response_length: 2048
+      tool_response_truncate_side: middle
+      tool_config_path: "recipe/med_twi/agentic_zoomin_retrieve/qwen3_vl_4b_instruct/config/tools.yaml"
+      format: hermes
+
+reward:
+  custom_reward_function:
+    path: "recipe/med_twi/agentic_zoomin_retrieve/qwen3_vl_4b_instruct/reward.py"
+    name: compute_score

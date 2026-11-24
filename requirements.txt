@@ -1,0 +1,7 @@
+# HTTP agent, image and trace helpers. GPU backend dependencies are documented separately.
+openai>=1,<3
+requests>=2.31,<3
+Pillow>=10
+numpy>=1.26
+matplotlib>=3.8
+tqdm>=4.66

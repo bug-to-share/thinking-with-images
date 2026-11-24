@@ -1,0 +1,50 @@
+# 文献目录
+
+截至2026-11-14。36篇历史记录、10篇本次检索增补；版本更新属于原论文，不重复计数。此目录不表示所有论文均已精读或复现。
+
+- **AdaTooler-V** — [AdaTooler-V: Adaptive Tool-Use for Images and Videos](https://arxiv.org/abs/2512.16918)。工具策略；已有研读。历史记录 · 本次盘点。
+- **SpecEyes** — [SpecEyes: Accelerating Agentic Multimodal LLMs via Speculative Perception and Planning](https://arxiv.org/abs/2603.23483)。工具策略；已有研读。历史记录 · 本次盘点。
+- **IBISAgent** — [IBISAgent: Reinforcing Pixel-Level Visual Reasoning in MLLMs for Universal Biomedical Object Referring and Segmentation](https://arxiv.org/abs/2601.03054)。医学工具推理；已有研读。历史记录 · 本次盘点。
+- **How-Do-Medical-MLLMs-Fail** — [How Do Medical MLLMs Fail? A Study on Visual Grounding in Medical Images](https://arxiv.org/abs/2603.14323)。失败分析；已有研读。历史记录 · 本次盘点。
+- **Learn-to-Think** — [Learn to Think: Improving Multimodal Reasoning through Vision-Aware Self-Improvement Training](https://arxiv.org/abs/2605.11931)。后训练与数据；已有研读。历史记录 · 本次盘点。
+- **MMedAgent-RL** — [MMedAgent-RL: Optimizing Multi-Agent Collaboration for Multimodal Medical Reasoning](https://arxiv.org/abs/2506.00555)。医学工具推理；已有研读。历史记录 · 本次盘点。
+- **Med-Scout** — [Med-Scout: Curing MLLMs' Geometric Blindness in Medical Perception via Geometry-Aware RL Post-Training](https://arxiv.org/abs/2601.23220)。医学视觉后训练；已有研读。历史记录 · 本次盘点。
+- **Med-TIV** — [Scaling Medical Reasoning Verification via Tool-Integrated Reinforcement Learning](https://arxiv.org/abs/2601.20221)。后训练与验证器；已有研读。历史记录 · 本次盘点。
+- **MedMultiBench** — [Beyond Single View: A Comprehensive Benchmark for Medical Multimodal Large Language Models on Multi-Image Understanding](https://doi.org/10.18653/v1/2026.acl-long.1263)。评测与数据；已有研读。历史记录 · 本次盘点。
+- **MedSAM-Agent** — [MedSAM-Agent: Empowering Interactive Medical Image Segmentation with Multi-turn Agentic Reinforcement Learning](https://arxiv.org/abs/2602.03320)。医学工具推理；已有研读。历史记录 · 本次盘点。
+- **PathScale-R1** — [PathScale-R1: Cross-scale Reasoning for Pathological Image Analysis](https://arxiv.org/abs/2607.23794)。医学工具推理；已有研读。历史记录 · 本次盘点。
+- **Reliable-TWI** — [Reliable Thinking with Images](https://arxiv.org/abs/2602.12916)。工具策略；已有研读。历史记录 · 本次盘点。
+- **Zooming-without-Zooming** — [Zooming without Zooming: Region-to-Image Distillation for Fine-Grained Multimodal Perception](https://arxiv.org/abs/2602.11858)。视觉蒸馏；已有研读。历史记录 · 本次盘点。
+- **SLAKE** — [SLAKE: A Semantically-Labeled Knowledge-Enhanced Dataset for Medical Visual Question Answering](https://doi.org/10.1109/ISBI48211.2021.9434010)。评测与数据；已有研读。历史记录 · 本次盘点。
+- **MOPD** — [MOPD: Multi-Teacher On-Policy Distillation for Capability Integration in LLM Post-Training](https://arxiv.org/abs/2606.30406)。OPD与自蒸馏；已有研读。历史记录 · 本次盘点。
+- **OPD-V** — [OPD-V: Visual On-Policy Self-Distillation with Modality Balance](https://arxiv.org/abs/2608.05131)。视觉蒸馏；已有研读。历史记录 · 本次盘点。
+- **Vision-OPD** — [Vision-OPD: Learning to See Fine Details for Multimodal LLMs via On-Policy Self-Distillation](https://arxiv.org/abs/2605.18740)。视觉蒸馏；已有研读。历史记录 · 本次盘点。
+- **Visual-Contrastive-Self-Distillation** — [Visual Contrastive Self-Distillation](https://arxiv.org/abs/2607.21556)。视觉蒸馏；已有研读 / 版本更新。v2 · 2026-10-15。
+- **Self-Distilled-Agentic-RL** — [Self-Distilled Agentic Reinforcement Learning](https://arxiv.org/abs/2605.15155)。OPD与自蒸馏；已有研读。历史记录 · 本次盘点。
+- **Self-Distilled-Reasoner** — [Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models](https://arxiv.org/abs/2601.18734)。OPD与自蒸馏；已有研读。历史记录 · 本次盘点。
+- **RLVR-Unlearnability** — [The Unlearnability Phenomenon in RLVR for Language Models](https://arxiv.org/abs/2605.16787)。失败分析；已有研读。历史记录 · 本次盘点。
+- **Beacon** — [Beacon: Knowing When and How to Perform Agentic Visual Reasoning](https://arxiv.org/abs/2607.28595)。工具策略；已有研读。历史记录 · 本次盘点。
+- **MedVistaGym** — [MedVistaGym: A Scalable Training Environment for Thinking with Medical Images via Tool-Integrated Reinforcement Learning](https://arxiv.org/abs/2601.07107)。医学工具推理；已有线索。历史记录 · 本次盘点。
+- **Ophiuchus** — [Incentivizing Tool-Augmented Thinking with Images for Medical Image Analysis](https://arxiv.org/abs/2512.14157)。医学工具推理；已有线索。历史记录 · 本次盘点。
+- **DeepEyesV2** — [DeepEyesV2: Toward Agentic Multimodal Model](https://arxiv.org/abs/2511.05271)。工具策略；已有线索。历史记录 · 本次盘点。
+- **DeepEyes** — [DeepEyes: Incentivizing "Thinking with Images" via Reinforcement Learning](https://arxiv.org/abs/2505.14362)。工具策略；已有线索。历史记录 · 本次盘点。
+- **VTool-R1** — [VTool-R1: VLMs Learn to Think with Images via Reinforcement Learning on Multimodal Tool Use](https://arxiv.org/abs/2505.19255)。工具策略；已有线索。历史记录 · 本次盘点。
+- **MedVR** — [MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning](https://arxiv.org/abs/2604.08203)。医学工具推理；已有线索。历史记录 · 本次盘点。
+- **Mind the Tool Failures** — [Mind the Tool Failures: Achieving Synergistic Tool Gains for Medical Agents](https://arxiv.org/abs/2605.26691)。失败分析；已有线索。历史记录 · 本次盘点。
+- **EffOPD** — [Learning to Foresee: Unveiling the Unlocking Efficiency of On-Policy Distillation](https://arxiv.org/abs/2605.11739)。OPD与自蒸馏；已有研读。历史记录 · 本次盘点。
+- **DOPD** — [DOPD: Dual On-policy Distillation](https://arxiv.org/abs/2606.30626)。OPD与自蒸馏；已有研读。历史记录 · 本次盘点。
+- **ToolsRL** — [Visual Reasoning through Tool-supervised Reinforcement Learning](https://arxiv.org/abs/2604.19945)。工具归因与后训练；已有线索。历史记录 · 本次盘点。
+- **MED** — [What Does Vision Tool-Use Reinforcement Learning Really Learn? Disentangling Tool-Induced and Intrinsic Effects for Crop-and-Zoom](https://arxiv.org/abs/2602.01334)。工具归因与后训练；已有线索。历史记录 · 本次盘点。
+- **With Tools or Because of Tools?** — [With Tools or Because of Tools? Tracing Capability Gains in Multimodal Agents](https://arxiv.org/abs/2606.02357)。工具归因与后训练；已有线索 / 版本更新。v3 · 2026-11-10。
+- **IAPO** — [IAPO: Input Attribution-Aware Policy Optimization for Tool Use in Small Multimodal Agents](https://arxiv.org/abs/2606.11652)。工具归因与后训练；已有线索。历史记录 · 本次盘点。
+- **ReToken** — [ReToken: Improving Long-Context VLMs with Visual Retrieval Token](https://arxiv.org/abs/2607.28627)。视觉检索与效率；已有研读 / 版本更新。v2 · 2026-10-06。
+- **Reframe** — [Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning](https://arxiv.org/abs/2611.12886)。视觉蒸馏；本次新增。首发 2026-11-09 / v1 · 2026-11-09。
+- **VIOS** — [Watching Itself Watch: Self-Auditing Visual Reliance for Video Reasoning](https://arxiv.org/abs/2611.11949)。视觉蒸馏；本次新增。首发 2026-11-09 / v1 · 2026-11-09。
+- **SPN-OPSD** — [Tiny Evidence Region Localization with Selective Contrastive On-Policy Self-Distillation](https://arxiv.org/abs/2611.10734)。视觉蒸馏；本次新增。首发 2026-11-07 / v1 · 2026-11-07。
+- **MedVTok** — [MedVTok: A General-Purpose Medical Visual Tokenizer](https://arxiv.org/abs/2610.35842)。医学视觉表示；本次新增。首发 2026-10-26 / v1 · 2026-10-26。
+- **MedCaseAgent** — [MedCaseAgent: From Multimodal Clinical Evidence to Rare Disease Case Reports](https://arxiv.org/abs/2610.32258)。医学工具推理；本次新增。首发 2026-10-23 / v1 · 2026-10-23。
+- **TiCO** — [Thinking with Images without Coordinates](https://arxiv.org/abs/2610.14265)。后训练与数据；本次新增。首发 2026-10-09 / v1 · 2026-10-09。
+- **Where-OPD** — [Where-OPD: Spatially Guided On-Policy Self-Distillation of MLLMs with Synthetic Scenes](https://arxiv.org/abs/2610.02117)。视觉蒸馏；本次新增。首发 2026-10-01 / v1 · 2026-10-01。
+- **ReVuE** — [On-Policy Visual Evidence Distillation](https://arxiv.org/abs/2609.36838)。视觉蒸馏；本次新增。首发 2026-09-29 / v1 · 2026-09-29。
+- **UR²-MLLM** — [UR²-MLLM: Uncertainty-aware Revisit Reasoning in Multimodal Large Language Models for Radiology Report Generation](https://arxiv.org/abs/2608.22217)。医学工具推理；本次新增。首发 2026-08-23 / v1 · 2026-08-23。
+- **Visual Tool-Use Causal Audit** — [The Illusion of Visual Tool-Use: A Causal Audit of Thinking with Images](https://arxiv.org/abs/2608.06270)。失败分析；本次新增。首发 2026-08-06 / v2 · 2026-09-08。
