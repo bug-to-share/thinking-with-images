@@ -15,9 +15,14 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 import requests
 from tqdm import tqdm
 
-from loop_utils import normalize_text
-from prompts import FORMAT_ERROR_TEXT, build_tool_feedback_text, build_user_feedback_text
-from verify_prompts_v2 import build_verify_v2_system_prompt, build_verify_v2_user_prompt
+if __package__:
+    from .loop_utils import normalize_text
+    from .prompts import FORMAT_ERROR_TEXT, build_tool_feedback_text, build_user_feedback_text
+    from .verify_prompts_v2 import build_verify_v2_system_prompt, build_verify_v2_user_prompt
+else:
+    from loop_utils import normalize_text
+    from prompts import FORMAT_ERROR_TEXT, build_tool_feedback_text, build_user_feedback_text
+    from verify_prompts_v2 import build_verify_v2_system_prompt, build_verify_v2_user_prompt
 
 
 DEFAULT_INPUT = (
